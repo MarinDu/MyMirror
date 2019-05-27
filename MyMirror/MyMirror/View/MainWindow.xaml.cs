@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyMirror
+namespace MyMirror.View
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
