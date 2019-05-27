@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F3A7D3C2-743B-4F30-81AA-C7DFE2619365}</ProjectGuid>
+    <ProjectGuid>{CD0E29E7-064F-418F-9A93-562D9557C015}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>WingetContract</RootNamespace>
-    <AssemblyName>WingetContract</AssemblyName>
+    <RootNamespace>TimeWidget</RootNamespace>
+    <AssemblyName>TimeWidget</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,11 +53,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum\WingetPositionEnum.cs" />
-    <Compile Include="IWinget.cs" />
-    <Compile Include="ViewModel\ObservableObject.cs" />
-    <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="TimeWidget.cs" />
+    <Compile Include="ViewModel\TimeVM.cs" />
+    <Compile Include="View\TimeWidgetFull.xaml.cs">
+      <DependentUpon>TimeWidgetFull.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimeWidgetReduce.xaml.cs">
+      <DependentUpon>TimeWidgetReduce.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -84,6 +87,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WidgetContract\WidgetContract.csproj">
+      <Project>{f3a7d3c2-743b-4f30-81aa-c7dfe2619365}</Project>
+      <Name>WidgetContract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\TimeWidgetFull.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TimeWidgetReduce.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace MyMirror.ViewModel.Winget
+﻿namespace TimeWidget.ViewModel
 {
     using System.Timers;
     using System;

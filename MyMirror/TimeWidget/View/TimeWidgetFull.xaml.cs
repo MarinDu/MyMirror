@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WingetContract.View
+namespace TimeWidget.View
 {
     /// <summary>
     /// Logique d'interaction pour TimeFull.xaml
     /// </summary>
-    public partial class TimeWingetFull : UserControl
+    public partial class TimeWidgetFull : UserControl
     {
-        public TimeWingetFull()
+        public TimeWidgetFull()
         {
             InitializeComponent();
         }

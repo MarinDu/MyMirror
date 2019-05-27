@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMirror", "MyMirror\MyMirror.csproj", "{79D5702D-1E3E-4D14-B425-CF8C45375CCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeWinget", "TimeWinget\TimeWinget.csproj", "{CD0E29E7-064F-418F-9A93-562D9557C015}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeWinget", "TimeWidget\TimeWidget.csproj", "{CD0E29E7-064F-418F-9A93-562D9557C015}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingetContract", "WingetContract\WingetContract.csproj", "{F3A7D3C2-743B-4F30-81AA-C7DFE2619365}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetContract", "WidgetContract\WidgetContract.csproj", "{F3A7D3C2-743B-4F30-81AA-C7DFE2619365}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

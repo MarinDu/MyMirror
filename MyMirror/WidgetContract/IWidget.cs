@@ -4,7 +4,7 @@
     using System.Windows.Controls;
     using WingetContract.Enum;
 
-    public interface IWinget
+    public interface IWidget
     {
         string WingetName { get; }
         WingetPositionEnum WingetPosition { get; }

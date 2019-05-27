@@ -141,13 +141,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WingetContract\WingetContract.csproj">
+    <ProjectReference Include="..\WidgetContract\WidgetContract.csproj">
       <Project>{f3a7d3c2-743b-4f30-81aa-c7dfe2619365}</Project>
-      <Name>WingetContract</Name>
+      <Name>WidgetContract</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="../TimeWinget/bin/$(Configuration)/TimeWinget.dll" Link="Wingets/TimeWinget.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../TimeWidget/bin/$(Configuration)/TimeWidget.dll" Link="Widgets/TimeWidget.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

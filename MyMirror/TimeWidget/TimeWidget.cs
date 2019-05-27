@@ -1,13 +1,13 @@
-﻿namespace TimeWinget
+﻿namespace TimeWidget
 {
-    using MyMirror.ViewModel.Winget;
+    using global::TimeWidget.View;
+    using global::TimeWidget.ViewModel;
     using System;
     using System.Windows.Controls;
     using WingetContract;
     using WingetContract.Enum;
-    using WingetContract.View;
 
-    public class TimeWinget : IWinget
+    public class TimeWidget : IWidget
     {
         public string WingetName => throw new NotImplementedException();
 
@@ -17,7 +17,7 @@
         {
             get
             {
-                _currentWinget = new TimeWingetReduce();
+                _currentWinget = new TimeWidgetReduce();
                 return _currentWinget;
             }
         }
@@ -26,7 +26,7 @@
         {
             get
             {
-                _currentWinget = new TimeWingetFull();
+                _currentWinget = new TimeWidgetFull();
                 return _currentWinget;
             }
         }

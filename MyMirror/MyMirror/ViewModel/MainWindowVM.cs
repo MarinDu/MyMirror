@@ -100,7 +100,7 @@ namespace MyMirror.ViewModel
         {
             CenterWinget = null;
 
-            foreach(IWinget winget in _mainModel.WingetList)
+            foreach(IWidget winget in _mainModel.WingetList)
             {
                 if (winget.WingetPosition == WingetPositionEnum.TopLeft)
                 {

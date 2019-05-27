@@ -5,11 +5,11 @@
 
     public class MainModel
     {
-        public ICollection<IWinget> WingetList { get; private set; }
+        public ICollection<IWidget> WingetList { get; private set; }
 
         public void LoadWinget()
         {
-            WingetList = WingetLoader<IWinget>.LoadWingets("Wingets");
+            WingetList = WingetLoader<IWidget>.LoadWingets("Widgets");
         }
     }
 }

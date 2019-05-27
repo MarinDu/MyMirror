@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WingetContract.View
+namespace TimeWidget.View
 {
     /// <summary>
     /// Logique d'interaction pour TimeReduce.xaml
     /// </summary>
-    public partial class TimeWingetReduce : UserControl
+    public partial class TimeWidgetReduce : UserControl
     {
-        public TimeWingetReduce()
+        public TimeWidgetReduce()
         {
             InitializeComponent();
         }
