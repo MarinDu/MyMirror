@@ -26,21 +26,11 @@
             set => Set(ref _secAngle, value);
         }
 
-        public bool FullScreenMode
-        {
-            get => _fullScreenMode;
-            set
-            {
-                _fullScreenMode = value;
-                m_timer.Interval = _fullScreenMode ? 100 : 500;
-            }
-        }
-
         #endregion
 
         #region Private members
 
-        private Timer m_timer;
+        private Timer _timer;
 
         private string _currentTimeWithSecString;
 
@@ -48,19 +38,18 @@
 
         private double _secAngle;
 
-        private bool _fullScreenMode;
         #endregion
 
         #region Public functions
 
         public void Initialize()
         {
-            m_timer = new Timer(100)
+            _timer = new Timer(999)
             {
-                AutoReset = false
+                AutoReset = true
             };
-            m_timer.Elapsed += UptadeTime;
-            UptadeTime(null, null);
+            _timer.Elapsed += UptadeTime;
+            _timer.Start();
         }
 
         #endregion
@@ -72,7 +61,6 @@
             CurrentTimeWithSecString = DateTime.Now.ToLongTimeString();
             CurrentTimeString = DateTime.Now.ToShortTimeString();
             SecAngle = DateTime.Now.Second * 6;
-            m_timer.Start();
         }
 
         #endregion

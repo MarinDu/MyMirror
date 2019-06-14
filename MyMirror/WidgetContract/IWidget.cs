@@ -7,7 +7,7 @@
     public interface IWidget
     {
         string WingetName { get; }
-        WingetPositionEnum WingetPosition { get; }
+        WidgetPositionEnum WingetPosition { get; }
 
         UserControl ReduceWinget { get; }
         UserControl FullWinget { get; }

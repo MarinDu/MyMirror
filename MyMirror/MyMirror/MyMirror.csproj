@@ -57,6 +57,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -78,6 +80,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Input\MouseInput.cs" />
+    <Compile Include="Model\Input\IScreenInput.cs" />
     <Compile Include="Model\MainModel.cs" />
     <Page Include="DefaultStyle.xaml">
       <SubType>Designer</SubType>
@@ -91,7 +95,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\ScreenInputEventArg.cs" />
     <Compile Include="Model\WingetLoader.cs" />
+    <Compile Include="ViewModel\ClickCircle.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -148,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="../TimeWidget/bin/$(Configuration)/TimeWidget.dll" Link="Widgets/TimeWidget.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+    <ItemGroup>
+    <None Include="../TramWidget/bin/$(Configuration)/TramWidget.dll" Link="Widgets/TramWidget.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

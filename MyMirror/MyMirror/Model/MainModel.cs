@@ -1,15 +1,23 @@
 ﻿namespace MyMirror.Model
 {
+    using MyMirror.Model.Input;
     using System.Collections.Generic;
     using WingetContract;
 
-    public class MainModel
+    internal class MainModel
     {
         public ICollection<IWidget> WingetList { get; private set; }
 
+        public IScreenInput ScreenInput;
+
         public void LoadWinget()
         {
-            WingetList = WingetLoader<IWidget>.LoadWingets("Widgets");
+            WingetList = WidgetLoader<IWidget>.LoadWingets("Widgets");
+        }
+
+        public void LoadInput()
+        {
+            ScreenInput = new MouseInput();
         }
     }
 }

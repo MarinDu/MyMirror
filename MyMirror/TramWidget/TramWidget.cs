@@ -1,23 +1,24 @@
-﻿namespace TimeWidget
+﻿
+namespace TramWidget
 {
-    using global::TimeWidget.View;
-    using global::TimeWidget.ViewModel;
+    using global::TramWidget.View;
+    using global::TramWidget.ViewModel;
     using System;
     using System.Windows.Controls;
     using WingetContract;
     using WingetContract.Enum;
 
-    public class TimeWidget : IWidget
+    public class TramWidget : IWidget
     {
-        public string WingetName => "TimeWidget";
+        public string WingetName => "Tram Widget";
 
-        public WidgetPositionEnum WingetPosition => WidgetPositionEnum.TopLeft;
+        public WidgetPositionEnum WingetPosition => WidgetPositionEnum.Right;
 
         public UserControl ReduceWinget
         {
             get
             {
-                _currentWinget = new TimeWidgetReduce();
+                _currentWinget = new TramWidgetReduce();
                 return _currentWinget;
             }
         }
@@ -26,7 +27,7 @@
         {
             get
             {
-                _currentWinget = new TimeWidgetFull();
+                _currentWinget = new TramWidgetFull();
                 return _currentWinget;
             }
         }
@@ -35,6 +36,7 @@
 
         private UserControl _currentWinget;
 
+
         public void Dispose()
         {
             throw new NotImplementedException();
@@ -42,7 +44,7 @@
 
         public void Initialize()
         {
-            ((TimeVM)_currentWinget.DataContext).Initialize();
+            ((TramVM)_currentWinget.DataContext).Initialize();
         }
     }
 }

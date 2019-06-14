@@ -5,11 +5,11 @@
     using System.IO;
     using System.Reflection;
 
-    internal class WingetLoader <T>
+    internal class WidgetLoader <T>
     {
         public static ICollection<T> LoadWingets(string path)
         {
-            ICollection<T> plugins = new List<T>();
+            ICollection<T> widgets = new List<T>();
             if (Directory.Exists(path))
             {
                 string[] dllFileNames = Directory.GetFiles(path, "*.dll");
@@ -48,15 +48,15 @@
                     }
                 }
 
-                plugins = new List<T>(pluginTypes.Count);
+                widgets = new List<T>(pluginTypes.Count);
                 foreach (Type type in pluginTypes)
                 {
                     T plugin = (T)Activator.CreateInstance(type);
-                    plugins.Add(plugin);
+                    widgets.Add(plugin);
                 }
             }
 
-            return plugins;
+            return widgets;
         }
     }
 }

@@ -12,6 +12,7 @@
 	</UserControl.DataContext>
 
 	<Grid>
+		<Rectangle Fill="Black"/>
 		<Grid>
 			<Grid.RenderTransform>
 				<RotateTransform CenterX="{Binding XCenter}" CenterY="{Binding YCenter}" Angle="{Binding SecAngle}"/>
