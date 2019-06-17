@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿// -----------------------------------------------------------------------
+// <copyright file="TimeWidgetReduce.xaml.cs">
+//
+// </copyright>
+// <summary>Interaction logic for TimeWidgetReduce.xaml</summary>
+// -----------------------------------------------------------------------
 
 namespace TimeWidget.View
 {
+    using System.Windows.Controls;
+
     /// <summary>
-    /// Logique d'interaction pour TimeReduce.xaml
+    /// Interaction logic for TimeWidgetReduce.xaml
     /// </summary>
     public partial class TimeWidgetReduce : UserControl
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public TimeWidgetReduce()
         {
             InitializeComponent();

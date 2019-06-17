@@ -1,9 +1,16 @@
-﻿
+﻿// -----------------------------------------------------------------------
+// <copyright file="MainWindowVM.cs">
+//
+// </copyright>
+// <summary>Contains class MainWindowVM</summary>
+// -----------------------------------------------------------------------
+
 namespace MyMirror.ViewModel
 {
     using MyMirror.Model;
     using System;
     using System.Collections.Generic;
+    using System.Timers;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -11,75 +18,104 @@ namespace MyMirror.ViewModel
     using WingetContract.Enum;
     using WingetContract.ViewModel;
 
+    /// <summary>
+    /// View model for the main window
+    /// </summary>
     internal class MainWindowVM : ViewModelBase
     {
+        #region Event
+
+        /// <summary>
+        /// Show element event
+        /// </summary>
+        public event EventHandler<ShowElementEventArgs> ShowElementEvent;
+
+        #endregion
+
         #region Properties
 
+        /// <summary>
+        /// Gets widgets dictionary
+        /// </summary>
         public Dictionary<int, UserControl> Widgets
         {
             get =>_widgets;
-            set => Set(ref _widgets, value);
+            private set => Set(ref _widgets, value);
         }
 
-        
-        public UserControl CenterWinget
+        /// <summary>
+        /// Gets central widget
+        /// </summary>
+        public UserControl CenterWidget
         {
             get => _centerWidget;
-            set => Set(ref _centerWidget, value);
+            private  set => Set(ref _centerWidget, value);
         }
 
-        /*public ClickCircle ClickCircle
-        {
-            get => _clickCircle;
-            set => Set(ref _clickCircle, value);
-        }*/
+        /// <summary>
+        /// Gets test button command
+        /// </summary>
+        public ICommand TestButtonCommand { get; private  set; }
 
-        public ICommand TestButtonCommand { get; set; }
+        /// <summary>
+        /// Gets main window loaded command
+        /// </summary>
+        public ICommand MainWindowLoadedCommand { get; private  set; }
 
-        public ICommand MainWindowLoadedCommand { get; set; }
-       
         #endregion
-
 
         #region Private members
 
+        /// <summary>
+        /// Main model
+        /// </summary>
         private MainModel _mainModel;
 
+        /// <summary>
+        /// Widgets dictionary
+        /// </summary>
         private Dictionary<int, UserControl> _widgets;
 
-        
-        private UserControl _centerWidget;
+        /// <summary>
+        /// Widgets visibility timers
+        /// </summary>
+        private Dictionary<int, Timer> _wingetVisibilityTimers;
 
-        //private ClickCircle _clickCircle;
+        /// <summary>
+        /// Central widget
+        /// </summary>
+        private UserControl _centerWidget;
 
         #endregion
 
-
         #region Contructor
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public MainWindowVM()
         {
             TestButtonCommand = new RelayCommand(TestButton);
             MainWindowLoadedCommand = new RelayCommand(MainWindowLoaded);
-
-            //ClickCircle = new ClickCircle();
         }
 
         #endregion
 
-
-        #region Public functions
-
-        #endregion
-
-
         #region Private functions
 
+        /// <summary>
+        /// Handles test button commands
+        /// </summary>
+        /// <param name="obj">Parameters</param>
         private void TestButton(object obj)
         {
             Console.WriteLine("test button");
         }
 
+        /// <summary>
+        /// Handles main windows loaded event
+        /// </summary>
+        /// <param name="obj">Parameters</param>
         private void MainWindowLoaded(object obj)
         {
             CreateSizeDictionnary();
@@ -90,30 +126,41 @@ namespace MyMirror.ViewModel
             _mainModel.LoadInput();
             _mainModel.ScreenInput.ScreenInputEvent += OnScreenInputEvent;
 
-            LoadWinget();
+            Widgets = new Dictionary<int, UserControl>();
+            _wingetVisibilityTimers = new Dictionary<int, Timer>();
+
+            LoadWidget();
         }
 
-        private void LoadWinget()
+        /// <summary>
+        /// Load widgets
+        /// </summary>
+        private void LoadWidget()
         {
-            CenterWinget = null;
-
-            Widgets = new Dictionary<int, UserControl>();
-
+            CenterWidget = null;
             foreach (IWidget winget in _mainModel.WingetList)
             {
                 Widgets[(int)winget.WingetPosition] = winget.ReduceWinget;
+                _wingetVisibilityTimers[(int)winget.WingetPosition] = new Timer(500);
+                _wingetVisibilityTimers[(int)winget.WingetPosition].Elapsed += OnVisibilityTimer;
                 winget.Initialize();
             }
+
             NotifyPropertyChanged(nameof(Widgets));
         }
 
+        /// <summary>
+        /// Handles screen input events
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
         private void OnScreenInputEvent(object sender, ScreenInputEventArg e)
         {
             if(e.Exit)
             {
-                CenterWinget = null;
+                CenterWidget = null;
             }
-            else if (CenterWinget == null)
+            else if (CenterWidget == null)
             {
                 WidgetPositionEnum clickPos = GetClickPos(e.XPos, e.YPos);
 
@@ -126,24 +173,60 @@ namespace MyMirror.ViewModel
                             Application.Current.Dispatcher.Invoke(new Action(() =>
                             {
                                 ViewModelBase vmSave = _widgets[(int)clickPos].DataContext as ViewModelBase;
-                                CenterWinget = winget.FullWinget;
-                                CenterWinget.DataContext = vmSave;
+                                CenterWidget = winget.FullWinget;
+                                CenterWidget.DataContext = vmSave;
                             }));
                         }
                         else
                         {
-                            ShowWinget(clickPos);
+                            ShowWinget(clickPos, true);
                         }
                     }
                 }
             }
         }
 
-        private void ShowWinget(WidgetPositionEnum clickPos)
+        /// <summary>
+        /// Show widget
+        /// </summary>
+        /// <param name="clickPos">Widget postion</param>
+        /// <param name="show">Whether whow widgets</param>
+        private void ShowWinget(WidgetPositionEnum clickPos, bool show)
         {
-
+            ShowElementEvent?.Invoke(this, new ShowElementEventArgs(clickPos, show));
+            if(show)
+            {
+                _wingetVisibilityTimers[(int)clickPos].Stop();
+                _wingetVisibilityTimers[(int)clickPos].Start();
+            }
         }
 
+        /// <summary>
+        /// Handles widgets visibility timer events
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
+        private void OnVisibilityTimer(object sender, ElapsedEventArgs e)
+        {
+            WidgetPositionEnum pos = WidgetPositionEnum.None;
+
+            foreach (var timer in _wingetVisibilityTimers)
+            {
+                if(timer.Value == (Timer)sender)
+                {
+                    pos = (WidgetPositionEnum)timer.Key;
+                    break;
+                }
+            }
+            ShowWinget(pos, false);
+        }
+
+        /// <summary>
+        /// Gets wiget position enum from X Y pos
+        /// </summary>
+        /// <param name="xPos">X os</param>
+        /// <param name="yPos">y pos</param>
+        /// <returns>WidgetPositionEnum value</returns>
         private WidgetPositionEnum GetClickPos(double xPos, double yPos)
         {
             WidgetPositionEnum ret = WidgetPositionEnum.None;
@@ -182,6 +265,7 @@ namespace MyMirror.ViewModel
                 }
             }
 
+            Console.WriteLine(ret);
             return ret;
         }
 

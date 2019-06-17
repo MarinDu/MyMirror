@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("TramWinget")]
+[assembly: AssemblyTitle("WeatherWidget")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TramWinget")]
+[assembly: AssemblyProduct("WeatherWidget")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("d48a6190-8556-429a-b7ff-c7a92de9d176")]
+[assembly: Guid("e039ab5d-c3f8-4dc1-aaf3-8c92e825a88f")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //

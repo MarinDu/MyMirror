@@ -54,7 +54,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TimeWidget.cs" />
+    <Compile Include="WidgetTime.cs" />
     <Compile Include="ViewModel\TimeVM.cs" />
     <Compile Include="View\TimeWidgetFull.xaml.cs">
       <DependentUpon>TimeWidgetFull.xaml</DependentUpon>

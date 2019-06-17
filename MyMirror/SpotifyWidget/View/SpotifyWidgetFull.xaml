@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="SpotifyWidget.View.SpotifyWidgetFull"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SpotifyWidget.View"
+			 xmlns:converters="clr-namespace:SpotifyWidget.View.Converters"
+			 xmlns:winget="clr-namespace:SpotifyWidget.ViewModel"
+			 mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+	
+	<!-- Resources -->
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/SpotifyWidget;component/Theme.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+			<converters:IntToTimeString x:Key="IntToTimeString"/>
+			<converters:FloatToSizeProgress x:Key="FloatToSizeProgress"/>
+			<converters:BoolToImagePlayButton x:Key="BoolToImagePlayButton"/>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<!-- Data context -->
+	<UserControl.DataContext>
+		<winget:SpotifyVM/>
+	</UserControl.DataContext>
+	
+	<!-- Main grid-->
+	<Grid>
+		<!-- Background -->
+		<Rectangle Fill="Black"/>
+
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="4*"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<!-- Buttons -->
+			<StackPanel Orientation="Horizontal"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						Height="{Binding SizeDict[51]}">
+				<Border BorderBrush="White"
+						BorderThickness="{Binding SizeDict[3]}"
+						CornerRadius="{Binding SizeDict[2]}">
+					<Button Focusable="False"
+							Command="{Binding ReturnButtonCommand}"
+							BorderThickness="0"
+							Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+						<Image Source="{StaticResource Previous}"/>
+					</Button>
+				</Border>
+				<Rectangle Width="{Binding SizeDict[10]}"/>
+				<Border BorderBrush="White"
+						BorderThickness="{Binding SizeDict[3]}"
+						CornerRadius="{Binding SizeDict[2]}">
+					<Button Focusable="False"
+							Command="{Binding PlayButtonCommand}"
+							BorderThickness="0"
+							Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+						<Image Source="{Binding SpotifyModel.IsPlaying, Converter={StaticResource BoolToImagePlayButton}}"/>
+					</Button>
+				</Border>
+				<Rectangle Width="{Binding SizeDict[10]}"/>
+				<Border BorderBrush="White"
+						BorderThickness="{Binding SizeDict[3]}"
+						CornerRadius="{Binding SizeDict[2]}">
+					<Button Focusable="False"
+							Command="{Binding NextButtonCommand}"
+							BorderThickness="0"
+							Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+						<Image Source="{StaticResource Next}"/>
+					</Button>
+				</Border>
+
+			</StackPanel>
+
+			<!-- Current status -->
+			<StackPanel Grid.Row="1" >
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Label  Grid.Row="1"
+							Content="{Binding SpotifyModel.SongTitle}" 
+							Foreground="White"
+							FontWeight="Bold"
+							FontSize="{Binding SizeDict[6]}"/>
+					<Label Grid.Row="1"
+							Content=" - " 
+							Foreground="White"
+							FontSize="{Binding SizeDict[6]}"/>
+					<Label  Grid.Row="1"
+							Content="{Binding SpotifyModel.Artist}" 
+							Foreground="White"
+							FontSize="{Binding SizeDict[6]}"/>
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal" 
+							HorizontalAlignment="Center">
+					<Label  Grid.Row="1"
+							Content="{Binding SpotifyModel.SongProgress, Converter={StaticResource IntToTimeString}}" 
+							Foreground="White"
+							FontWeight="Bold"
+							HorizontalAlignment="Center"
+							FontSize="{Binding SizeDict[6]}"/>
+					<Grid Width="{Binding SizeDict[100]}">
+						<Rectangle Fill="White" 
+								   Margin="{Binding SizeDict[1]}"
+								   Width="{Binding SpotifyModel.SongProgressPercent, Converter={StaticResource FloatToSizeProgress}, 
+								   ConverterParameter=98}"
+								   Height="{Binding SizeDict[3]}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+					</Grid>
+					<Label  Grid.Row="1"
+							Content="{Binding SpotifyModel.SongDuration, Converter={StaticResource IntToTimeString}}" 
+							Foreground="White"
+							FontWeight="Bold"
+							HorizontalAlignment="Center"
+							FontSize="{Binding SizeDict[6]}"/>
+				</StackPanel>
+			</StackPanel>
+		</Grid>
+	</Grid>
+
+</UserControl>

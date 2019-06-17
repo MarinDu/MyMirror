@@ -1,4 +1,11 @@
-﻿namespace WingetContract.ViewModel
+﻿// -----------------------------------------------------------------------
+// <copyright file="ObservableObject.cs">
+//
+// </copyright>
+// <summary>Contains ObservableObject class</summary>
+// -----------------------------------------------------------------------
+
+namespace WingetContract.ViewModel
 {
     using System.Collections.Generic;
     using System.ComponentModel;

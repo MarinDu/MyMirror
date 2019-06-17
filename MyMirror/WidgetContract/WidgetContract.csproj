@@ -53,6 +53,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\StringToChargingConverter.cs" />
     <Compile Include="Enum\WingetPositionEnum.cs" />
     <Compile Include="IWidget.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />

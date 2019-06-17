@@ -6,12 +6,15 @@
 			 xmlns:winget="clr-namespace:TimeWidget.ViewModel"
 			 mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="800" FontFamily="Calibri">
-
+	<!-- Data context -->
 	<UserControl.DataContext>
 		<winget:TimeVM/>
 	</UserControl.DataContext>
-
+	
+	<!-- Main grid -->
 	<Grid >
+		
+		<!-- Time -->
 		<Label Content="{Binding CurrentTimeWithSecString}" 
 			   HorizontalAlignment="Left"
 			   HorizontalContentAlignment="Right"

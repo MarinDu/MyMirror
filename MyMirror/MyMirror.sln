@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetContract", "WidgetCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramWidget", "TramWidget\TramWidget.csproj", "{A32BEFF1-E06E-48E0-8A55-0E01C6BDD28F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherWidget", "WeatherWidget\WeatherWidget.csproj", "{E039AB5D-C3F8-4DC1-AAF3-8C92E825A88F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWidget", "SpotifyWidget\SpotifyWidget.csproj", "{DF732636-3630-4EA2-BF47-C55FCC524F67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{A32BEFF1-E06E-48E0-8A55-0E01C6BDD28F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A32BEFF1-E06E-48E0-8A55-0E01C6BDD28F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A32BEFF1-E06E-48E0-8A55-0E01C6BDD28F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E039AB5D-C3F8-4DC1-AAF3-8C92E825A88F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E039AB5D-C3F8-4DC1-AAF3-8C92E825A88F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E039AB5D-C3F8-4DC1-AAF3-8C92E825A88F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E039AB5D-C3F8-4DC1-AAF3-8C92E825A88F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF732636-3630-4EA2-BF47-C55FCC524F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF732636-3630-4EA2-BF47-C55FCC524F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF732636-3630-4EA2-BF47-C55FCC524F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF732636-3630-4EA2-BF47-C55FCC524F67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,12 +1,29 @@
-﻿namespace MyMirror.Model
+﻿// -----------------------------------------------------------------------
+// <copyright file="WidgetLoader.cs">
+//
+// </copyright>
+// <summary>Contains class WidgetLoader</summary>
+// -----------------------------------------------------------------------
+
+namespace MyMirror.Model
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
 
+    /// <summary>
+    /// Widgets loading class Search and load all DLL file present in a specific folder and check if
+    /// it's one plugin of application.
+    /// </summary>
+    /// <typeparam name="T">Widgets type</typeparam>
     internal class WidgetLoader <T>
     {
+        /// <summary>
+        /// Load all widgets present in the specified path
+        /// </summary>
+        /// <param name="path">Folder to analyze</param>
+        /// <returns>List of widgets</returns>
         public static ICollection<T> LoadWingets(string path)
         {
             ICollection<T> widgets = new List<T>();

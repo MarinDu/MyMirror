@@ -1,21 +1,51 @@
-﻿
+﻿// -----------------------------------------------------------------------
+// <copyright file="TramVM.cs">
+//
+// </copyright>
+// <summary>Contains Tram widget view model</summary>
+// -----------------------------------------------------------------------
+
 namespace TramWidget.ViewModel
 {
-    using global::TramWidget.Model;
+    using TramWidget.Model;
     using WingetContract.ViewModel;
 
-    public class TramVM : ViewModelBase
+    /// <summary>
+    /// Contains Tram widget view model
+    /// </summary>
+    internal class TramVM : ViewModelBase
     {
-        public TramModel TramModel { get; set; }
+        #region Properties
 
+        /// <summary>
+        /// Gets Tram Model
+        /// </summary>
+        public TramModel TramModel { get; private set; }
+
+        #endregion
+
+        #region Contructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public TramVM()
         {
             TramModel = new TramModel();
         }
 
+        #endregion
+
+        #region Public functions
+
+        /// <summary>
+        /// Initialize model
+        /// </summary>
         public void Initialize()
         {
             TramModel.Initialize();
         }
+
+        #endregion
     }
 }

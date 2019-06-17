@@ -99,6 +99,7 @@
     <Compile Include="Model\WingetLoader.cs" />
     <Compile Include="ViewModel\ClickCircle.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
+    <Compile Include="ViewModel\ShowElementEventArgs.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -147,6 +148,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SpotifyWidget\SpotifyWidget.csproj">
+      <Project>{df732636-3630-4ea2-bf47-c55fcc524f67}</Project>
+      <Name>SpotifyWidget</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeWidget\TimeWidget.csproj">
+      <Project>{cd0e29e7-064f-418f-9a93-562d9557c015}</Project>
+      <Name>TimeWidget</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TramWidget\TramWidget.csproj">
+      <Project>{a32beff1-e06e-48e0-8a55-0e01c6bdd28f}</Project>
+      <Name>TramWidget</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeatherWidget\WeatherWidget.csproj">
+      <Project>{e039ab5d-c3f8-4dc1-aaf3-8c92e825a88f}</Project>
+      <Name>WeatherWidget</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WidgetContract\WidgetContract.csproj">
       <Project>{f3a7d3c2-743b-4f30-81aa-c7dfe2619365}</Project>
       <Name>WidgetContract</Name>
@@ -155,8 +172,14 @@
   <ItemGroup>
     <None Include="../TimeWidget/bin/$(Configuration)/TimeWidget.dll" Link="Widgets/TimeWidget.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <None Include="../TramWidget/bin/$(Configuration)/TramWidget.dll" Link="Widgets/TramWidget.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../WeatherWidget/bin/$(Configuration)/WeatherWidget.dll" Link="Widgets/WeatherWidget.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../SpotifyWidget/bin/$(Configuration)/SpotifyWidget.dll" Link="Widgets/SpotifyWidget.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

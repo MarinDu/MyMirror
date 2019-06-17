@@ -7,12 +7,17 @@
 			 mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
 	
+	<!-- Data context -->
 	<UserControl.DataContext>
 		<winget:TimeVM/>
 	</UserControl.DataContext>
 
+	<!-- Main grid-->
 	<Grid>
+		<!-- Back ground-->
 		<Rectangle Fill="Black"/>
+		
+		<!-- Time animated clock -->
 		<Grid>
 			<Grid.RenderTransform>
 				<RotateTransform CenterX="{Binding XCenter}" CenterY="{Binding YCenter}" Angle="{Binding SecAngle}"/>
@@ -34,11 +39,10 @@
 				 HorizontalAlignment="Center"/>
 		</Grid>
 
+		<!-- Time string -->
 		<Label Content="{Binding CurrentTimeString}" 
 			   HorizontalAlignment="Center"
 			   VerticalAlignment="Center"
 			   FontSize="{Binding SizeDict[35]}"/>
-
-
 	</Grid>
 </UserControl>

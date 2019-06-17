@@ -1,19 +1,58 @@
-﻿namespace WingetContract.ViewModel
+﻿// -----------------------------------------------------------------------
+// <copyright file="ViewModelBase.cs">
+//
+// </copyright>
+// <summary>Contains view models base class</summary>
+// -----------------------------------------------------------------------
+
+namespace WingetContract.ViewModel
 {
     using System.Collections.Generic;
     using System.Windows;
 
+    /// <summary>
+    /// Base class for view models
+    /// </summary>
     public abstract class ViewModelBase : ObservableObject
     {
-        private const int AvailableFonSize = 100;
+        #region Properties
 
-        private const float SizeCoef = 0.01f;
-
+        /// <summary>
+        /// Gets size dictionary
+        /// </summary>
         public static Dictionary<float, float> SizeDict { get; private set; }
 
+        /// <summary>
+        /// Gets main window X center positon
+        /// </summary>
         public static double XCenter { get; private set; }
+
+        /// <summary>
+        /// Gets main window Y center positon
+        /// </summary>
         public static double YCenter { get; private set; }
 
+        #endregion
+
+        #region Private members
+
+        /// <summary>
+        /// Available font sizes
+        /// </summary>
+        private const int _availableSize = 100;
+
+        /// <summary>
+        /// Size coeficient
+        /// </summary>
+        private const float _sizeCoef = 0.01f;
+
+        #endregion
+
+        #region Protected functions
+
+        /// <summary>
+        /// Create size dictionary
+        /// </summary>
         protected void CreateSizeDictionnary()
         {
             if (SizeDict == null)
@@ -21,11 +60,11 @@
                 float height = (float)Application.Current.MainWindow.ActualHeight;
 
                 // Create new dictionnary
-                Dictionary <float, float> dic = new Dictionary<float, float>();
+                Dictionary<float, float> dic = new Dictionary<float, float>();
 
-                for (int i = 1; i < AvailableFonSize + 1; i++)
+                for (int i = 1; i < _availableSize + 1; i++)
                 {
-                    dic.Add(i, 16 / 9 * SizeCoef * i * height);
+                    dic.Add(i, 16 / 9 * _sizeCoef * i * height);
                 }
 
                 SizeDict = dic;
@@ -34,5 +73,7 @@
                 YCenter = SystemParameters.PrimaryScreenHeight / 2;
             }
         }
+
+        #endregion
     }
 }
