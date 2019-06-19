@@ -4,5 +4,5 @@
 
 	<BitmapImage x:Key="TramC" UriSource="Images/TramC.png" />
 	<BitmapImage x:Key="TramE" UriSource="Images/TramE.png" />
-	
+
 </ResourceDictionary>

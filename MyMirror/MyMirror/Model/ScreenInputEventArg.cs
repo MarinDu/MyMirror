@@ -1,20 +1,46 @@
-﻿namespace MyMirror.Model
+﻿// -----------------------------------------------------------------------
+// <copyright file="ScreenInputEventArg.cs">
+//
+// </copyright>
+// <summary>Screen input event arguments</summary>
+// -----------------------------------------------------------------------
+
+namespace MyMirror.Model
 {
+    using MyMirror.Model.Input;
     using System;
 
-    public class ScreenInputEventArg : EventArgs
+    /// <summary>
+    /// Screen input event arguments
+    /// </summary>
+    internal class ScreenInputEventArg : EventArgs
     {
+        /// <summary>
+        /// Gets or sets X position
+        /// </summary>
         public double XPos { get; set; } 
-        public double YPos { get; set; }
-        public double ZPos { get; set; }
-        public bool Exit { get; set; }
 
-        public ScreenInputEventArg(double x, double y, double z, bool exit = false)
+        /// <summary>
+        /// Gets or sets Y position
+        /// </summary>
+        public double YPos { get; set; }
+
+        /// <summary>
+        /// Gest or sets input gesture
+        /// </summary>
+        public InputGestureEnum Gesture { get; set; }
+
+        /// <summary>
+        /// Instatiates screen input event oject
+        /// </summary>
+        /// <param name="x">X position</param>
+        /// <param name="y">Y positon</param>
+        /// <param name="gesture">Input gesture</param>
+        public ScreenInputEventArg(double x, double y, InputGestureEnum gesture)
         {
             XPos = x;
             YPos = y;
-            ZPos = z;
-            Exit = exit;
+            Gesture = gesture;
         }
     }
 }

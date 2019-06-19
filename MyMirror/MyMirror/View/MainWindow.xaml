@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 		xmlns:viewmodel="clr-namespace:MyMirror.ViewModel"
+		xmlns:converters="clr-namespace:MyMirror.View.Converters"
 		mc:Ignorable="d"
         Title="Mon Mirroir à Moi" 
 		WindowState="Maximized"
@@ -13,8 +14,16 @@
 		Background="Black" 
 		WindowStyle="None"
 		ResizeMode="NoResize"
+		Cursor="None"
 		d:DesignHeight="1080" d:DesignWidth="1920">
 	
+	<Window.Resources>
+		<ResourceDictionary>
+			<converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+			<converters:IntToFigureSoundConverter x:Key="IntToFigureSoundConverter"/>
+		</ResourceDictionary>
+	</Window.Resources>
+
 	<!-- DataContext -->
 	<Window.DataContext>
 		<viewmodel:MainWindowVM/>
@@ -71,22 +80,44 @@
 		<!-- Central widget -->
 		<ContentControl Content="{Binding CenterWidget}" />
 
+
+		<Border Background="Black" Visibility="{Binding SoundVisibility, Converter={StaticResource BoolToVisibilityConverter}}">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="2*"/>
+					<ColumnDefinition Width="3*"/>
+					<ColumnDefinition Width="2*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="2*"/>
+					<RowDefinition Height="3*"/>
+					<RowDefinition Height="2*"/>
+				</Grid.RowDefinitions>
+				<Image Source="{StaticResource Sound}" Grid.Column="1" Grid.Row="1"/>
+				<Path Grid.ColumnSpan="3" Grid.RowSpan="3" Stroke="Black" Fill="White" StrokeThickness="0" >
+					<Path.Data>
+						<PathGeometry Figures="{Binding MainModel.SoundLevel, Converter={StaticResource IntToFigureSoundConverter}}"/>
+					</Path.Data>
+				</Path>
+			</Grid>
+		</Border>
+
 		<!-- Test button -->
-		<Button Command="{Binding TestButtonCommand}"
-				Content="Do Something"
+		<!--Button Command="{Binding TestButtonCommand}"
+				Content="Test button"
 				VerticalAlignment="Bottom"	
 			    HorizontalAlignment="Right"
 				Width="102" Height="53"
 				Grid.Column="2" 
-				Grid.Row="2"/>
+				Grid.Row="2"/-->
 		
-		<!--Canvas>
+		<Canvas>
 			<Ellipse Width="{Binding ClickCircle.Size}" 
 					 Height="{Binding ClickCircle.Size}"
 					 Canvas.Left="{Binding ClickCircle.XPos}"
 					 Canvas.Top="{Binding ClickCircle.YPos}"
 					 Opacity="{Binding ClickCircle.Opacity}"
-					 Fill="White"/>
-		</-->
+					 Fill="Green"/>
+		</Canvas>
 	</Grid>
 </Window>

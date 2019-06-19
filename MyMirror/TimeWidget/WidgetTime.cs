@@ -44,6 +44,9 @@ namespace TimeWidget
             }
         }
 
+        /// <inheritdoc />
+        public bool ShowOnSleep => true;
+
         #endregion
 
         #region Private members

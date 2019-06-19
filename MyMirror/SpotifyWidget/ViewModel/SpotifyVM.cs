@@ -11,11 +11,12 @@ namespace SpotifyWidget.ViewModel
     using System.Windows.Input;
     using WingetContract.ViewModel;
     using System;
+    using WingetContract;
 
     /// <summary>
     /// Contains Soptify widget view model
     /// </summary>
-    internal class SpotifyVM : ViewModelBase
+    internal class SpotifyVM : ViewModelBase, ISoundManageable
     {
         #region Properties
 
@@ -65,6 +66,12 @@ namespace SpotifyWidget.ViewModel
         public void Initialize()
         {
             SpotifyModel.Initialize();
+        }
+
+        /// <inheritdoc />
+        public void SetSoundVolume(int volume)
+        {
+            SpotifyModel.SetSound(volume);
         }
 
         #endregion

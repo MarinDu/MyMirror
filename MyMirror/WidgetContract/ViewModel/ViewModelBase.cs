@@ -71,6 +71,8 @@ namespace WingetContract.ViewModel
 
                 XCenter = SystemParameters.PrimaryScreenWidth / 2;
                 YCenter = SystemParameters.PrimaryScreenHeight / 2;
+
+                NotifyPropertyChanged(nameof(SizeDict));
             }
         }
 

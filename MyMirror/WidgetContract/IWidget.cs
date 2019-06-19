@@ -31,6 +31,11 @@ namespace WingetContract
         UserControl FullWinget { get; }
 
         /// <summary>
+        /// Show on sleep
+        /// </summary>
+        bool ShowOnSleep { get; }
+
+        /// <summary>
         /// Initializes widget
         /// </summary>
         void Initialize();

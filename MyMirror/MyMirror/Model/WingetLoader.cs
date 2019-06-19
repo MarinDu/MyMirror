@@ -29,7 +29,7 @@ namespace MyMirror.Model
             ICollection<T> widgets = new List<T>();
             if (Directory.Exists(path))
             {
-                string[] dllFileNames = Directory.GetFiles(path, "*.dll");
+                string[] dllFileNames = Directory.GetFiles(path, "*Widget.dll");
 
                 ICollection<Assembly> assemblies = new List<Assembly>(dllFileNames.Length);
                 foreach (string dllFile in dllFileNames)

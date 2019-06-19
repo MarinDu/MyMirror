@@ -107,6 +107,11 @@ namespace SpotifyWidget.Model
         /// </summary>
         private readonly Mutex _accessMutex;
 
+        /// <summary>
+        /// Expected sound volume
+        /// </summary>
+        private int _expectedSoundVolume;
+
         #endregion
 
         #region Contructor
@@ -249,6 +254,15 @@ namespace SpotifyWidget.Model
             }).Start();
         }
 
+        /// <summary>
+        /// Set sound
+        /// </summary>
+        /// <param name="volume">Volume in percent</param>
+        public void SetSound(int volume)
+        {
+            _expectedSoundVolume = volume;
+        }
+
         #endregion
 
         #region Private functions
@@ -278,6 +292,11 @@ namespace SpotifyWidget.Model
 
                             IsPlaying = context.IsPlaying;
                             Artist = context.Item.Artists[0]?.Name;
+
+                            if (_spotifyWebAPI.GetDevices()?.Devices[0]?.VolumePercent != _expectedSoundVolume)
+                            {
+                                _spotifyWebAPI.SetVolume(_expectedSoundVolume);
+                            }
                         }
 
                         _accessMutex.ReleaseMutex();
@@ -291,7 +310,7 @@ namespace SpotifyWidget.Model
                 }
 
                 // If token is lost, get it again
-                if (error && _spotifyWebAPI.AccessToken == null)
+                if (_spotifyWebAPI == null || error && _spotifyWebAPI.AccessToken == null)
                 {
                     Initialize();
                 }

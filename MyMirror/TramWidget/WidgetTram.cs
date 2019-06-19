@@ -44,6 +44,9 @@ namespace TramWidget
             }
         }
 
+        /// <inheritdoc />
+        public bool ShowOnSleep => false;
+
         #endregion
 
         #region Private members
