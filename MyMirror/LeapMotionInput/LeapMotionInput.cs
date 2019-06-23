@@ -5,17 +5,18 @@
 // <summary>IScreenInput implemtation for LeapMotion</summary>
 // -----------------------------------------------------------------------
 
-namespace MyMirror.Model.Input
+namespace LeapMotionInput
 {
     using System;
     using System.Timers;
     using Leap;
     using System.Threading.Tasks;
+    using InputContract;
 
     /// <summary>
     /// ScreenInput implemtation for LeapMotion
     /// </summary>
-    internal class LeapMotionInput : IScreenInput
+    public class LeapMotionInput : IScreenInput
     {
         #region Events
 
@@ -23,7 +24,6 @@ namespace MyMirror.Model.Input
         public event EventHandler<ScreenInputEventArg> ScreenInputEvent;
 
         #endregion
-
 
         #region Properties
 
@@ -53,12 +53,6 @@ namespace MyMirror.Model.Input
         private Frame _referenceFrame;
 
         #endregion
-
-
-        #region Private members
-
-        #endregion
-
 
         #region Contructor
 
@@ -149,12 +143,7 @@ namespace MyMirror.Model.Input
                     _lastClick = DateTime.Now;
                 }
 
-                Console.WriteLine(_gesture);
-
-                System.Windows.Application.Current.Dispatcher.Invoke(new Action(() =>
-                {
-                    ScreenInputEvent?.Invoke(this, new ScreenInputEventArg(xPos, yPos, _gesture));
-                }));
+                ScreenInputEvent?.Invoke(this, new ScreenInputEventArg(xPos, yPos, _gesture));
             }
             catch(Exception ex)
             {

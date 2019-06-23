@@ -5,14 +5,14 @@
 // <summary>Interface for mirror input</summary>
 // -----------------------------------------------------------------------
 
-namespace MyMirror.Model.Input
+namespace InputContract
 {
     using System;
 
     /// <summary>
     /// Interface for mirror input
     /// </summary>
-    internal interface IScreenInput
+    public interface IScreenInput
     {
         /// <summary>
         /// Mirror input event

@@ -25,24 +25,13 @@ namespace SpotifyWidget
         public WidgetPositionEnum WingetPosition => WidgetPositionEnum.Bot;
 
         /// <inheritdoc />
-        public UserControl ReduceWinget
-        {
-            get
-            {
-                _currentWinget = new SpotifyWidgetReduce();
-                return _currentWinget;
-            }
-        }
+        public UserControl RightOrLeftWidget => _rightLeftWidget;
 
         /// <inheritdoc />
-        public UserControl FullWinget
-        {
-            get
-            {
-                _currentWinget = new SpotifyWidgetFull();
-                return _currentWinget;
-            }
-        }
+        public UserControl TopOrBotWidget => _topBotWidget;
+
+        /// <inheritdoc />
+        public UserControl FullWidget => _fullWidget;
 
         /// <inheritdoc />
         public bool ShowOnSleep => false;
@@ -52,9 +41,43 @@ namespace SpotifyWidget
         #region Private members
 
         /// <summary>
-        /// Current widget
+        /// Full widgets
         /// </summary>
-        private UserControl _currentWinget;
+        private UserControl _fullWidget;
+
+        /// <summary>
+        /// Reduce widgets
+        /// </summary>
+        private UserControl _rightLeftWidget;
+
+        /// <summary>
+        /// Reduce widgets
+        /// </summary>
+        private UserControl _topBotWidget;
+
+        /// <summary>
+        /// Widgets view model
+        /// </summary>
+        private SpotifyVM _dataContext;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public WidgetSpotify()
+        {
+            _fullWidget = new SpotifyWidgetFull();
+            _topBotWidget = new SpotifyWidgetReduce();
+            _rightLeftWidget = new SpotifyWidgetReduce();
+
+            _dataContext = (SpotifyVM)_fullWidget.DataContext;
+
+            _topBotWidget.DataContext = _dataContext;
+            _rightLeftWidget.DataContext = _dataContext;
+        }
 
         #endregion
 
@@ -63,13 +86,19 @@ namespace SpotifyWidget
         /// <inheritdoc />
         public void Initialize()
         {
-            ((SpotifyVM)_currentWinget.DataContext).Initialize();
+            _dataContext.Initialize();
         }
 
         /// <inheritdoc />
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public void InputClick(int xPos, int yPos)
+        {
+            _dataContext.InputClick(xPos, yPos);
         }
 
         #endregion

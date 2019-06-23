@@ -5,8 +5,9 @@
 // <summary>IScreenInput implemtation for mouse and keyboard</summary>
 // -----------------------------------------------------------------------
 
-namespace MyMirror.Model.Input
+namespace MouseInput
 {
+    using InputContract;
     using System;
     using System.Timers;
     using System.Windows;
@@ -58,6 +59,7 @@ namespace MyMirror.Model.Input
             _timer.Start();
 
             _previousPosition = System.Windows.Forms.Cursor.Position;
+            _gesture = InputGestureEnum.None;
 
             Application.Current.MainWindow.MouseWheel += OnMouseWheelEvent;
             Application.Current.MainWindow.MouseDown += OnMouseDownEvent;

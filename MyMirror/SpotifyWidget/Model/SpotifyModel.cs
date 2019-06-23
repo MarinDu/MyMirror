@@ -128,7 +128,6 @@ namespace SpotifyWidget.Model
                 AutoReset = false
             };
             _timer.Elapsed += Refresh;
-
         }
 
         #endregion
@@ -293,7 +292,9 @@ namespace SpotifyWidget.Model
                             IsPlaying = context.IsPlaying;
                             Artist = context.Item.Artists[0]?.Name;
 
-                            if (_spotifyWebAPI.GetDevices()?.Devices[0]?.VolumePercent != _expectedSoundVolume)
+                            AvailabeDevices devices = _spotifyWebAPI.GetDevices();
+
+                            if (devices?.Devices[0]?.VolumePercent != _expectedSoundVolume)
                             {
                                 _spotifyWebAPI.SetVolume(_expectedSoundVolume);
                             }

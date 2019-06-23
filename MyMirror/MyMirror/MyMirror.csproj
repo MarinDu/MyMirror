@@ -103,10 +103,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Input\InputGestureEnum.cs" />
-    <Compile Include="Model\Input\LeapMotionInput.cs" />
-    <Compile Include="Model\Input\MouseInput.cs" />
-    <Compile Include="Model\Input\IScreenInput.cs" />
     <Compile Include="Model\MainModel.cs" />
     <Page Include="DefaultStyle.xaml">
       <SubType>Designer</SubType>
@@ -120,8 +116,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\ScreenInputEventArg.cs" />
-    <Compile Include="Model\WingetLoader.cs" />
+    <Compile Include="Model\PluginLoader.cs" />
     <Compile Include="ViewModel\ClickCircle.cs" />
     <Compile Include="View\Converters\IntToFigureSoundConverter.cs" />
     <Compile Include="View\Converters\BoolToVisibilityConverter.cs" />
@@ -159,9 +154,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Enum\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
@@ -175,6 +168,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InputContract\InputContract.csproj">
+      <Project>{cfaf2ad4-d3b7-4f33-99b1-20f5f93dcb03}</Project>
+      <Name>InputContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LeapMotionInput\LeapMotionInput.csproj">
+      <Project>{a5d1efd0-3f74-4b50-83f9-450395d22409}</Project>
+      <Name>LeapMotionInput</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MouseInput\MouseInput.csproj">
+      <Project>{4496e349-a324-4894-9977-088145636571}</Project>
+      <Name>MouseInput</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpotifyWidget\SpotifyWidget.csproj">
       <Project>{df732636-3630-4ea2-bf47-c55fcc524f67}</Project>
       <Name>SpotifyWidget</Name>
@@ -197,16 +202,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="../TimeWidget/bin/$(Configuration)/TimeWidget.dll" Link="Widgets/TimeWidget.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../TimeWidget/bin/x64/$(Configuration)/TimeWidget.dll" Link="Widgets/TimeWidget.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="../TramWidget/bin/$(Configuration)/TramWidget.dll" Link="Widgets/TramWidget.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../TramWidget/bin/x64/$(Configuration)/TramWidget.dll" Link="Widgets/TramWidget.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="../WeatherWidget/bin/$(Configuration)/WeatherWidget.dll" Link="Widgets/WeatherWidget.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../WeatherWidget/bin/x64/$(Configuration)/WeatherWidget.dll" Link="Widgets/WeatherWidget.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="../SpotifyWidget/bin/$(Configuration)/SpotifyWidget.dll" Link="Widgets/SpotifyWidget.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../SpotifyWidget/bin/x64/$(Configuration)/SpotifyWidget.dll" Link="Widgets/SpotifyWidget.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../LeapMotionInput/bin/x64/$(Configuration)/LeapMotionInput.dll" Link="Inputs/LeapMotionInput.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../MouseInput/bin/x64/$(Configuration)/MouseInput.dll" Link="Inputs/MouseInput.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dll\Leap.dll" />

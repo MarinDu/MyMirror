@@ -21,14 +21,19 @@ namespace WingetContract
         WidgetPositionEnum WingetPosition { get; }
 
         /// <summary>
-        /// Gets widget reduce version
+        /// Gets widget right or left version
         /// </summary>
-        UserControl ReduceWinget { get; }
+        UserControl RightOrLeftWidget { get; }
+
+        /// <summary>
+        /// Gets widget top or bot version
+        /// </summary>
+        UserControl TopOrBotWidget { get; }
 
         /// <summary>
         /// Gets widget full version
         /// </summary>
-        UserControl FullWinget { get; }
+        UserControl FullWidget { get; }
 
         /// <summary>
         /// Show on sleep
@@ -44,5 +49,12 @@ namespace WingetContract
         /// Disposes widget
         /// </summary>
         void Dispose();
+
+        /// <summary>
+        /// Send click input to windgets
+        /// </summary>
+        /// <param name="xPos">Click X pos</param>
+        /// <param name="yPos">Click Y pos</param>
+        void InputClick(int xPos, int yPos);
     }
 }

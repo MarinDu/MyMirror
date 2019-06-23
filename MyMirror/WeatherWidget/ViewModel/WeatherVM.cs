@@ -7,6 +7,7 @@
 
 namespace WeatherWidget.ViewModel
 {
+    using System.Windows;
     using WeatherWidget.Model;
     using WingetContract.ViewModel;
 
@@ -46,6 +47,22 @@ namespace WeatherWidget.ViewModel
             WeatherModel.Initialize();
         }
 
+        /// <summary>
+        /// Handles inout click
+        /// </summary>
+        /// <param name="xPos">Click X pos</param>
+        /// <param name="yPos">Click Y pos</param>
+        public void InputClick(int xPos, int yPos)
+        {
+            /*if (yPos < (int)Application.Current.MainWindow.ActualHeight / 2)
+            {
+                Scroll += Application.Current.MainWindow.ActualHeight / 2;
+            }
+            else
+            {
+                Scroll -= Application.Current.MainWindow.ActualHeight / 2;
+            }*/
+        }
         #endregion
     }
 }

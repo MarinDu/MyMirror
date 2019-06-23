@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="WidgetLoader.cs">
+// <copyright file="PluginLoader.cs">
 //
 // </copyright>
-// <summary>Contains class WidgetLoader</summary>
+// <summary>Contains class PluginLoader</summary>
 // -----------------------------------------------------------------------
 
 namespace MyMirror.Model
@@ -13,23 +13,24 @@ namespace MyMirror.Model
     using System.Reflection;
 
     /// <summary>
-    /// Widgets loading class Search and load all DLL file present in a specific folder and check if
+    /// Plugins loading class Search and load all DLL file present in a specific folder and check if
     /// it's one plugin of application.
     /// </summary>
-    /// <typeparam name="T">Widgets type</typeparam>
-    internal class WidgetLoader <T>
+    /// <typeparam name="T">Plugin type</typeparam>
+    internal class PluginLoader <T>
     {
         /// <summary>
-        /// Load all widgets present in the specified path
+        /// Load all plugins present in the specified path
         /// </summary>
         /// <param name="path">Folder to analyze</param>
+        /// <param name="format">File format to analyze</param>
         /// <returns>List of widgets</returns>
-        public static ICollection<T> LoadWingets(string path)
+        public static ICollection<T> LoadPlugins(string path, string format = "*.dll")
         {
             ICollection<T> widgets = new List<T>();
             if (Directory.Exists(path))
             {
-                string[] dllFileNames = Directory.GetFiles(path, "*Widget.dll");
+                string[] dllFileNames = Directory.GetFiles(path, format);
 
                 ICollection<Assembly> assemblies = new List<Assembly>(dllFileNames.Length);
                 foreach (string dllFile in dllFileNames)

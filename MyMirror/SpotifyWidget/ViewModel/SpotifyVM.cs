@@ -8,10 +8,9 @@
 namespace SpotifyWidget.ViewModel
 {
     using SpotifyWidget.Model;
-    using System.Windows.Input;
     using WingetContract.ViewModel;
-    using System;
     using WingetContract;
+    using System.Windows;
 
     /// <summary>
     /// Contains Soptify widget view model
@@ -24,21 +23,6 @@ namespace SpotifyWidget.ViewModel
         /// Gets Weather Model
         /// </summary>
         public SpotifyModel SpotifyModel { get; private set; }
-        
-        /// <summary>
-        /// Gets return button command
-        /// </summary>
-        public ICommand ReturnButtonCommand { get; private set; }
-
-        /// <summary>
-        /// Gets play button command
-        /// </summary>
-        public ICommand PlayButtonCommand { get; private set; }
-
-        /// <summary>
-        /// Gets next button command
-        /// </summary>
-        public ICommand NextButtonCommand { get; private set; }
 
         #endregion
 
@@ -50,10 +34,6 @@ namespace SpotifyWidget.ViewModel
         public SpotifyVM()
         {
             SpotifyModel = new SpotifyModel();
-
-            ReturnButtonCommand = new RelayCommand(ReturnButton);
-            PlayButtonCommand = new RelayCommand(PlayButton);
-            NextButtonCommand = new RelayCommand(NextButton);
         }
 
         #endregion
@@ -74,38 +54,30 @@ namespace SpotifyWidget.ViewModel
             SpotifyModel.SetSound(volume);
         }
 
-        #endregion
-
-        #region Private function 
-
         /// <summary>
-        /// Handles next button command
+        /// Handles inout click
         /// </summary>
-        /// <param name="obj">Command parameter</param>
-        private void NextButton(object obj)
+        /// <param name="xPos">Click X pos</param>
+        /// <param name="yPos">Click Y pos</param>
+        public void InputClick(int xPos, int yPos)
         {
-            SpotifyModel.Next();
-        }
-
-        /// <summary>
-        /// Handles next button command
-        /// </summary>
-        /// <param name="obj">Command parameter</param>
-        private void PlayButton(object obj)
-        {
-            SpotifyModel.Play();
-        }
-
-        /// <summary>
-        /// Handles next button command
-        /// </summary>
-        /// <param name="obj">Command parameter</param>
-        private void ReturnButton(object obj)
-        {
-            SpotifyModel.Previous();
+            if(yPos < (int)Application.Current.MainWindow.ActualWidth * 3 / 4)
+            {
+                if (xPos < (int)Application.Current.MainWindow.ActualWidth / 3)
+                {
+                    SpotifyModel.Previous();
+                }
+                else if (xPos < (int)Application.Current.MainWindow.ActualWidth * 2 / 3)
+                {
+                    SpotifyModel.Play();
+                }
+                else if (xPos < (int)Application.Current.MainWindow.ActualWidth)
+                {
+                    SpotifyModel.Next();
+                }
+            }
         }
 
         #endregion
-
     }
 }

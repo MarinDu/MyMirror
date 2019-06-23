@@ -54,31 +54,31 @@
 			<ContentControl x:Name="TopLeftWidget" 
 							Grid.Row="0"
 							Grid.Column="0"
-							Content="{Binding Widgets[0]}"/>
+							Content="{Binding Widgets[0].TopOrBotWidget}"/>
 			<ContentControl x:Name="TopWidget"
 							Grid.Row="0"
 							Grid.Column="1"
-							Content="{Binding Widgets[1]}" />
+							Content="{Binding Widgets[1].TopOrBotWidget}" />
 			<ContentControl x:Name="TopRightWidget"
 							Grid.Row="0"
 							Grid.Column="2"
-							Content="{Binding Widgets[2]}" />
+							Content="{Binding Widgets[2].TopOrBotWidget}" />
 			<ContentControl x:Name="LeftWidget"
 							Grid.Row="1"
 							Grid.Column="0"
-							Content="{Binding Widgets[3]}" />
+							Content="{Binding Widgets[3].RightOrLeftWidget}" />
 			<ContentControl x:Name="RightWidget"
 							Grid.Row="1"
 							Grid.Column="2"
-							Content="{Binding Widgets[4]}" />
+							Content="{Binding Widgets[4].RightOrLeftWidget}" />
 			<ContentControl x:Name="BotWidget"
 							Grid.Row="2"
 							Grid.Column="1"
-							Content="{Binding Widgets[5]}" />
+							Content="{Binding Widgets[5].TopOrBotWidget}" />
 		</Grid>
 
 		<!-- Central widget -->
-		<ContentControl Content="{Binding CenterWidget}" />
+		<ContentControl Content="{Binding CenterWidget.FullWidget}" />
 
 
 		<Border Background="Black" Visibility="{Binding SoundVisibility, Converter={StaticResource BoolToVisibilityConverter}}">

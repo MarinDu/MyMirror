@@ -44,34 +44,19 @@
 				<Border BorderBrush="White"
 						BorderThickness="{Binding SizeDict[3]}"
 						CornerRadius="{Binding SizeDict[2]}">
-					<Button Focusable="False"
-							Command="{Binding ReturnButtonCommand}"
-							BorderThickness="0"
-							Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-						<Image Source="{StaticResource Previous}"/>
-					</Button>
+					<Image Source="{StaticResource Previous}"/>
 				</Border>
 				<Rectangle Width="{Binding SizeDict[10]}"/>
 				<Border BorderBrush="White"
 						BorderThickness="{Binding SizeDict[3]}"
 						CornerRadius="{Binding SizeDict[2]}">
-					<Button Focusable="False"
-							Command="{Binding PlayButtonCommand}"
-							BorderThickness="0"
-							Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-						<Image Source="{Binding SpotifyModel.IsPlaying, Converter={StaticResource BoolToImagePlayButton}}"/>
-					</Button>
+					<Image Source="{Binding SpotifyModel.IsPlaying, Converter={StaticResource BoolToImagePlayButton}}"/>
 				</Border>
 				<Rectangle Width="{Binding SizeDict[10]}"/>
 				<Border BorderBrush="White"
 						BorderThickness="{Binding SizeDict[3]}"
 						CornerRadius="{Binding SizeDict[2]}">
-					<Button Focusable="False"
-							Command="{Binding NextButtonCommand}"
-							BorderThickness="0"
-							Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-						<Image Source="{StaticResource Next}"/>
-					</Button>
+					<Image Source="{StaticResource Next}"/>
 				</Border>
 
 			</StackPanel>

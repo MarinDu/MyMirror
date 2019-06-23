@@ -25,36 +25,59 @@ namespace TramWidget
         public WidgetPositionEnum WingetPosition => WidgetPositionEnum.Right;
 
         /// <inheritdoc />
-        public UserControl ReduceWinget
-        {
-            get
-            {
-                _currentWinget = new TramWidgetReduce();
-                return _currentWinget;
-            }
-        }
+        public UserControl RightOrLeftWidget => _rightLeftWidget;
 
         /// <inheritdoc />
-        public UserControl FullWinget
-        {
-            get
-            {
-                _currentWinget = new TramWidgetFull();
-                return _currentWinget;
-            }
-        }
+        public UserControl TopOrBotWidget => _topBotWidget;
 
         /// <inheritdoc />
-        public bool ShowOnSleep => false;
+        public UserControl FullWidget => _fullWidget;
+
+        /// <inheritdoc />
+        public bool ShowOnSleep => true;
 
         #endregion
 
         #region Private members
 
         /// <summary>
-        /// Current widget
+        /// Full widgets
         /// </summary>
-        private UserControl _currentWinget;
+        private UserControl _fullWidget;
+
+        /// <summary>
+        /// Reduce widgets
+        /// </summary>
+        private UserControl _rightLeftWidget;
+
+        /// <summary>
+        /// Reduce widgets
+        /// </summary>
+        private UserControl _topBotWidget;
+
+        /// <summary>
+        /// Widgets view model
+        /// </summary>
+        private TramVM _dataContext;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public WidgetTram()
+        {
+            _fullWidget = new TramWidgetFull();
+            _rightLeftWidget = new TramWidgetReduce();
+            _topBotWidget = new TramWidgetReduce();
+
+            _dataContext = (TramVM)_fullWidget.DataContext;
+
+            _topBotWidget.DataContext = _dataContext;
+            _rightLeftWidget.DataContext = _dataContext;
+        }
 
         #endregion
 
@@ -63,13 +86,18 @@ namespace TramWidget
         /// <inheritdoc />
         public void Initialize()
         {
-            ((TramVM)_currentWinget.DataContext).Initialize();
+            _dataContext.Initialize();
         }
 
         /// <inheritdoc />
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public void InputClick(int xPos, int yPos)
+        {
         }
 
         #endregion

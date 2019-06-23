@@ -7,11 +7,10 @@
 
 namespace MyMirror.ViewModel
 {
+    using InputContract;
     using MyMirror.Model;
-    using MyMirror.Model.Input;
     using System;
     using System.Collections.Generic;
-    using System.Runtime.InteropServices;
     using System.Timers;
     using System.Windows;
     using System.Windows.Controls;
@@ -39,7 +38,7 @@ namespace MyMirror.ViewModel
         /// <summary>
         /// Gets widgets dictionary
         /// </summary>
-        public Dictionary<int, UserControl> Widgets
+        public Dictionary<int, IWidget> Widgets
         {
             get =>_widgets;
             private set => Set(ref _widgets, value);
@@ -48,7 +47,7 @@ namespace MyMirror.ViewModel
         /// <summary>
         /// Gets central widget
         /// </summary>
-        public UserControl CenterWidget
+        public IWidget CenterWidget
         {
             get => _centerWidget;
             private  set => Set(ref _centerWidget, value);
@@ -103,7 +102,7 @@ namespace MyMirror.ViewModel
         /// <summary>
         /// Widgets dictionary
         /// </summary>
-        private Dictionary<int, UserControl> _widgets;
+        private Dictionary<int, IWidget> _widgets;
 
         /// <summary>
         /// Widgets visibility timers
@@ -123,7 +122,7 @@ namespace MyMirror.ViewModel
         /// <summary>
         /// Central widget
         /// </summary>
-        private UserControl _centerWidget;
+        private IWidget _centerWidget;
 
         /// <summary>
         /// Click circle animation
@@ -183,8 +182,8 @@ namespace MyMirror.ViewModel
             CreateSizeDictionnary();
 
             MainModel = new MainModel();
-            _mainModel.LoadWinget();
 
+            _mainModel.LoadWinget();
             _mainModel.LoadInput();
 
             foreach (IScreenInput input in _mainModel.ScreenInputs)
@@ -192,7 +191,7 @@ namespace MyMirror.ViewModel
                 input.ScreenInputEvent += OnScreenInputEvent;
             }
 
-            Widgets = new Dictionary<int, UserControl>();
+            Widgets = new Dictionary<int, IWidget>();
             _wingetVisibilityTimers = new Dictionary<int, Timer>();
 
             LoadWidget();
@@ -204,13 +203,17 @@ namespace MyMirror.ViewModel
         private void LoadWidget()
         {
             CenterWidget = null;
-            foreach (IWidget winget in _mainModel.WingetList)
+
+            foreach (IWidget winget in _mainModel.WidgetList)
             {
-                Widgets[(int)winget.WingetPosition] = winget.ReduceWinget;
+                Widgets[(int)winget.WingetPosition] = winget;
+
                 _wingetVisibilityTimers[(int)winget.WingetPosition] = new Timer(500);
                 _wingetVisibilityTimers[(int)winget.WingetPosition].Elapsed += OnVisibilityTimer;
                 winget.Initialize();
             }
+
+            _mainModel.AddVolume(0);
 
             NotifyPropertyChanged(nameof(Widgets));
         }
@@ -222,109 +225,99 @@ namespace MyMirror.ViewModel
         /// <param name="e">Arguments</param>
         private void OnScreenInputEvent(object sender, ScreenInputEventArg e)
         {
-            ClickCircle.Opacity = 0f;
-
-            // If sleep mode exit : exit
-            if(_sleepMode && e.Gesture != InputGestureEnum.None)
+            Application.Current.Dispatcher.Invoke(new Action(() =>
             {
-                _sleepMode = false;
-                CenterWidget = null;
-            }
+                ClickCircle.Opacity = 0f;
 
-            if (e.Gesture == InputGestureEnum.Exit)
-            {
-                if (CenterWidget == null)
+                // If sleep mode exit : exit
+                if (_sleepMode && e.Gesture != InputGestureEnum.None)
                 {
-                    // If no central winget : show everything 3s
-                    foreach (WidgetPositionEnum pos in (WidgetPositionEnum[])Enum.GetValues(typeof(WidgetPositionEnum)))
-                    {
-                        ShowWinget(pos, true, 3000);
-                    }
-                }
-                else
-                {
-                    // Else exit it
+                    _sleepMode = false;
                     CenterWidget = null;
                 }
-            }
-            else if (e.Gesture == InputGestureEnum.Click || e.Gesture == InputGestureEnum.Position)
-            {
-                System.Windows.Forms.Cursor.Position = new System.Drawing.Point((int)e.XPos, (int)e.YPos);
 
-                ClickCircle.XPos = e.XPos;
-                ClickCircle.YPos = e.YPos;
-                ClickCircle.Opacity = 1f;
-                ClickCircle.Size = e.Gesture == InputGestureEnum.Position ? SizeDict[8] : SizeDict[5];
-
-                if (CenterWidget == null)
+                if (e.Gesture == InputGestureEnum.Exit)
                 {
-                    // Get cursor position
-                    WidgetPositionEnum cursorPosition = GetClickPos(e.XPos, e.YPos);
-
-                    // Get associated widget
-                    foreach (IWidget winget in _mainModel.WingetList)
+                    if (CenterWidget == null)
                     {
-                        if (winget.WingetPosition == cursorPosition)
+                        // If no central winget : show everything 3s
+                        foreach (WidgetPositionEnum pos in (WidgetPositionEnum[])Enum.GetValues(typeof(WidgetPositionEnum)))
                         {
-                            if (e.Gesture == InputGestureEnum.Click)
+                            ShowWinget(pos, true, 3000);
+                        }
+                    }
+                    else
+                    {
+                        // Else exit it
+                        CenterWidget = null;
+                    }
+                }
+                else if (e.Gesture == InputGestureEnum.Click || e.Gesture == InputGestureEnum.Position)
+                {
+                    System.Windows.Forms.Cursor.Position = new System.Drawing.Point((int)e.XPos, (int)e.YPos);
+
+                    ClickCircle.XPos = e.XPos;
+                    ClickCircle.YPos = e.YPos;
+                    ClickCircle.Opacity = 1f;
+                    ClickCircle.Size = e.Gesture == InputGestureEnum.Position ? SizeDict[8] : SizeDict[5];
+
+                    if (CenterWidget == null)
+                    {
+                        // Get cursor position
+                        WidgetPositionEnum cursorPosition = GetClickPos(e.XPos, e.YPos);
+
+                        // Get associated widget
+                        foreach (IWidget winget in _mainModel.WidgetList)
+                        {
+                            if (winget.WingetPosition == cursorPosition)
                             {
-                                // Show widget full version
-                                Application.Current.Dispatcher.Invoke(new Action(() =>
+                                if (e.Gesture == InputGestureEnum.Click)
                                 {
-                                    ViewModelBase vmSave = _widgets[(int)cursorPosition].DataContext as ViewModelBase;
-                                    CenterWidget = winget.FullWinget;
-                                    CenterWidget.DataContext = vmSave;
-                                }));
-                            }
-                            else
-                            {
-                                // Show widget reduce version
-                                ShowWinget(cursorPosition, true);
+                                    // Show widget full version
+                                    CenterWidget = winget;
+                                }
+                                else
+                                {
+                                    // Show widget reduce version
+                                    ShowWinget(cursorPosition, true);
+                                }
                             }
                         }
                     }
+                    else
+                    {
+                        if (e.Gesture == InputGestureEnum.Click)
+                        {
+                            CenterWidget.InputClick((int)e.XPos, (int)e.YPos);
+                        }
+                    }
+                }
+                else if (e.Gesture == InputGestureEnum.RollIn || e.Gesture == InputGestureEnum.Rollout)
+                {
+                    SoundVisibility = true;
+                    _soundTimer.Stop();
+                    _soundTimer.Start();
+
+                    // Manage sound
+                    _mainModel.AddVolume(e.Gesture == InputGestureEnum.RollIn ? 2 : -2);
+                }
+
+                // Manage sleep mode
+                if (e.Gesture == InputGestureEnum.None)
+                {
+                    if (!_sleepModeTimer.Enabled)
+                    {
+                        _sleepModeTimer.Start();
+                    }
                 }
                 else
                 {
-                    if (e.Gesture == InputGestureEnum.Click)
+                    if (_sleepModeTimer.Enabled)
                     {
-                        _mainModel.DoMouseClick();
+                        _sleepModeTimer.Stop();
                     }
                 }
-            }
-            else if (e.Gesture == InputGestureEnum.RollIn || e.Gesture == InputGestureEnum.Rollout)
-            {
-                SoundVisibility = true;
-                _soundTimer.Stop();
-                _soundTimer.Start();
-
-                // Manage sound
-                List<ISoundManageable> manageableElement = new List<ISoundManageable>();
-                foreach (var item in _widgets)
-                {
-                    if(item.Value.DataContext is ISoundManageable)
-                    {
-                        manageableElement.Add((ISoundManageable)item.Value.DataContext);
-                    }
-                }
-                _mainModel.AddVolume(e.Gesture == InputGestureEnum.RollIn ? 2 : -2, manageableElement);
-            }
-
-            // Manage sleep mode
-            if(e.Gesture == InputGestureEnum.None)
-            {
-                if (!_sleepModeTimer.Enabled)
-                {
-                    _sleepModeTimer.Start();
-                }
-            }
-            else
-            {
-                if (_sleepModeTimer.Enabled)
-                {
-                    _sleepModeTimer.Stop();
-                }
-            }
+            }));
         }
 
         /// <summary>
@@ -385,7 +378,7 @@ namespace MyMirror.ViewModel
         /// <param name="e">Arguments</param>
         private void OnSleepModeTimer(object sender, ElapsedEventArgs e)
         {
-            foreach (IWidget winget in _mainModel.WingetList)
+            foreach (IWidget winget in _mainModel.WidgetList)
             {
                 if (winget.ShowOnSleep)
                 {
@@ -394,9 +387,7 @@ namespace MyMirror.ViewModel
                     // Show widget full version
                     Application.Current.Dispatcher.Invoke(new Action(() =>
                     {
-                        ViewModelBase vmSave = _widgets[(int)winget.WingetPosition].DataContext as ViewModelBase;
-                        CenterWidget = winget.FullWinget;
-                        CenterWidget.DataContext = vmSave;
+                        CenterWidget = winget;
                     }));
                     break;
                 }

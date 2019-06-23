@@ -5,15 +5,14 @@
 // <summary>Screen input event arguments</summary>
 // -----------------------------------------------------------------------
 
-namespace MyMirror.Model
+namespace InputContract
 {
-    using MyMirror.Model.Input;
     using System;
 
     /// <summary>
     /// Screen input event arguments
     /// </summary>
-    internal class ScreenInputEventArg : EventArgs
+    public class ScreenInputEventArg : EventArgs
     {
         /// <summary>
         /// Gets or sets X position

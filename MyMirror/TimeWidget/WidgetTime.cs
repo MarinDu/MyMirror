@@ -25,24 +25,13 @@ namespace TimeWidget
         public WidgetPositionEnum WingetPosition => WidgetPositionEnum.TopLeft;
 
         /// <inheritdoc />
-        public UserControl ReduceWinget
-        {
-            get
-            {
-                _currentWinget = new TimeWidgetReduce();
-                return _currentWinget;
-            }
-        }
+        public UserControl RightOrLeftWidget => _rightLeftWidget;
 
         /// <inheritdoc />
-        public UserControl FullWinget
-        {
-            get
-            {
-                _currentWinget = new TimeWidgetFull();
-                return _currentWinget;
-            }
-        }
+        public UserControl TopOrBotWidget => _topBotWidget;
+
+        /// <inheritdoc />
+        public UserControl FullWidget => _fullWidget;
 
         /// <inheritdoc />
         public bool ShowOnSleep => true;
@@ -52,9 +41,43 @@ namespace TimeWidget
         #region Private members
 
         /// <summary>
+        /// Full widgets
+        /// </summary>
+        private UserControl _fullWidget;
+
+        /// <summary>
+        /// Reduce widgets
+        /// </summary>
+        private UserControl _rightLeftWidget;
+
+        /// <summary>
+        /// Reduce widgets
+        /// </summary>
+        private UserControl _topBotWidget;
+
+        /// <summary>
         /// Current widget
         /// </summary>
-        private UserControl _currentWinget;
+        private TimeVM _dataContext;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public WidgetTime()
+        {
+            _fullWidget = new TimeWidgetFull();
+            _rightLeftWidget = new TimeWidgetReduce();
+            _topBotWidget = new TimeWidgetReduce();
+
+            _dataContext = (TimeVM)_fullWidget.DataContext;
+
+            _topBotWidget.DataContext = _dataContext;
+            _rightLeftWidget.DataContext = _dataContext;
+        }
 
         #endregion
 
@@ -63,13 +86,18 @@ namespace TimeWidget
         /// <inheritdoc />
         public void Initialize()
         {
-            ((TimeVM)_currentWinget.DataContext).Initialize();
+            _dataContext.Initialize();
         }
 
         /// <inheritdoc />
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public void InputClick(int xPos, int yPos)
+        {
         }
 
         #endregion

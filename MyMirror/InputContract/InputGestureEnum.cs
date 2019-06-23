@@ -5,12 +5,12 @@
 // <summary>Screen input gestures enumerator</summary>
 // -----------------------------------------------------------------------
 
-namespace MyMirror.Model.Input
+namespace InputContract
 {
     /// <summary>
     /// Screen input gestures enumerator
     /// </summary>
-    internal enum InputGestureEnum
+    public enum InputGestureEnum
     {
         /// <summary>
         /// Click gesture

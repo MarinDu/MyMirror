@@ -7,12 +7,11 @@
 
 namespace MyMirror.Model
 {
-    using MyMirror.Model.Input;
+    using InputContract;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Runtime.InteropServices;
-    using System.Windows.Controls;
     using WingetContract;
     using WingetContract.ViewModel;
 
@@ -24,19 +23,19 @@ namespace MyMirror.Model
         /// <summary>
         /// Gets widget list
         /// </summary>
-        public ICollection<IWidget> WingetList { get; private set; }
+        public ICollection<IWidget> WidgetList { get; private set; }
 
         /// <summary>
         /// Gets screen input
         /// </summary>
-        public List<IScreenInput> ScreenInputs { get; private set; }
+        public ICollection<IScreenInput> ScreenInputs { get; private set; }
 
         /// <summary>
         /// Load widgets
         /// </summary>
         public void LoadWinget()
         {
-            WingetList = WidgetLoader<IWidget>.LoadWingets("Widgets");
+            WidgetList = PluginLoader<IWidget>.LoadPlugins("Widgets", "*Widget.dll");
             AddVolume(0);
         }
 
@@ -54,8 +53,7 @@ namespace MyMirror.Model
         /// </summary>
         public void LoadInput()
         {
-            //ScreenInputs = new List<IScreenInput>() { new LeapMotionInput() , new MouseInput() };
-            ScreenInputs = new List<IScreenInput>() { new LeapMotionInput() };
+            ScreenInputs = PluginLoader<IScreenInput>.LoadPlugins("Inputs", "*Input.dll");
         }
 
         /// <summary>
@@ -68,41 +66,16 @@ namespace MyMirror.Model
         /// </summary>
         public MainModel()
         {
-            _soundLevel = 0;
-            AddVolume(30);
+            _soundLevel = 30;
         }
 
-        #region Import function for clicking
-
-        /// <summary>
-        /// Imported mouse click function
-        /// </summary>
-        /// <param name="dwFlags">Click flag</param>
-        /// <param name="dx">X position</param>
-        /// <param name="dy">Y position</param>
-        /// <param name="cButtons"></param>
-        /// <param name="dwExtraInfo"></param>
-        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
-
-        /// <summary>
-        /// Performs a mouse right click
-        /// </summary>
-        public void DoMouseClick()
-        {
-            mouse_event(0x02 | 0x04, (uint)System.Windows.Forms.Cursor.Position.X, (uint)System.Windows.Forms.Cursor.Position.Y, 0, 0);
-        }
-
-        #endregion
-
-        #region Manage Soung
+        #region Manage Sound
 
         /// <summary>
         /// Add volume
         /// </summary>
         /// <param name="delta">Volume to add, in percent</param>
-        /// <param name="soundManagableElements">Sound manageable wingets list </param>
-        public void AddVolume(int delta, List<ISoundManageable> soundManagableElements = null)
+        public void AddVolume(int delta)
         {
             int lvl = _soundLevel + delta;
             lvl = lvl > 100 ? 100 : lvl;
@@ -133,13 +106,11 @@ namespace MyMirror.Model
                 Console.WriteLine(ex.Message);
             }
 
-            if(soundManagableElements != null)
+            foreach (IWidget widget in WidgetList)
             {
-                foreach (var widget in soundManagableElements)
-                {
-                    widget.SetSoundVolume(_soundLevel);
-                }
-            }    
+                (widget.FullWidget.DataContext as ISoundManageable)?.SetSoundVolume(_soundLevel);
+            }
+  
         }
 
         #endregion
