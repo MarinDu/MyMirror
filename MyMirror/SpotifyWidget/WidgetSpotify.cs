@@ -10,6 +10,7 @@ namespace SpotifyWidget
     using SpotifyWidget.View;
     using SpotifyWidget.ViewModel;
     using System;
+    using System.Collections.Generic;
     using System.Windows.Controls;
     using WingetContract;
     using WingetContract.Enum;
@@ -22,7 +23,14 @@ namespace SpotifyWidget
         #region Properties
 
         /// <inheritdoc />
-        public WidgetPositionEnum WingetPosition => WidgetPositionEnum.Bot;
+        public string Name => "Spotify";
+
+        /// <inheritdoc />
+        public List<WidgetPositionEnum> WingetPossiblePosition => new List<WidgetPositionEnum>()
+        {
+            WidgetPositionEnum.Top,
+            WidgetPositionEnum.Bot,
+        };
 
         /// <inheritdoc />
         public UserControl RightOrLeftWidget => _rightLeftWidget;
@@ -34,7 +42,7 @@ namespace SpotifyWidget
         public UserControl FullWidget => _fullWidget;
 
         /// <inheritdoc />
-        public bool ShowOnSleep => false;
+        public bool CanShowOnSleep => true;
 
         #endregion
 

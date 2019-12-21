@@ -7,6 +7,7 @@
 
 namespace WingetContract
 {
+    using System.Collections.Generic;
     using System.Windows.Controls;
     using WingetContract.Enum;
 
@@ -16,9 +17,14 @@ namespace WingetContract
     public interface IWidget
     {
         /// <summary>
-        /// Gets widget position
+        /// Gets widget name
         /// </summary>
-        WidgetPositionEnum WingetPosition { get; }
+        string Name { get; }
+
+        /// <summary>
+        /// Gets widget possible positions
+        /// </summary>
+        List<WidgetPositionEnum> WingetPossiblePosition { get; }
 
         /// <summary>
         /// Gets widget right or left version
@@ -36,9 +42,9 @@ namespace WingetContract
         UserControl FullWidget { get; }
 
         /// <summary>
-        /// Show on sleep
+        /// Gets a value indicating wheather the widget can be shown on sleep
         /// </summary>
-        bool ShowOnSleep { get; }
+        bool CanShowOnSleep { get; }
 
         /// <summary>
         /// Initializes widget

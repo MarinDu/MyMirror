@@ -5,7 +5,7 @@
 // <summary>Contains view models base class</summary>
 // -----------------------------------------------------------------------
 
-namespace WingetContract.ViewModel
+namespace Common.ViewModel
 {
     using System.Collections.Generic;
     using System.Windows;

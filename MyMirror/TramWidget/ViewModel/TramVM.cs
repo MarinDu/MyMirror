@@ -8,7 +8,7 @@
 namespace TramWidget.ViewModel
 {
     using TramWidget.Model;
-    using WingetContract.ViewModel;
+    using Common.ViewModel;
 
     /// <summary>
     /// Contains Tram widget view model

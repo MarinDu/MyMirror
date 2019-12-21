@@ -108,6 +108,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{33c84e08-adbc-482b-9e8f-e91cee182c3e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WidgetContract\WidgetContract.csproj">
       <Project>{f3a7d3c2-743b-4f30-81aa-c7dfe2619365}</Project>
       <Name>WidgetContract</Name>

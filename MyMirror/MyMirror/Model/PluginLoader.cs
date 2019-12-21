@@ -7,6 +7,7 @@
 
 namespace MyMirror.Model
 {
+    using Common.Log;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -43,7 +44,7 @@ namespace MyMirror.Model
                     }
                     catch (BadImageFormatException e)
                     {
-                        Console.WriteLine(e);
+                        LogManager.LogLine(e.Message);
                     }
                 }
 

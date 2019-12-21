@@ -66,6 +66,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{33c84e08-adbc-482b-9e8f-e91cee182c3e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InputContract\InputContract.csproj">
       <Project>{cfaf2ad4-d3b7-4f33-99b1-20f5f93dcb03}</Project>
       <Name>InputContract</Name>

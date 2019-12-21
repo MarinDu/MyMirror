@@ -7,7 +7,7 @@
 
 namespace MyMirror.ViewModel
 {
-    using WingetContract.ViewModel;
+    using Common.ViewModel;
 
     /// <summary>
     /// Click animation

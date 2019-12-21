@@ -17,6 +17,7 @@
 		<!-- Time -->
 		<Label Content="{Binding CurrentTimeWithSecString}" 
 			   HorizontalAlignment="Left"
+			   Foreground="White"
 			   HorizontalContentAlignment="Right"
 			   FontSize="{Binding SizeDict[9]}"/>
 

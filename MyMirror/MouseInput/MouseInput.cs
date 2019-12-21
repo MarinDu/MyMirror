@@ -63,24 +63,11 @@ namespace MouseInput
 
             Application.Current.MainWindow.MouseWheel += OnMouseWheelEvent;
             Application.Current.MainWindow.MouseDown += OnMouseDownEvent;
-            Application.Current.MainWindow.KeyDown += OnKeyDown;
         }
 
         #endregion
 
         #region Private functions
-
-        /// <summary>
-        /// Handles key down event
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Args</param>
-        private void OnKeyDown(object sender, KeyEventArgs e)
-        {
-            _timer.Stop();
-            _gesture = InputGestureEnum.Exit;
-            OnTimer(null, null);
-        }
 
         /// <summary>
         /// Handles mouse down event
@@ -89,8 +76,8 @@ namespace MouseInput
         /// <param name="e">Args</param>
         private void OnMouseDownEvent(object sender, MouseButtonEventArgs e)
         {
-            _timer.Stop();
-            _gesture = InputGestureEnum.Click;
+            _timer.Stop();            
+            _gesture = e.ChangedButton == MouseButton.Left ? InputGestureEnum.Click : InputGestureEnum.Exit;
             OnTimer(null, null);
         }
 

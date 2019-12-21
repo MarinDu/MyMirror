@@ -13,6 +13,7 @@ namespace WeatherWidget
     using System.Windows.Controls;
     using WingetContract;
     using WingetContract.Enum;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Contains Tram widget interface implementation
@@ -22,7 +23,14 @@ namespace WeatherWidget
         #region Properties
 
         /// <inheritdoc />
-        public WidgetPositionEnum WingetPosition => WidgetPositionEnum.Left;
+        public List<WidgetPositionEnum> WingetPossiblePosition => new List<WidgetPositionEnum>()
+        {
+            WidgetPositionEnum.Right,
+            WidgetPositionEnum.Left
+        };
+
+        /// <inheritdoc />
+        public string Name => "Wheather";
 
         /// <inheritdoc />
         public UserControl RightOrLeftWidget => _rightLeftWidget;
@@ -34,7 +42,7 @@ namespace WeatherWidget
         public UserControl FullWidget => _fullWidget;
 
         /// <inheritdoc />
-        public bool ShowOnSleep => true;
+        public bool CanShowOnSleep => true;
 
         #endregion
 

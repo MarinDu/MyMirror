@@ -13,6 +13,7 @@ namespace TimeWidget
     using System.Windows.Controls;
     using WingetContract;
     using WingetContract.Enum;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Implements widget interface for Time widget
@@ -22,7 +23,14 @@ namespace TimeWidget
         #region Properties
 
         /// <inheritdoc />
-        public WidgetPositionEnum WingetPosition => WidgetPositionEnum.TopLeft;
+        public string Name => "Time";
+
+        /// <inheritdoc />
+        public List<WidgetPositionEnum> WingetPossiblePosition => new List<WidgetPositionEnum>()
+        {
+            WidgetPositionEnum.TopLeft,
+            WidgetPositionEnum.TopRight
+        };
 
         /// <inheritdoc />
         public UserControl RightOrLeftWidget => _rightLeftWidget;
@@ -34,7 +42,7 @@ namespace TimeWidget
         public UserControl FullWidget => _fullWidget;
 
         /// <inheritdoc />
-        public bool ShowOnSleep => true;
+        public bool CanShowOnSleep => true;
 
         #endregion
 

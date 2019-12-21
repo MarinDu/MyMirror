@@ -8,9 +8,9 @@
 namespace SpotifyWidget.ViewModel
 {
     using SpotifyWidget.Model;
-    using WingetContract.ViewModel;
     using WingetContract;
     using System.Windows;
+    using Common.ViewModel;
 
     /// <summary>
     /// Contains Soptify widget view model

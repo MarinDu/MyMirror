@@ -7,9 +7,8 @@
 
 namespace WeatherWidget.ViewModel
 {
-    using System.Windows;
     using WeatherWidget.Model;
-    using WingetContract.ViewModel;
+    using Common.ViewModel;
 
     /// <summary>
     /// Contains Tram widget view model

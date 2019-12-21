@@ -7,17 +7,17 @@
 
 namespace MyMirror.ViewModel
 {
+    using Common.ViewModel;
     using InputContract;
     using MyMirror.Model;
+    using MyMirror.View;
     using System;
     using System.Collections.Generic;
     using System.Timers;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
     using WingetContract;
     using WingetContract.Enum;
-    using WingetContract.ViewModel;
 
     /// <summary>
     /// View model for the main window
@@ -72,19 +72,19 @@ namespace MyMirror.ViewModel
         }
     
         /// <summary>
-        /// Gets test button command
-        /// </summary>
-        public ICommand TestButtonCommand { get; private set; }
-
-        /// <summary>
         /// Gets main window loaded command
         /// </summary>
         public ICommand MainWindowLoadedCommand { get; private set; }
 
         /// <summary>
+        /// Gets main window key down command
+        /// </summary>
+        public ICommand KeyDownCommand { get; private set; }    
+
+        /// <summary>
         /// Gets main model
         /// </summary>
-        public MainModel MainModel
+        public MainModel MainModelInstance
         {
             get => _mainModel;
             private set => Set(ref _mainModel, value);
@@ -148,8 +148,8 @@ namespace MyMirror.ViewModel
         /// </summary>
         public MainWindowVM()
         {
-            TestButtonCommand = new RelayCommand(TestButton);
             MainWindowLoadedCommand = new RelayCommand(MainWindowLoaded);
+            KeyDownCommand = new RelayCommand(KeyDown);
 
             _soundTimer = new Timer(1000);
             _soundTimer.Elapsed += OnSoundTimer;
@@ -165,15 +165,6 @@ namespace MyMirror.ViewModel
         #region Private functions
 
         /// <summary>
-        /// Handles test button commands
-        /// </summary>
-        /// <param name="obj">Parameters</param>
-        private void TestButton(object obj)
-        {
-            Console.WriteLine("test button");
-        }
-
-        /// <summary>
         /// Handles main windows loaded event
         /// </summary>
         /// <param name="obj">Parameters</param>
@@ -181,7 +172,7 @@ namespace MyMirror.ViewModel
         {
             CreateSizeDictionnary();
 
-            MainModel = new MainModel();
+            MainModelInstance = MainModel.Instance;
 
             _mainModel.LoadWinget();
             _mainModel.LoadInput();
@@ -198,24 +189,65 @@ namespace MyMirror.ViewModel
         }
 
         /// <summary>
+        /// Handles main window key down event
+        /// </summary>
+        /// <param name="obj"></param>
+        private void KeyDown(object obj)
+        {
+            new ManagementWindow().ShowDialog();
+        }
+
+        /// <summary>
         /// Load widgets
         /// </summary>
         private void LoadWidget()
         {
             CenterWidget = null;
 
-            foreach (IWidget winget in _mainModel.WidgetList)
+            foreach (IWidget widget in _mainModel.WidgetList)
             {
-                Widgets[(int)winget.WingetPosition] = winget;
-
-                _wingetVisibilityTimers[(int)winget.WingetPosition] = new Timer(500);
-                _wingetVisibilityTimers[(int)winget.WingetPosition].Elapsed += OnVisibilityTimer;
-                winget.Initialize();
+                if(widget.Name == _mainModel.MainSettings.Settings.TopRightWidget.Value)
+                {
+                    AddWidgetToPos(widget, WidgetPositionEnum.TopRight);
+                }
+                else if (widget.Name == _mainModel.MainSettings.Settings.TopWidget.Value)
+                {
+                    AddWidgetToPos(widget, WidgetPositionEnum.Top);
+                }
+                else if (widget.Name == _mainModel.MainSettings.Settings.TopLeftWidget.Value)
+                {
+                    AddWidgetToPos(widget, WidgetPositionEnum.TopLeft);
+                }
+                else if (widget.Name == _mainModel.MainSettings.Settings.LeftWidget.Value)
+                {
+                    AddWidgetToPos(widget, WidgetPositionEnum.Left);
+                }
+                else if (widget.Name == _mainModel.MainSettings.Settings.RightWidget.Value)
+                {
+                    AddWidgetToPos(widget, WidgetPositionEnum.Right);
+                }
+                else if (widget.Name == _mainModel.MainSettings.Settings.BotWidget.Value)
+                {
+                    AddWidgetToPos(widget, WidgetPositionEnum.Bot);
+                }
             }
 
             _mainModel.AddVolume(0);
 
             NotifyPropertyChanged(nameof(Widgets));
+        }
+
+        /// <summary>
+        /// Add widget to position
+        /// </summary>
+        /// <param name="widget">Widget to add</param>
+        /// <param name="pos">Widget position</param>
+        private void AddWidgetToPos(IWidget widget, WidgetPositionEnum pos)
+        {
+            Widgets[(int)pos] = widget;
+            _wingetVisibilityTimers[(int)pos] = new Timer(500);
+            _wingetVisibilityTimers[(int)pos].Elapsed += OnVisibilityTimer;
+            widget.Initialize();
         }
 
         /// <summary>
@@ -267,22 +299,20 @@ namespace MyMirror.ViewModel
                         WidgetPositionEnum cursorPosition = GetClickPos(e.XPos, e.YPos);
 
                         // Get associated widget
-                        foreach (IWidget winget in _mainModel.WidgetList)
+                        if (Widgets.ContainsKey((int)cursorPosition))
                         {
-                            if (winget.WingetPosition == cursorPosition)
+                            if (e.Gesture == InputGestureEnum.Click)
                             {
-                                if (e.Gesture == InputGestureEnum.Click)
-                                {
-                                    // Show widget full version
-                                    CenterWidget = winget;
-                                }
-                                else
-                                {
-                                    // Show widget reduce version
-                                    ShowWinget(cursorPosition, true);
-                                }
+                                // Show widget full version
+                                CenterWidget = Widgets[(int)cursorPosition];
+                            }
+                            else
+                            {
+                                // Show widget reduce version
+                                ShowWinget(cursorPosition, true);
                             }
                         }
+
                     }
                     else
                     {
@@ -377,10 +407,10 @@ namespace MyMirror.ViewModel
         /// <param name="sender">Sender</param>
         /// <param name="e">Arguments</param>
         private void OnSleepModeTimer(object sender, ElapsedEventArgs e)
-        {
+        { 
             foreach (IWidget winget in _mainModel.WidgetList)
             {
-                if (winget.ShowOnSleep)
+                if (winget.Name == _mainModel.MainSettings.Settings.SleepWidget.Value)
                 {
                     _sleepMode = true;
 

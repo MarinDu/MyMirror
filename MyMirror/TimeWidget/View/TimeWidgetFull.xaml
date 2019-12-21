@@ -43,6 +43,7 @@
 		<Label Content="{Binding CurrentTimeString}" 
 			   HorizontalAlignment="Center"
 			   VerticalAlignment="Center"
+			   Foreground="White"
 			   FontSize="{Binding SizeDict[35]}"/>
 	</Grid>
 </UserControl>

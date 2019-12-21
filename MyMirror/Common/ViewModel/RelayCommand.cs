@@ -5,7 +5,7 @@
 // <summary>Contains RelayCommand class</summary>
 // -----------------------------------------------------------------------
 
-namespace WingetContract.ViewModel
+namespace Common.ViewModel
 {
     using System;
     using System.Windows.Input;

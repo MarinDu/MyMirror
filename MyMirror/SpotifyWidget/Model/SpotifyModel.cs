@@ -11,12 +11,13 @@ namespace SpotifyWidget.Model
     using System;
     using System.Threading.Tasks;
     using System.Timers;
-    using WingetContract.ViewModel;
     using SpotifyAPI.Web;
     using SpotifyAPI.Web.Auth;
     using SpotifyAPI.Web.Enums;
     using SpotifyAPI.Web.Models;
     using System.Threading;
+    using Common.ViewModel;
+    using Common.Log;
 
     /// <summary>
     /// Contains Tram widget model
@@ -156,14 +157,16 @@ namespace SpotifyWidget.Model
                     catch (Exception ex)
                     {
                         SongTitle = Resources.Error;
-                        Console.WriteLine(ex.Message);
+                        LogManager.LogLine(ex.Message);
                     }
 
                     Refresh(null, null);
+                    LogManager.LogLine("LeapMotion initialization OK");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    LogManager.LogLine("LeapMotion initialization Error");
+                    LogManager.LogLine(ex.Message);
                 }
                 _timer.Start();
             }
@@ -201,7 +204,7 @@ namespace SpotifyWidget.Model
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    LogManager.LogLine(ex.Message);
                     _accessMutex.ReleaseMutex();
                 }
             }).Start();
@@ -224,7 +227,7 @@ namespace SpotifyWidget.Model
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    LogManager.LogLine(ex.Message);
                     _accessMutex.ReleaseMutex();
                 }
             }).Start();
@@ -247,7 +250,7 @@ namespace SpotifyWidget.Model
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    LogManager.LogLine(ex.Message);
                     _accessMutex.ReleaseMutex();
                 }
             }).Start();
@@ -305,7 +308,7 @@ namespace SpotifyWidget.Model
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    LogManager.LogLine(ex.Message);
                     _accessMutex.ReleaseMutex();
                     error = true;
                 }

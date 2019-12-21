@@ -8,7 +8,7 @@
 
 namespace WeatherWidget.Model
 {
-    using WingetContract.ViewModel;
+    using Common.ViewModel;
 
     /// <summary>
     /// Weather element object

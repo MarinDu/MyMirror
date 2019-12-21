@@ -12,6 +12,7 @@ namespace LeapMotionInput
     using Leap;
     using System.Threading.Tasks;
     using InputContract;
+    using Common.Log;
 
     /// <summary>
     /// ScreenInput implemtation for LeapMotion
@@ -77,7 +78,7 @@ namespace LeapMotionInput
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    LogManager.LogLine(ex.Message);
                 }
                 _timer?.Start();
             }
@@ -147,7 +148,7 @@ namespace LeapMotionInput
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                LogManager.LogLine(ex.Message);
             }
             _timer.Start();
         }

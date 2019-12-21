@@ -61,6 +61,7 @@
 				Content="{Binding TramModel.NextTramC1[0]}" 
 					HorizontalContentAlignment="Center"
 					FontWeight="Bold"
+				   Foreground="White"
 					FontSize="{Binding SizeDict[3]}"
 					Width="{Binding SizeDict[10]}"/>
 
@@ -74,6 +75,7 @@
 			<!-- Timer -->
 			<Label  Grid.Row="2"
 				Grid.Column="1"
+					Foreground="White"
 				Content="{Binding TramModel.NextTramC2[0]}" 
 					HorizontalContentAlignment="Center"
 					FontWeight="Bold"
@@ -109,6 +111,7 @@
 			<!-- Timer -->
 			<Label Grid.Row="1"
 				Grid.Column="1"
+				   Foreground="White"
 				Content="{Binding TramModel.NextTramE1[0]}" 
 					HorizontalContentAlignment="Center"
 					FontWeight="Bold"
@@ -125,6 +128,7 @@
 			<!-- Timer -->
 			<Label  Grid.Row="2"
 				Grid.Column="1"
+					Foreground="White"
 				Content="{Binding TramModel.NextTramE2[0]}" 
 					HorizontalContentAlignment="Center"
 					FontWeight="Bold"

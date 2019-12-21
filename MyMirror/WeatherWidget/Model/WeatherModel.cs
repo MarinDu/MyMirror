@@ -16,7 +16,8 @@ namespace WeatherWidget.Model
     using System.Threading.Tasks;
     using System.Timers;
     using System.Xml;
-    using WingetContract.ViewModel;
+    using Common.ViewModel;
+    using Common.Log;
 
     /// <summary>
     /// Contains weather widget model
@@ -168,7 +169,7 @@ namespace WeatherWidget.Model
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    LogManager.LogLine(ex.Message);
                 }
                 _timer.Start();
             }
@@ -191,7 +192,7 @@ namespace WeatherWidget.Model
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                LogManager.LogLine(ex.Message);
                 xmlDoc = null;
             }
 

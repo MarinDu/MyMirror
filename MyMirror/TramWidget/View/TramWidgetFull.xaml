@@ -54,12 +54,14 @@
 				<Label Content="{Binding TramModel.NextTramC1[0]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
+					   Foreground="White"
 						FontSize="{Binding SizeDict[10]}"
 						Width="{Binding SizeDict[35]}"/>
 				<Rectangle Width="{Binding SizeDict[2]}" Fill="White"/>
 				<Label Content="{Binding TramModel.NextTramC1[1]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
+					   Foreground="White"
 					   Width="{Binding SizeDict[35]}"
 					   FontSize="{Binding SizeDict[10]}"/>
 			</StackPanel>
@@ -76,12 +78,14 @@
 				<Label Content="{Binding TramModel.NextTramC2[0]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
+					   Foreground="White"
 						FontSize="{Binding SizeDict[10]}"
 						Width="{Binding SizeDict[35]}"/>
 				<Rectangle Width="{Binding SizeDict[2]}" Fill="White"/>
 				<Label Content="{Binding TramModel.NextTramC2[1]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
+					   Foreground="White"
 					   Width="{Binding SizeDict[35]}"
 					   FontSize="{Binding SizeDict[10]}"/>
 			</StackPanel>
@@ -107,12 +111,14 @@
 				<Label Content="{Binding TramModel.NextTramE1[0]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
+					   Foreground="White"
 						FontSize="{Binding SizeDict[10]}"
 						Width="{Binding SizeDict[35]}"/>
 				<Rectangle Width="{Binding SizeDict[2]}" Fill="White"/>
 				<Label Content="{Binding TramModel.NextTramE1[1]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
+					   Foreground="White"
 					   Width="{Binding SizeDict[35]}"
 					   FontSize="{Binding SizeDict[10]}"/>
 			</StackPanel>
@@ -131,12 +137,14 @@
 				<Label Content="{Binding TramModel.NextTramE2[0]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
+					   Foreground="White"
 						FontSize="{Binding SizeDict[10]}"
 						Width="{Binding SizeDict[35]}"/>
 				<Rectangle Width="{Binding SizeDict[2]}" Fill="White"/>
 				<Label Content="{Binding TramModel.NextTramE2[1]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
+					   Foreground="White"
 					   Width="{Binding SizeDict[35]}"
 					   FontSize="{Binding SizeDict[10]}"/>
 			</StackPanel>

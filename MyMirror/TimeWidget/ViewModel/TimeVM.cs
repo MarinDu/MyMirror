@@ -9,7 +9,7 @@ namespace TimeWidget.ViewModel
 {
     using System.Timers;
     using System;
-    using WingetContract.ViewModel;
+    using Common.ViewModel;
 
     /// <summary>
     /// Contains Time widget view model

@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,66 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BotWidget" xml:space="preserve">
+    <value>Widget du bas</value>
+  </data>
+  <data name="ExitApp" xml:space="preserve">
+    <value>Quitter MyMirror</value>
+  </data>
+  <data name="InputFilter" xml:space="preserve">
+    <value>*Input.dll</value>
+  </data>
+  <data name="InputFolder" xml:space="preserve">
+    <value>Inputs</value>
+  </data>
+  <data name="LeftWidget" xml:space="preserve">
+    <value>Widget de gauche</value>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="MainTabName" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ParametersWindow" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="RightWidget" xml:space="preserve">
+    <value>Widget de droite</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="SettingsFileName" xml:space="preserve">
+    <value>MyMirror.conf</value>
+  </data>
+  <data name="SleepWidget" xml:space="preserve">
+    <value>Widget de veille</value>
+  </data>
+  <data name="TopLeftWidget" xml:space="preserve">
+    <value>Widget du haut à gauche</value>
+  </data>
+  <data name="TopRightWidget" xml:space="preserve">
+    <value>Widget du haut à droite</value>
+  </data>
+  <data name="TopWidget" xml:space="preserve">
+    <value>Widget du haut</value>
+  </data>
+  <data name="WidgetFilter" xml:space="preserve">
+    <value>*Widget.dll</value>
+  </data>
+  <data name="WidgetFolder" xml:space="preserve">
+    <value>Widgets</value>
+  </data>
 </root>
