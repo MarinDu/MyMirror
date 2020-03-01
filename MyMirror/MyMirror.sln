@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMirror", "MyMirror\MyMirror.csproj", "{79D5702D-1E3E-4D14-B425-CF8C45375CCF}"
 EndProject
@@ -16,6 +16,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWidget", "SpotifyWidget\SpotifyWidget.csproj", "{DF732636-3630-4EA2-BF47-C55FCC524F67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Widgets", "Widgets", "{55145492-36A8-464E-A0B5-4B5C9CA00875}"
+	ProjectSection(SolutionItems) = preProject
+		SpotifyWidget\Theme.xaml = SpotifyWidget\Theme.xaml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inputs", "Inputs", "{932B787C-62DE-4A13-BDB9-1A68D3CF5CD1}"
 EndProject
@@ -26,6 +29,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeapMotionInput", "LeapMotionInput\LeapMotionInput.csproj", "{A5D1EFD0-3F74-4B50-83F9-450395D22409}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{33C84E08-ADBC-482B-9E8F-E91CEE182C3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsWidget", "NewsWidget\NewsWidget.csproj", "{28C32429-7AF6-4084-97C3-7406FB506F48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +120,14 @@ Global
 		{33C84E08-ADBC-482B-9E8F-E91CEE182C3E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33C84E08-ADBC-482B-9E8F-E91CEE182C3E}.Release|x64.ActiveCfg = Release|Any CPU
 		{33C84E08-ADBC-482B-9E8F-E91CEE182C3E}.Release|x64.Build.0 = Release|Any CPU
+		{28C32429-7AF6-4084-97C3-7406FB506F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C32429-7AF6-4084-97C3-7406FB506F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C32429-7AF6-4084-97C3-7406FB506F48}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{28C32429-7AF6-4084-97C3-7406FB506F48}.Debug|x64.Build.0 = Debug|Any CPU
+		{28C32429-7AF6-4084-97C3-7406FB506F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C32429-7AF6-4084-97C3-7406FB506F48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C32429-7AF6-4084-97C3-7406FB506F48}.Release|x64.ActiveCfg = Release|Any CPU
+		{28C32429-7AF6-4084-97C3-7406FB506F48}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,6 +139,7 @@ Global
 		{DF732636-3630-4EA2-BF47-C55FCC524F67} = {55145492-36A8-464E-A0B5-4B5C9CA00875}
 		{4496E349-A324-4894-9977-088145636571} = {932B787C-62DE-4A13-BDB9-1A68D3CF5CD1}
 		{A5D1EFD0-3F74-4B50-83F9-450395D22409} = {932B787C-62DE-4A13-BDB9-1A68D3CF5CD1}
+		{28C32429-7AF6-4084-97C3-7406FB506F48} = {55145492-36A8-464E-A0B5-4B5C9CA00875}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDA290F8-9901-4648-8537-04F36B4789A5}

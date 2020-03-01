@@ -162,7 +162,6 @@ namespace MyMirror.Model
             {
                 (widget.FullWidget.DataContext as ISoundManageable)?.SetSoundVolume(_soundLevel);
             }
-  
         }
 
         #endregion

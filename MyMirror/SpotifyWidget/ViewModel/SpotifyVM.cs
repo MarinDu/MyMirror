@@ -20,7 +20,7 @@ namespace SpotifyWidget.ViewModel
         #region Properties
 
         /// <summary>
-        /// Gets Weather Model
+        /// Gets Spotify Model
         /// </summary>
         public SpotifyModel SpotifyModel { get; private set; }
 

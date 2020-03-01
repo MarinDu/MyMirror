@@ -6,7 +6,6 @@
 // -----------------------------------------------------------------------
 
 using Common.Log;
-using Common.Settings;
 using System;
 using System.IO;
 using System.Xml;
@@ -36,7 +35,7 @@ namespace Common.Settings
             string assemblyName = friendlyName.Substring(0, friendlyName.Length - ".exe".Length);
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
 
-            _settingsPath = Path.Combine(folder, "MyMirror", "Settings", filename);
+            _settingsPath = Path.Combine(folder, assemblyName, "Settings", filename);
 
             //Create file if it does not exists
             if (!File.Exists(_settingsPath))

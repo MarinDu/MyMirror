@@ -205,6 +205,10 @@
       <Project>{4496e349-a324-4894-9977-088145636571}</Project>
       <Name>MouseInput</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NewsWidget\NewsWidget.csproj">
+      <Project>{28c32429-7af6-4084-97c3-7406fb506f48}</Project>
+      <Name>NewsWidget</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpotifyWidget\SpotifyWidget.csproj">
       <Project>{df732636-3630-4ea2-bf47-c55fcc524f67}</Project>
       <Name>SpotifyWidget</Name>
@@ -237,6 +241,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="../SpotifyWidget/bin/x64/$(Configuration)/SpotifyWidget.dll" Link="Widgets/SpotifyWidget.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../NewsWidget/bin/$(Configuration)/NewsWidget.dll" Link="Widgets/NewsWidget.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <None Include="../LeapMotionInput/bin/x64/$(Configuration)/LeapMotionInput.dll" Link="Inputs/LeapMotionInput.dll" CopyToOutputDirectory="PreserveNewest" />

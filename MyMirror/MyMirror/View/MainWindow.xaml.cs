@@ -36,6 +36,7 @@
             OnShowElementEvent(null, new ShowElementEventArgs(WidgetPositionEnum.Right, false));
             OnShowElementEvent(null, new ShowElementEventArgs(WidgetPositionEnum.Left, false));
             OnShowElementEvent(null, new ShowElementEventArgs(WidgetPositionEnum.Bot, false));
+            OnShowElementEvent(null, new ShowElementEventArgs(WidgetPositionEnum.Top, false));
 
             ((MainWindowVM)DataContext).ShowElementEvent += OnShowElementEvent;
         }
@@ -52,7 +53,7 @@
                     {
                         case WidgetPositionEnum.Right:
                             {
-                                RightWidget.BeginAnimation( MarginProperty, args.Show ? GetRightInAnimation() : GetRightOutAnimation());
+                                RightWidget.BeginAnimation(MarginProperty, args.Show ? GetRightInAnimation() : GetRightOutAnimation());
                                 break;
                             }
                         case WidgetPositionEnum.Left:
@@ -63,6 +64,11 @@
                         case WidgetPositionEnum.Bot:
                             {
                                 BotWidget.BeginAnimation(MarginProperty, args.Show ? GetBotInAnimation() : GetBotOutAnimation());
+                                break;
+                            } 
+                        case WidgetPositionEnum.Top:
+                            {
+                                TopWidget.BeginAnimation(MarginProperty, args.Show ? GetTopInAnimation() : GetTopOutAnimation());
                                 break;
                             }
                     }
@@ -126,6 +132,26 @@
             {
                 From = new Thickness(0, 0, 0, 0),
                 To = new Thickness(0, _botSide, 0, -_botSide),
+                Duration = new Duration(TimeSpan.FromMilliseconds(300)),
+            };
+        }
+
+        private ThicknessAnimation GetTopInAnimation()
+        {
+            return new ThicknessAnimation
+            {
+                From = new Thickness(0, -_botSide, 0, _botSide),
+                To = new Thickness(0, 0, 0, 0),
+                Duration = new Duration(TimeSpan.FromMilliseconds(300)),
+            };
+        }
+
+        private ThicknessAnimation GetTopOutAnimation()
+        {
+            return new ThicknessAnimation
+            {
+                From = new Thickness(0, 0, 0, 0),
+                To = new Thickness(0, -_botSide, 0, _botSide),
                 Duration = new Duration(TimeSpan.FromMilliseconds(300)),
             };
         }

@@ -138,7 +138,11 @@ namespace MyMirror.ViewModel
         /// If sleep mode is activated
         /// </summary>
         private bool _sleepMode;
-
+        
+        /// <summary>
+        /// Management window
+        /// </summary>
+        private ManagementWindow _managementWindow;
         #endregion
 
         #region Contructor
@@ -194,7 +198,11 @@ namespace MyMirror.ViewModel
         /// <param name="obj"></param>
         private void KeyDown(object obj)
         {
-            new ManagementWindow().ShowDialog();
+            if (_managementWindow == null || !_managementWindow.IsActive)
+            {
+                _managementWindow = new ManagementWindow();
+                _managementWindow.ShowDialog();
+            }
         }
 
         /// <summary>
@@ -312,7 +320,6 @@ namespace MyMirror.ViewModel
                                 ShowWinget(cursorPosition, true);
                             }
                         }
-
                     }
                     else
                     {
