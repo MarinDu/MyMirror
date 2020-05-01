@@ -7,6 +7,7 @@
 
 namespace WingetContract
 {
+    using Common.Settings;
     using System.Collections.Generic;
     using System.Windows.Controls;
     using WingetContract.Enum;
@@ -45,6 +46,11 @@ namespace WingetContract
         /// Gets a value indicating wheather the widget can be shown on sleep
         /// </summary>
         bool CanShowOnSleep { get; }
+
+        /// <summary>
+        /// Gets windget setting manager
+        /// </summary>
+        ISettingsBase Settings { get; }
 
         /// <summary>
         /// Initializes widget

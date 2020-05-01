@@ -18,6 +18,7 @@ namespace SpotifyWidget.Model
     using System.Threading;
     using Common.ViewModel;
     using Common.Log;
+    using Common.Settings;
 
     /// <summary>
     /// Contains Tram widget model
@@ -25,6 +26,11 @@ namespace SpotifyWidget.Model
     internal class SpotifyModel : ObservableObject
     {
         #region Properties
+        
+        /// <summary>
+        /// Gets windget settings
+        /// </summary>
+        public SettingsManager<SpotifySettings> SettingsManager { get; internal set; }
 
         /// <summary>
         /// Is music running
@@ -122,6 +128,9 @@ namespace SpotifyWidget.Model
         /// </summary>
         public SpotifyModel()
         {
+            SettingsManager = new SettingsManager<SpotifySettings>();
+            SettingsManager.Initialize(Resources.SettingsFileName);
+
             _accessMutex = new Mutex();
 
             _timer = new System.Timers.Timer(1000)

@@ -27,7 +27,7 @@ namespace MyMirror.ViewModel
         /// <summary>
         /// Gets tab items
         /// </summary>
-        public List<SettingItem<string>> Items
+        public List<SettingItem> Items
         {
             get => _items;
             set => Set(ref _items, value);
@@ -45,7 +45,7 @@ namespace MyMirror.ViewModel
         /// <summary>
         /// Tab items
         /// </summary>
-        private List<SettingItem<string>> _items;
+        private List<SettingItem> _items;
 
         #endregion
     }

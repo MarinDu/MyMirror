@@ -18,13 +18,13 @@ namespace Common.Settings
         /// Gets all settings
         /// </summary>
         /// <returns>Return all settings</returns>
-        List<SettingItem<string>> GetSettingsList();
+        List<SettingItem> GetSettingsList();
 
         /// <summary>
         /// Sets all settings
         /// </summary>
         /// <param name="settings"></param>
-        void SetSettingsList(List<SettingItem<string>> settings);
+        void SetSettingsList(List<SettingItem> settings);
 
         /// <summary>
         /// Set settings to defaut values

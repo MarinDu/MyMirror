@@ -17,6 +17,8 @@ namespace MyMirror.ViewModel
     using System.Collections.Generic;
     using MyMirror.Properties;
     using Common.Settings;
+    using WingetContract;
+    using InputContract;
 
     /// <summary>
     /// View model for the management window
@@ -120,27 +122,6 @@ namespace MyMirror.ViewModel
         }
 
         /// <summary>
-        /// Handles exit command
-        /// </summary>
-        /// <param name="obj">Parameters</param>
-        private void SaveButton(object obj)
-        {
-            // Update main parameters
-            MainModel.MainSettings.Settings.SetSettingsList(_tabItems[0].Items);
-
-            // Update widgets parameters
-
-            // Update input parameters
-
-            // Save parameters
-            MainModel.MainSettings.Save();
-
-            //Restart application
-            System.Windows.Forms.Application.Restart();
-            Application.Current.Shutdown();
-        }    
-
-        /// <summary>
         /// Handles log command
         /// </summary>
         /// <param name="obj">Parameters</param>
@@ -158,18 +139,70 @@ namespace MyMirror.ViewModel
 
             // Add main items
             ParametersTabItem tab = new ParametersTabItem
-            {               
+            {
                 Title = Resources.MainTabName,
                 Items = MainModel.MainSettings.Settings.GetSettingsList()
             };
             tabItems.Add(tab);
 
             // Add widgets parameters
+            foreach (IWidget widget in MainModel.WidgetList)
+            {
+                tab = new ParametersTabItem
+                {
+                    Title = widget.Name,
+                    Items = widget.Settings.GetSettingsList()
+                };
+
+                tabItems.Add(tab);
+            }
 
             // Add input parameters
+            foreach (IScreenInput input in MainModel.ScreenInputs)
+            {
+                tab = new ParametersTabItem
+                {
+                    Title = input.Name,
+                    Items = input.Settings.GetSettingsList()
+                };
+
+                tabItems.Add(tab);
+            }
 
             TabItems = tabItems;
         }
+
+        /// <summary>
+        /// Handles exit command
+        /// </summary>
+        /// <param name="obj">Parameters</param>
+        private void SaveButton(object obj)
+        {
+            // Update main parameters
+            MainModel.MainSettings.Settings.SetSettingsList(_tabItems[0].Items);
+
+            // Update widgets parameters
+            int index = 1;
+            foreach (IWidget widget in MainModel.WidgetList)
+            {
+                widget.Settings.SetSettingsList(_tabItems[index].Items);
+                index++;
+            }
+
+            // Update input parameters
+            foreach (IScreenInput input in MainModel.ScreenInputs)
+            {
+                input.Settings.SetSettingsList(_tabItems[index].Items);
+                index++;
+            }
+
+            // Save parameters
+            MainModel.MainSettings.Save();
+
+            //Restart application
+            System.Windows.Forms.Application.Restart();
+            Application.Current.Shutdown();
+        }    
 
         #endregion
     }

@@ -7,6 +7,7 @@
 
 namespace SpotifyWidget
 {
+    using Common.Settings;
     using SpotifyWidget.View;
     using SpotifyWidget.ViewModel;
     using System;
@@ -31,6 +32,9 @@ namespace SpotifyWidget
             WidgetPositionEnum.Top,
             WidgetPositionEnum.Bot,
         };
+
+        /// <inheritdoc />
+        public ISettingsBase Settings => _dataContext.SpotifyModel.SettingsManager.Settings;
 
         /// <inheritdoc />
         public UserControl RightOrLeftWidget => _rightLeftWidget;

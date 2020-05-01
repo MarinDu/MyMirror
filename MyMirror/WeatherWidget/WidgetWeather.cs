@@ -14,6 +14,7 @@ namespace WeatherWidget
     using WingetContract;
     using WingetContract.Enum;
     using System.Collections.Generic;
+    using Common.Settings;
 
     /// <summary>
     /// Contains Tram widget interface implementation
@@ -31,6 +32,9 @@ namespace WeatherWidget
 
         /// <inheritdoc />
         public string Name => "Wheather";
+
+        /// <inheritdoc />
+        public ISettingsBase Settings => _dataContext.WeatherModel.SettingsManager.Settings;
 
         /// <inheritdoc />
         public UserControl RightOrLeftWidget => _rightLeftWidget;

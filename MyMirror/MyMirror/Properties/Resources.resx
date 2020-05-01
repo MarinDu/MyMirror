@@ -168,6 +168,9 @@
   <data name="TopWidget" xml:space="preserve">
     <value>Widget du haut</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Nom de l'utilisateur</value>
+  </data>
   <data name="WidgetFilter" xml:space="preserve">
     <value>*Widget.dll</value>
   </data>

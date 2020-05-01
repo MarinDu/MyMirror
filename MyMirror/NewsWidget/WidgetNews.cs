@@ -8,6 +8,7 @@
 
 namespace NewsWidget
 {
+    using Common.Settings;
     using NewsWidget.View;
     using NewsWidget.ViewModel;
     using System;
@@ -29,6 +30,9 @@ namespace NewsWidget
             WidgetPositionEnum.Top,
             WidgetPositionEnum.Bot,
         };
+
+        /// <inheritdoc />
+        public ISettingsBase Settings => _dataContext.NewsModel.SettingsManager.Settings;
 
         /// <inheritdoc />
         public UserControl RightOrLeftWidget => _rightLeftWidget;

@@ -18,6 +18,7 @@ namespace TramWidget.Model
     using System.Xml;
     using Common.ViewModel;
     using Common.Log;
+    using Common.Settings;
 
     /// <summary>
     /// Contains Tram widget model
@@ -25,6 +26,12 @@ namespace TramWidget.Model
     internal class TramModel : ObservableObject
     {
         #region Properties
+        /// <summary>
+
+        /// <summary>
+        /// Gets windget settings
+        /// </summary>
+        public SettingsManager<TramSettings> SettingsManager { get; internal set; }
 
         /// <summary>
         /// Gets Tram C direction
@@ -124,6 +131,9 @@ namespace TramWidget.Model
         /// </summary>
         public TramModel()
         {
+            SettingsManager = new SettingsManager<TramSettings>();
+            SettingsManager.Initialize(Resources.SettingsFileName);
+
             _linkC1 = string.Format(Resources.LinkAddress, Resources.Tram1);
             _linkC2 = string.Format(Resources.LinkAddress, Resources.Tram2);
 

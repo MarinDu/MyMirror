@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TramWidget.Properties {
+namespace NewsWidget.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TramWidget.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TramWidget.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NewsWidget.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,11 @@ namespace TramWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à -.
-        /// </summary>
-        internal static string DefaultTramText {
-            get {
-                return ResourceManager.GetString("DefaultTramText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à https://data.metromobilite.fr/api/routers/default/index/stops/{0}/stoptimes.
-        /// </summary>
-        internal static string LinkAddress {
-            get {
-                return ResourceManager.GetString("LinkAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à TramWidget.conf.
+        ///   Recherche une chaîne localisée semblable à NewsWidget.conf.
         /// </summary>
         internal static string SettingsFileName {
             get {
                 return ResourceManager.GetString("SettingsFileName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à SEM:2236.
-        /// </summary>
-        internal static string Tram1 {
-            get {
-                return ResourceManager.GetString("Tram1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à SEM:2235.
-        /// </summary>
-        internal static string Tram2 {
-            get {
-                return ResourceManager.GetString("Tram2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à SEM:3205.
-        /// </summary>
-        internal static string Tram3 {
-            get {
-                return ResourceManager.GetString("Tram3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à SEM:3206.
-        /// </summary>
-        internal static string Tram4 {
-            get {
-                return ResourceManager.GetString("Tram4", resourceCulture);
             }
         }
     }

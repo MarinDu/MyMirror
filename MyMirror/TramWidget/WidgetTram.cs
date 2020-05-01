@@ -14,6 +14,7 @@ namespace TramWidget
     using WingetContract;
     using WingetContract.Enum;
     using System.Collections.Generic;
+    using Common.Settings;
 
     /// <summary>
     /// Contains Tram widget interface implementation
@@ -32,6 +33,8 @@ namespace TramWidget
             WidgetPositionEnum.Left
         };
 
+        /// <inheritdoc />
+        public ISettingsBase Settings => _dataContext.TramModel.SettingsManager.Settings;
 
         /// <inheritdoc />
         public UserControl RightOrLeftWidget => _rightLeftWidget;

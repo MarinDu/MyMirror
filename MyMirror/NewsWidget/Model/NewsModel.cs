@@ -14,6 +14,8 @@ namespace NewsWidget.Model
     using Common.ViewModel;
     using Common.Log;
     using System.Collections.Generic;
+    using Common.Settings;
+    using NewsWidget.Properties;
 
     /// <summary>
     /// Contains Tram widget model
@@ -31,6 +33,11 @@ namespace NewsWidget.Model
         /// Text of the news
         /// </summary>
         public string NewsText { get => _newsText; private set => Set(ref _newsText, value); }
+
+        /// <summary>
+        /// Gets windget settings
+        /// </summary>
+        public SettingsManager<NewsSettings> SettingsManager { get; internal set; }
 
         #endregion
 
@@ -80,6 +87,9 @@ namespace NewsWidget.Model
         /// </summary>
         public NewsModel()
         {
+            SettingsManager = new SettingsManager<NewsSettings>();
+            SettingsManager.Initialize(Resources.SettingsFileName);
+
             _timer = new System.Timers.Timer(10000)
             {
                 AutoReset = false

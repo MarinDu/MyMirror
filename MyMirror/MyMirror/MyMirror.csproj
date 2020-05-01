@@ -111,6 +111,8 @@
     <Compile Include="ViewModel\ParametersTabItem.cs" />
     <Compile Include="ViewModel\LogWindowVM.cs" />
     <Compile Include="ViewModel\ManagementWindowVM.cs" />
+    <Compile Include="View\Converters\ParamTypeToFieldVisibilityConverter.cs" />
+    <Compile Include="View\Converters\ParamTypeToComboBoxVisibilityConverter.cs" />
     <Compile Include="View\LogWindow.xaml.cs">
       <DependentUpon>LogWindow.xaml</DependentUpon>
     </Compile>

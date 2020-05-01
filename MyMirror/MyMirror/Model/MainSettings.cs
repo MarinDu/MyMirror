@@ -17,89 +17,106 @@ namespace MyMirror.Model
     public class MainSettings : ISettingsBase
     {
         /// <summary>
+        /// Gets or Sets the user name
+        /// </summary>
+        public SettingItem UserName { get; set; }
+
+        /// <summary>
         /// Gets or Sets top left widgets
         /// </summary>
-        public SettingItem<string> TopLeftWidget { get; set; }
+        public SettingItem TopLeftWidget { get; set; }
 
         /// <summary>
         /// Gets or Sets top widgets
         /// </summary>
-        public SettingItem<string> TopWidget { get; set; }
+        public SettingItem TopWidget { get; set; }
 
         /// <summary>
         /// Gets or Sets top right widgets
         /// </summary>
-        public SettingItem<string> TopRightWidget { get; set; }
+        public SettingItem TopRightWidget { get; set; }
 
         /// <summary>
         /// Gets or Sets top widgets
         /// </summary>
-        public SettingItem<string> LeftWidget { get; set; }
+        public SettingItem LeftWidget { get; set; }
 
         /// <summary>
         /// Gets or Sets top widgets
         /// </summary>
-        public SettingItem<string> RightWidget { get; set; }
+        public SettingItem RightWidget { get; set; }
 
         /// <summary>
         /// Gets or Sets top widgets
         /// </summary>
-        public SettingItem<string> BotWidget { get; set; }
+        public SettingItem BotWidget { get; set; }
 
         /// <summary>
         /// Gets or Sets sleep widgets
         /// </summary>
-        public SettingItem<string> SleepWidget { get; set; }
+        public SettingItem SleepWidget { get; set; }
 
         /// <inheritdoc />
         public void GenerateDefaultSettings()
         {
-            TopRightWidget = new SettingItem<string>
+            UserName = new SettingItem
             {
-                Name = "TopRightWidget"
+                Type = PamameterValueType.FieldString,
+                Name = nameof(UserName)
+            }; 
+            TopRightWidget = new SettingItem
+            {
+                Type = PamameterValueType.ListOfString,
+                Name = nameof(TopRightWidget)
             };
-            TopWidget = new SettingItem<string>
+            TopWidget = new SettingItem
             {
-                Name = "TopWidget"
+                Type = PamameterValueType.ListOfString,
+                Name = nameof(TopWidget)
             };
-            TopLeftWidget = new SettingItem<string>
+            TopLeftWidget = new SettingItem
             {
-                Name = "TopLeftWidget"
+                Type = PamameterValueType.ListOfString,
+                Name = nameof(TopLeftWidget)
             };
-            LeftWidget = new SettingItem<string>
+            LeftWidget = new SettingItem
             {
-                Name = "LeftWidget"
+                Type = PamameterValueType.ListOfString,
+                Name = nameof(LeftWidget)
             };
-            RightWidget = new SettingItem<string>
+            RightWidget = new SettingItem
             {
-                Name = "RightWidget"
+                Type = PamameterValueType.ListOfString,
+                Name = nameof(RightWidget)
             };
-            BotWidget = new SettingItem<string>
+            BotWidget = new SettingItem
             {
-                Name = "BotWidget"
+                Type = PamameterValueType.ListOfString,
+                Name = nameof(BotWidget)
             };
-            SleepWidget = new SettingItem<string>
+            SleepWidget = new SettingItem
             {
-                Name = "SleepWidget"
+                Type = PamameterValueType.ListOfString,
+                Name = nameof(SleepWidget)
             };
         }
 
         /// <inheritdoc />
-        public List<SettingItem<string>> GetSettingsList()
+        public List<SettingItem> GetSettingsList()
         {
-
-            List <SettingItem<string>> ret =  new List<SettingItem<string>>
+            List <SettingItem> ret =  new List<SettingItem>
             {
-                TopLeftWidget.SettingToString(),
-                TopWidget.SettingToString(),
-                TopRightWidget.SettingToString(),
-                LeftWidget.SettingToString(),
-                RightWidget.SettingToString(),
-                BotWidget.SettingToString(),
-                SleepWidget.SettingToString(),
+                UserName,
+                TopLeftWidget,
+                TopWidget,
+                TopRightWidget,
+                LeftWidget,
+                RightWidget,
+                BotWidget,
+                SleepWidget,
             };
 
-            foreach(SettingItem<string> setting in ret)
+            foreach(SettingItem setting in ret)
             {
                 TranslateSetting(setting);
             }
@@ -108,17 +125,18 @@ namespace MyMirror.Model
         }
 
         /// <inheritdoc />
-        public void SetSettingsList(List<SettingItem<string>> settings)
+        public void SetSettingsList(List<SettingItem> settings)
         {
-            if(settings?.Count == 7)
+            if(settings?.Count == GetSettingsList().Count)
             {
-                TopLeftWidget = settings[0];
-                TopWidget = settings[1];
-                TopRightWidget = settings[2];
-                LeftWidget = settings[3];
-                RightWidget = settings[4];
-                BotWidget = settings[5];
-                SleepWidget = settings[6];
+                UserName = settings[0];
+                TopLeftWidget = settings[1];
+                TopWidget = settings[2];
+                TopRightWidget = settings[3];
+                LeftWidget = settings[4];
+                RightWidget = settings[5];
+                BotWidget = settings[6];
+                SleepWidget = settings[7];
             }
         }
 
@@ -126,7 +144,7 @@ namespace MyMirror.Model
         /// Translate a setting name
         /// </summary>
         /// <param name="setting">Setting</param>
-        private void TranslateSetting(SettingItem<string> setting)
+        private void TranslateSetting(SettingItem setting)
         {
             try
             {

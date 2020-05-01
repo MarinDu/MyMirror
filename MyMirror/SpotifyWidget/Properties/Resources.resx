@@ -123,6 +123,9 @@
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
   </data>
+  <data name="SettingsFileName" xml:space="preserve">
+    <value>SoptifyWidget.conf</value>
+  </data>
   <data name="Url" xml:space="preserve">
     <value>http://localhost</value>
   </data>

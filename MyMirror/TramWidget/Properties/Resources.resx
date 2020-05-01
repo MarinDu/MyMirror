@@ -123,6 +123,9 @@
   <data name="LinkAddress" xml:space="preserve">
     <value>https://data.metromobilite.fr/api/routers/default/index/stops/{0}/stoptimes</value>
   </data>
+  <data name="SettingsFileName" xml:space="preserve">
+    <value>TramWidget.conf</value>
+  </data>
   <data name="Tram1" xml:space="preserve">
     <value>SEM:2236</value>
   </data>

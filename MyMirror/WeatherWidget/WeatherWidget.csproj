@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\WeathersEnum.cs" />
+    <Compile Include="Model\WeatherSettings.cs" />
     <Compile Include="Model\WeatherElement.cs" />
     <Compile Include="Model\WeatherModel.cs" />
     <Compile Include="ViewModel\WeatherVM.cs" />

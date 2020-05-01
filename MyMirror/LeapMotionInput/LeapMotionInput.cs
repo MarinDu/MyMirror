@@ -13,6 +13,8 @@ namespace LeapMotionInput
     using System.Threading.Tasks;
     using InputContract;
     using Common.Log;
+    using Common.Settings;
+    using global::LeapMotionInput.Properties;
 
     /// <summary>
     /// ScreenInput implemtation for LeapMotion
@@ -27,6 +29,16 @@ namespace LeapMotionInput
         #endregion
 
         #region Properties
+
+        /// <inheritdoc />
+        public string Name => Resources.Name;
+
+        /// <inheritdoc />
+        public ISettingsBase Settings => _settingsManager.Settings;
+
+        #endregion
+
+        #region Private membres
 
         /// <summary>
         /// Update Timer
@@ -53,6 +65,11 @@ namespace LeapMotionInput
         /// </summary>
         private Frame _referenceFrame;
 
+        /// <summary>
+        /// Input settings manager
+        /// </summary>
+        private SettingsManager<LeapMotionSettings> _settingsManager;
+
         #endregion
 
         #region Contructor
@@ -62,6 +79,9 @@ namespace LeapMotionInput
         /// </summary>
         public LeapMotionInput()
         {
+            _settingsManager = new SettingsManager<LeapMotionSettings>();
+            _settingsManager.Initialize(Resources.SettingsFileName);
+
             new Task(() =>
             {
                 try

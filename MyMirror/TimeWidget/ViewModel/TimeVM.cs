@@ -10,6 +10,8 @@ namespace TimeWidget.ViewModel
     using System.Timers;
     using System;
     using Common.ViewModel;
+    using Common.Settings;
+    using TimeWidget.Model;
 
     /// <summary>
     /// Contains Time widget view model
@@ -17,6 +19,11 @@ namespace TimeWidget.ViewModel
     internal class TimeVM : ViewModelBase
     {
         #region Properties
+
+        /// <summary>
+        /// Gets Time Model
+        /// </summary>
+        public TimeModel TimeModel { get; private set; }
 
         /// <summary>
         /// Gets current time with hours, minutes and seconds
@@ -46,6 +53,15 @@ namespace TimeWidget.ViewModel
         }
 
         #endregion
+
+        /// <summary>
+        /// Default constructeur
+        /// </summary>
+        public TimeVM()
+        {
+            TimeModel = new TimeModel();
+        }
+
 
         #region Private members
 

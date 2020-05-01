@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Log\LogManager.cs" />
     <Compile Include="Settings\ISettingsBase.cs" />
+    <Compile Include="Settings\PamameterValueType.cs" />
     <Compile Include="Settings\SettingItem.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

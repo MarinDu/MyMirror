@@ -9,6 +9,7 @@ namespace NewsWidget.ViewModel
 {
     using NewsWidget.Model;
     using Common.ViewModel;
+    using Common.Settings;
 
     /// <summary>
     /// Contains Niews widget view model
@@ -21,6 +22,7 @@ namespace NewsWidget.ViewModel
         /// Gets news Model
         /// </summary>
         public NewsModel NewsModel { get; private set; }
+        public ISettingsBase Settings { get; internal set; }
 
         #endregion
 

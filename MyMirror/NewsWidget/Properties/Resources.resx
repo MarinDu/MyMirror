@@ -117,19 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApiId" xml:space="preserve">
-    <value>403d885964620067011557534cd7cebc</value>
-  </data>
-  <data name="CityId" xml:space="preserve">
-    <value>3014728</value>
-  </data>
-  <data name="DefautValue" xml:space="preserve">
-    <value>"-"</value>
-  </data>
-  <data name="LinkAddress" xml:space="preserve">
-    <value>http://api.openweathermap.org/data/2.5/forecast?id={0}&amp;appid={1}</value>
-  </data>
   <data name="SettingsFileName" xml:space="preserve">
-    <value>WeatherWidget.conf</value>
+    <value>NewsWidget.conf</value>
   </data>
 </root>

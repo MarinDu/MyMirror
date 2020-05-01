@@ -7,6 +7,8 @@
 
 namespace MouseInput
 {
+    using Common.Settings;
+    using global::MouseInput.Properties;
     using InputContract;
     using System;
     using System.Timers;
@@ -25,6 +27,17 @@ namespace MouseInput
 
         #endregion
 
+        #region Properties
+
+        /// <inheritdoc />
+        public string Name => Resources.Name;
+
+        /// <inheritdoc />
+        public ISettingsBase Settings => _settingsManager.Settings;
+
+        #endregion
+
+
         #region Private members
 
         /// <summary>
@@ -42,6 +55,11 @@ namespace MouseInput
         /// </summary>
         private System.Drawing.Point _previousPosition;
 
+        /// <summary>
+        /// Input settings manager
+        /// </summary>
+        private SettingsManager<MouseSettings> _settingsManager;
+
         #endregion
 
         #region Contructor
@@ -51,6 +69,9 @@ namespace MouseInput
         /// </summary>
         public MouseInput()
         {
+            _settingsManager = new SettingsManager<MouseSettings>();
+            _settingsManager.Initialize(Resources.SettingsFileName);
+
             _timer = new Timer(300)
             {
                 AutoReset = false

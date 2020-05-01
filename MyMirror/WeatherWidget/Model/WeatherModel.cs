@@ -18,6 +18,7 @@ namespace WeatherWidget.Model
     using System.Xml;
     using Common.ViewModel;
     using Common.Log;
+    using Common.Settings;
 
     /// <summary>
     /// Contains weather widget model
@@ -25,6 +26,11 @@ namespace WeatherWidget.Model
     internal class WeatherModel : ObservableObject
     {
         #region Properties
+        /// <summary>
+        /// <summary>
+        /// Gets windget settings
+        /// </summary>
+        public SettingsManager<WeatherSettings> SettingsManager { get; internal set; }
 
         /// <summary>
         /// Gets weather forecast
@@ -74,6 +80,9 @@ namespace WeatherWidget.Model
         /// </summary>
         public WeatherModel()
         {
+            SettingsManager = new SettingsManager<WeatherSettings>();
+            SettingsManager.Initialize(Resources.SettingsFileName);
+
             _link = string.Format(Resources.LinkAddress, Resources.CityId, Resources.ApiId);
 
             _timer = new Timer(1800*1000) // Every 30 min

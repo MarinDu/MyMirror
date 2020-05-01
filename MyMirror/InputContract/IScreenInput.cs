@@ -7,6 +7,7 @@
 
 namespace InputContract
 {
+    using Common.Settings;
     using System;
 
     /// <summary>
@@ -15,8 +16,18 @@ namespace InputContract
     public interface IScreenInput
     {
         /// <summary>
+        /// Gets widget name
+        /// </summary>
+        string Name { get; }
+
+        /// <summary>
         /// Mirror input event
         /// </summary>
         event EventHandler<ScreenInputEventArg> ScreenInputEvent;
+
+        /// <summary>
+        /// Gets input setting manager
+        /// </summary>
+        ISettingsBase Settings { get; }
     }
 }

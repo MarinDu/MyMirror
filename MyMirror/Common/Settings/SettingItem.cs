@@ -7,14 +7,20 @@
 
 namespace Common.Settings
 {
+    using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
 
     /// <summary>
     /// Contains settings item
     /// </summary>
-    public class SettingItem<T>
+    public class SettingItem
     {
+        /// <summary>
+        /// Gets or set the type of the parameter
+        /// </summary>
+        public PamameterValueType Type { get; set; }  
+        
         /// <summary>
         /// Gets or set settings name
         /// </summary>
@@ -26,15 +32,14 @@ namespace Common.Settings
         public string Translation { get; set; }
 
         /// <summary>
-        /// Gets or set settings value
+        /// Gets or set settings value as string
         /// </summary>
-        [XmlIgnoreAttribute]
-        public T Value { get; set; }
+        public string Value { get; set; }
 
         /// <summary>
         /// Gets or set settings possible value
         /// </summary>
-        public List<T> PossibleValues { get; set; }
+        public List<string> PossibleValues { get; set; }
 
         /// <summary>
         /// Gets or sets value index
@@ -44,7 +49,7 @@ namespace Common.Settings
             get => PossibleValues?.IndexOf(Value) ?? -1;
             set
             {
-                if(PossibleValues != null)
+                if (PossibleValues != null)
                 {
                     if (value > -1 && value < PossibleValues.Count)
                     {
@@ -55,26 +60,47 @@ namespace Common.Settings
         }
 
         /// <summary>
-        /// Gets string version of the setting item
+        /// Returns the value of the setting, in its normal type
         /// </summary>
-        /// <returns></returns>
-        public SettingItem<string> SettingToString()
+        public object GetRealValue()
         {
-            SettingItem<string> ret = new SettingItem<string>
+            object ret = null;
+            switch (Type)
             {
-                Name = Name,
-                Translation = Name,
-                Value = Value?.ToString(),
-                PossibleValues = new List<string>()
-            };
-
-            if(PossibleValues != null)
-            {
-                foreach (T val in PossibleValues)
+                case (PamameterValueType.Boolean):
                 {
-                    ret.PossibleValues.Add(val?.ToString());
+                        ret = Value.ToLower().Equals("true");
+                        break;
+                }   
+                case (PamameterValueType.ListOfInteger):
+                {     
+                        Int32.TryParse(Value,  out int val);
+                        ret = val;
+                        break;
+                }
+                case (PamameterValueType.ListOfString):
+                {
+                        ret = Value;
+                        break;
+                }
+                case (PamameterValueType.FieldInteger):
+                {
+                        Int32.TryParse(Value, out int val);
+                        ret = val;
+                        break;
+                }
+                case (PamameterValueType.FieldString):
+                {
+                        ret = Value;
+                        break;
+                }
+                case (PamameterValueType.FieldUrl):
+                {
+                        ret = Value;
+                        break;
                 }
             }
+
             return ret;
         }
     }

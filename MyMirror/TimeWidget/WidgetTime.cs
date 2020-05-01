@@ -14,6 +14,7 @@ namespace TimeWidget
     using WingetContract;
     using WingetContract.Enum;
     using System.Collections.Generic;
+    using Common.Settings;
 
     /// <summary>
     /// Implements widget interface for Time widget
@@ -31,6 +32,9 @@ namespace TimeWidget
             WidgetPositionEnum.TopLeft,
             WidgetPositionEnum.TopRight
         };
+
+        /// <inheritdoc />
+        public ISettingsBase Settings => _dataContext.TimeModel.SettingsManager.Settings;
 
         /// <inheritdoc />
         public UserControl RightOrLeftWidget => _rightLeftWidget;

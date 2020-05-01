@@ -6,6 +6,7 @@
 		xmlns:resx="clr-namespace:MyMirror.Properties"
         xmlns:local="clr-namespace:MyMirror.View"
 		xmlns:viewmodel="clr-namespace:MyMirror.ViewModel"
+        xmlns:converters="clr-namespace:MyMirror.View.Converters"
 		mc:Ignorable="d"
 		ShowInTaskbar="True" 
 		x:Name="ParamWindow"
@@ -18,7 +19,14 @@
 		<viewmodel:ManagementWindowVM/>
 	</Window.DataContext>
 
-	<Grid>
+    <Window.Resources>
+        <ResourceDictionary>
+            <converters:ParamTypeToComboBoxVisibilityConverter x:Key="ParamTypeToComboBoxVisibilityConverter"/>
+            <converters:ParamTypeToFieldVisibilityConverter x:Key="ParamTypeToFieldVisibilityConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="2*"/>
 			<RowDefinition Height="5*"/>
@@ -67,14 +75,23 @@
 																	 AncestorType={x:Type Window}},
 																	 Path=DataContext.SizeDict[2]}"/>
 										<ComboBox ItemsSource="{Binding PossibleValues}" 
-												    SelectedIndex="{Binding ValueIndex, Mode=TwoWay}"
-													Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
-																			AncestorType={x:Type Window}},
-																			Path=DataContext.SizeDict[20]}" 
-													FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
-																			AncestorType={x:Type Window}},
-																			Path=DataContext.SizeDict[2]}"/>
-									</StackPanel>
+												  SelectedIndex="{Binding ValueIndex, Mode=TwoWay}"
+                                                  Visibility="{Binding Type, Converter={StaticResource ParamTypeToComboBoxVisibilityConverter}}"
+												  Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+																		AncestorType={x:Type Window}},
+																		Path=DataContext.SizeDict[20]}" 
+												  FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+																		AncestorType={x:Type Window}},
+																		Path=DataContext.SizeDict[2]}"/>
+                                        <TextBox Text="{Binding Value}" 
+                                                 Visibility="{Binding Type, Converter={StaticResource ParamTypeToFieldVisibilityConverter}}"
+												 Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+																		AncestorType={x:Type Window}},
+																		Path=DataContext.SizeDict[20]}" 
+												 FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+																		AncestorType={x:Type Window}},
+																		Path=DataContext.SizeDict[2]}"/>
+                                    </StackPanel>
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
 						</ItemsControl>
