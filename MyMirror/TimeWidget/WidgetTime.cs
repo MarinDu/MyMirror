@@ -98,7 +98,7 @@ namespace TimeWidget
         /// <inheritdoc />
         public void Initialize()
         {
-            _dataContext.Initialize();
+            _dataContext.TimeModel.Initialize();
         }
 
         /// <inheritdoc />

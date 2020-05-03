@@ -8,83 +8,35 @@
 
 namespace NewsWidget.Model
 {
-    using System.Collections.Generic;
+    using System;
     using Common.Settings;
+    using Common.Settings.Items;
     using NewsWidget.Properties;
 
     /// <summary>
     /// Manage application main settings
     /// </summary>
-    public class NewsSettings : ISettingsBase
+    public class NewsSettings : SettingBase
     {
         /// <summary>
-        /// Gets or Sets the user name
+        /// Gets or Sets the news pull frequency
         /// </summary>
-        public SettingItem UserName { get; set; }
-
+        public IntegerSettingItem NewsPullFrequency { get; set; }
+        
         /// <summary>
-        /// Gets or Sets top left widgets
+        /// Gets or Sets the news refresh frequency
         /// </summary>
-        public SettingItem TopLeftWidget { get; set; }
-
-   
-
-        /// <inheritdoc />
-        public void GenerateDefaultSettings()
-        {
-            UserName = new SettingItem
-            {
-                Type = PamameterValueType.FieldString,
-                Name = nameof(UserName)
-            };
-            TopLeftWidget = new SettingItem
-            {
-                Type = PamameterValueType.ListOfString,
-                Name = nameof(TopLeftWidget)
-            };
-        }
-
-        /// <inheritdoc />
-        public List<SettingItem> GetSettingsList()
-        {
-            List<SettingItem> ret = new List<SettingItem>
-            {
-                UserName,
-                TopLeftWidget
-            };
-
-            foreach (SettingItem setting in ret)
-            {
-                TranslateSetting(setting);
-            }
-
-            return ret;
-        }
-
-        /// <inheritdoc />
-        public void SetSettingsList(List<SettingItem> settings)
-        {
-            if (settings?.Count == GetSettingsList().Count)
-            {
-                UserName = settings[0];
-                TopLeftWidget = settings[1];
-            }
-        }
-
+        public IntegerSettingItem NewsRefreshFrequency { get; set; }  
+        
         /// <summary>
-        /// Translate a setting name
+        /// Gets or Sets the news feed url
         /// </summary>
-        /// <param name="setting">Setting</param>
-        private void TranslateSetting(SettingItem setting)
+        public StringSettingItem NewsFeedUrl { get; set; }
+
+        /// <inheritdoc />
+        protected override Type GetResources()
         {
-            try
-            {
-                setting.Translation = typeof(Resources).GetProperty(setting.Name).GetValue(null) as string ?? string.Empty;
-            }
-            catch
-            {
-                setting.Translation = string.Empty;
-            }
+            return typeof(Resources);
         }
     }
 }

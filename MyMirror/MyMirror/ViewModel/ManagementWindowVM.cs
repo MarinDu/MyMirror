@@ -7,18 +7,16 @@
 
 namespace MyMirror.ViewModel
 {
-    using Common.Log;
     using Common.ViewModel;
     using System.Windows;
     using System.Windows.Input;
-    using System;
     using MyMirror.View;
     using MyMirror.Model;
     using System.Collections.Generic;
     using MyMirror.Properties;
-    using Common.Settings;
     using WingetContract;
     using InputContract;
+    using Common.Settings;
 
     /// <summary>
     /// View model for the management window
@@ -157,7 +155,7 @@ namespace MyMirror.ViewModel
                 tabItems.Add(tab);
             }
 
-            // Add input parameters
+            // Add inputs parameters
             foreach (IScreenInput input in MainModel.ScreenInputs)
             {
                 tab = new ParametersTabItem
@@ -180,6 +178,7 @@ namespace MyMirror.ViewModel
         {
             // Update main parameters
             MainModel.MainSettings.Settings.SetSettingsList(_tabItems[0].Items);
+            MainModel.MainSettings.Save();
 
             // Update widgets parameters
             int index = 1;
@@ -194,10 +193,7 @@ namespace MyMirror.ViewModel
             {
                 input.Settings.SetSettingsList(_tabItems[index].Items);
                 index++;
-            }
-
-            // Save parameters
-            MainModel.MainSettings.Save();
+            }  
 
             //Restart application
             System.Windows.Forms.Application.Restart();

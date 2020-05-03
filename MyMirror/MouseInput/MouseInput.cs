@@ -37,7 +37,6 @@ namespace MouseInput
 
         #endregion
 
-
         #region Private members
 
         /// <summary>
@@ -72,7 +71,7 @@ namespace MouseInput
             _settingsManager = new SettingsManager<MouseSettings>();
             _settingsManager.Initialize(Resources.SettingsFileName);
 
-            _timer = new Timer(300)
+            _timer = new Timer(_settingsManager.Settings.RefreshPeriode.Value)
             {
                 AutoReset = false
             };

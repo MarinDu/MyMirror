@@ -5,15 +5,18 @@
 // <summary>Contains class SettingsManager</summary>
 // -----------------------------------------------------------------------
 
-using Common.Log;
-using System;
-using System.IO;
-using System.Xml;
-using System.Xml.Serialization;
-
 namespace Common.Settings
 {
-    public class SettingsManager<T> where T : class, ISettingsBase,  new()
+    using Common.Log;
+    using System;
+    using System.IO;
+    using System.Xml;
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// Abstract class for any setting item
+    /// </summary>
+    public abstract class SettingsManager<T> where T : class, ISettingsBase,  new()
     {
         /// <summary>
         /// Gets settings
@@ -61,6 +64,16 @@ namespace Common.Settings
             {
                 LogManager.LogLine(ex.Message);
             }
+
+            Settings.SettingsUpdated += OnSettingsUpdated;
+        }
+
+        /// <summary>
+        /// Handles settings updated events
+        /// </summary>
+        private void OnSettingsUpdated(object sender, EventArgs e)
+        {
+            Save();
         }
 
         /// <summary>

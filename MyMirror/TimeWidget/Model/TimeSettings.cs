@@ -1,29 +1,22 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="MouseSettings.cs">
+// <copyright file="TimeSettings.cs">
 //
 // </copyright>
-// <summary>Contains class MouseSettings</summary>
+// <summary>Contains class TimeSettings</summary>
 // -----------------------------------------------------------------------
 
 
-namespace MouseInput
+namespace TimeWidget.Model
 {
     using System;
-    using System.Collections.Generic;
     using Common.Settings;
-    using Common.Settings.Items;
-    using global::MouseInput.Properties;
+    using TimeWidget.Properties;
 
     /// <summary>
     /// Manage application main settings
     /// </summary>
-    public class MouseSettings : SettingBase
+    public class TimeSettings : SettingBase
     {
-        /// <summary>
-        /// Gets or Sets the leamotion refresh periode
-        /// </summary>
-        public IntegerSettingItem RefreshPeriode { get; set; }
-
         /// <inheritdoc />
         protected override Type GetResources()
         {

@@ -15,7 +15,7 @@
 	<Grid >
 		
 		<!-- Time -->
-		<Label Content="{Binding CurrentTimeWithSecString}" 
+        <Label Content="{Binding TimeModel.CurrentTimeWithSecString}" 
 			   HorizontalAlignment="Left"
 			   Foreground="White"
 			   HorizontalContentAlignment="Right"

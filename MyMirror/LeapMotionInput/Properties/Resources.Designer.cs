@@ -22,7 +22,7 @@ namespace LeapMotionInput.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace LeapMotionInput.Properties {
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LeapMotionInput.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace LeapMotionInput.Properties {
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,18 +61,108 @@ namespace LeapMotionInput.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à 1000.
+        /// </summary>
+        public static string DefaultDelayBetweenActions {
+            get {
+                return ResourceManager.GetString("DefaultDelayBetweenActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 100.
+        /// </summary>
+        public static string DefaultRefreshPeriode {
+            get {
+                return ResourceManager.GetString("DefaultRefreshPeriode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 1300.
+        /// </summary>
+        public static string DefaultScreenHeight {
+            get {
+                return ResourceManager.GetString("DefaultScreenHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 1920.
+        /// </summary>
+        public static string DefaultScreenX {
+            get {
+                return ResourceManager.GetString("DefaultScreenX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 960.
+        /// </summary>
+        public static string DefaultScreenY {
+            get {
+                return ResourceManager.GetString("DefaultScreenY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Délai min entre deux actions.
+        /// </summary>
+        public static string DelayBetweenActions {
+            get {
+                return ResourceManager.GetString("DelayBetweenActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à LeapMotion.
         /// </summary>
-        internal static string Name {
+        public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Période de rafraîchissement.
+        /// </summary>
+        public static string RefreshPeriode {
+            get {
+                return ResourceManager.GetString("RefreshPeriode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Écart entre l&apos;écran et le capteur.
+        /// </summary>
+        public static string ScreenHeight {
+            get {
+                return ResourceManager.GetString("ScreenHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Largeur de l&apos;écran.
+        /// </summary>
+        public static string ScreenX {
+            get {
+                return ResourceManager.GetString("ScreenX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Hauteur de l&apos;écran.
+        /// </summary>
+        public static string ScreenY {
+            get {
+                return ResourceManager.GetString("ScreenY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à LeapMotion.conf.
         /// </summary>
-        internal static string SettingsFileName {
+        public static string SettingsFileName {
             get {
                 return ResourceManager.GetString("SettingsFileName", resourceCulture);
             }

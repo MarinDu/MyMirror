@@ -61,6 +61,60 @@ namespace TramWidget.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à https://data.metromobilite.fr/api/routers/default/index/stops/{0}/stoptimes.
+        /// </summary>
+        internal static string DefaultLinkAddress {
+            get {
+                return ResourceManager.GetString("DefaultLinkAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à SEM:2236.
+        /// </summary>
+        internal static string DefaultTram1 {
+            get {
+                return ResourceManager.GetString("DefaultTram1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à SEM:2235.
+        /// </summary>
+        internal static string DefaultTram2 {
+            get {
+                return ResourceManager.GetString("DefaultTram2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à SEM:3205.
+        /// </summary>
+        internal static string DefaultTram3 {
+            get {
+                return ResourceManager.GetString("DefaultTram3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à SEM:3206.
+        /// </summary>
+        internal static string DefaultTram4 {
+            get {
+                return ResourceManager.GetString("DefaultTram4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 59000.
+        /// </summary>
+        internal static string DefaultTramPullFrequency {
+            get {
+                return ResourceManager.GetString("DefaultTramPullFrequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à -.
         /// </summary>
         internal static string DefaultTramText {
@@ -70,7 +124,7 @@ namespace TramWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à https://data.metromobilite.fr/api/routers/default/index/stops/{0}/stoptimes.
+        ///   Recherche une chaîne localisée semblable à Adresse métromobilité.
         /// </summary>
         internal static string LinkAddress {
             get {
@@ -88,7 +142,7 @@ namespace TramWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à SEM:2236.
+        ///   Recherche une chaîne localisée semblable à Tram 1.
         /// </summary>
         internal static string Tram1 {
             get {
@@ -97,7 +151,7 @@ namespace TramWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à SEM:2235.
+        ///   Recherche une chaîne localisée semblable à Tram 2.
         /// </summary>
         internal static string Tram2 {
             get {
@@ -106,7 +160,7 @@ namespace TramWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à SEM:3205.
+        ///   Recherche une chaîne localisée semblable à Tram 3.
         /// </summary>
         internal static string Tram3 {
             get {
@@ -115,11 +169,20 @@ namespace TramWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à SEM:3206.
+        ///   Recherche une chaîne localisée semblable à Tram 4.
         /// </summary>
         internal static string Tram4 {
             get {
                 return ResourceManager.GetString("Tram4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Période de rafraîchissement (ms).
+        /// </summary>
+        internal static string TramPullFrequency {
+            get {
+                return ResourceManager.GetString("TramPullFrequency", resourceCulture);
             }
         }
     }

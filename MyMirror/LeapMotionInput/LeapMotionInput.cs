@@ -89,7 +89,7 @@ namespace LeapMotionInput
                     _controller = new Controller();
                     _lastClick = DateTime.Now;
 
-                    _timer = new Timer(100)
+                    _timer = new Timer(_settingsManager.Settings.RefreshPeriode.Value)
                     {
                         AutoReset = false
                     };
@@ -139,12 +139,17 @@ namespace LeapMotionInput
                     rotation = currentHand.RotationAngle(_referenceFrame, Vector.ZAxis);
                 }
 
-                double xPos = tip == null ? 0f : tip.x * 1920f / 180f + 960f;
-                double yPos = tip == null ? 0f : 1300f - tip.y * 4f;
+                int screenX = _settingsManager.Settings.ScreenX.Value;
+                int screenY = _settingsManager.Settings.ScreenY.Value;
+                int screenH = _settingsManager.Settings.ScreenHeight.Value;
+                int delayBetweenActions = _settingsManager.Settings.DelayBetweenActions.Value;
+
+                double xPos = tip == null ? 0f : tip.x * screenX / 180f + screenY;
+                double yPos = tip == null ? 0f : screenH - tip.y * 4f;
 
                 if (frame.Hands.Count == 2)
                 {
-                    _gesture = DateTime.Now.Subtract(_lastClick).TotalMilliseconds > 1000 ? InputGestureEnum.Exit : InputGestureEnum.None;
+                    _gesture = DateTime.Now.Subtract(_lastClick).TotalMilliseconds > delayBetweenActions ? InputGestureEnum.Exit : InputGestureEnum.None;
                 }
                 else if (_referenceFrame != null && Math.Abs(rotation) > Math.PI / 3)
                 {
@@ -152,7 +157,7 @@ namespace LeapMotionInput
                 }
                 else if (tip != null)
                 {
-                    _gesture = tip.z < 0 && DateTime.Now.Subtract(_lastClick).TotalMilliseconds > 1000 ? InputGestureEnum.Click : InputGestureEnum.Position;
+                    _gesture = tip.z < 0 && DateTime.Now.Subtract(_lastClick).TotalMilliseconds > delayBetweenActions ? InputGestureEnum.Click : InputGestureEnum.Position;
                 }
                 else
                 {

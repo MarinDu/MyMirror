@@ -22,7 +22,7 @@ namespace NewsWidget.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace NewsWidget.Properties {
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NewsWidget.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace NewsWidget.Properties {
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,63 @@ namespace NewsWidget.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à 10000.
+        /// </summary>
+        public static string DefaultNewsFeedUrl {
+            get {
+                return ResourceManager.GetString("DefaultNewsFeedUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 10000.
+        /// </summary>
+        public static string DefaultNewsPullFrequency {
+            get {
+                return ResourceManager.GetString("DefaultNewsPullFrequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 3000.
+        /// </summary>
+        public static string DefaultNewsRefreshFrequency {
+            get {
+                return ResourceManager.GetString("DefaultNewsRefreshFrequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à URL des news.
+        /// </summary>
+        public static string NewsFeedUrl {
+            get {
+                return ResourceManager.GetString("NewsFeedUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Période de récupération des news (ms).
+        /// </summary>
+        public static string NewsPullFrequency {
+            get {
+                return ResourceManager.GetString("NewsPullFrequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Durée d&apos;affichage des news (ms).
+        /// </summary>
+        public static string NewsRefreshFrequency {
+            get {
+                return ResourceManager.GetString("NewsRefreshFrequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à NewsWidget.conf.
         /// </summary>
-        internal static string SettingsFileName {
+        public static string SettingsFileName {
             get {
                 return ResourceManager.GetString("SettingsFileName", resourceCulture);
             }

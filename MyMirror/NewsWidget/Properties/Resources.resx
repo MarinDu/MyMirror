@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DefaultNewsFeedUrl" xml:space="preserve">
+    <value>10000</value>
+  </data>
+  <data name="DefaultNewsPullFrequency" xml:space="preserve">
+    <value>10000</value>
+  </data>
+  <data name="DefaultNewsRefreshFrequency" xml:space="preserve">
+    <value>3000</value>
+  </data>
+  <data name="NewsFeedUrl" xml:space="preserve">
+    <value>URL des news</value>
+  </data>
+  <data name="NewsPullFrequency" xml:space="preserve">
+    <value>Période de récupération des news (ms)</value>
+  </data>
+  <data name="NewsRefreshFrequency" xml:space="preserve">
+    <value>Durée d'affichage des news (ms)</value>
+  </data>
   <data name="SettingsFileName" xml:space="preserve">
     <value>NewsWidget.conf</value>
   </data>

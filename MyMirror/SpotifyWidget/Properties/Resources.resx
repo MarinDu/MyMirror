@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClientID" xml:space="preserve">
-    <value>e1c17113e08c43d799c2fec5317fa120</value>
+  <data name="CliendId" xml:space="preserve">
+    <value>Identifiant client Spotify</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>

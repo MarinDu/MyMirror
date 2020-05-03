@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SpotifyModel.cs">
+// <copyright file="NewsModel.cs">
 //
 // </copyright>
 // <summary>Contains Spotify widget model</summary>
@@ -18,7 +18,7 @@ namespace NewsWidget.Model
     using NewsWidget.Properties;
 
     /// <summary>
-    /// Contains Tram widget model
+    /// Contains news widget model
     /// </summary>
     internal class NewsModel : ObservableObject
     {
@@ -90,13 +90,13 @@ namespace NewsWidget.Model
             SettingsManager = new SettingsManager<NewsSettings>();
             SettingsManager.Initialize(Resources.SettingsFileName);
 
-            _timer = new System.Timers.Timer(10000)
+            _timer = new System.Timers.Timer(SettingsManager.Settings.NewsPullFrequency.Value)
             {
                 AutoReset = false
             };
             _timer.Elapsed += GetInfo;
 
-            _switchTimer = new System.Timers.Timer(2000)
+            _switchTimer = new System.Timers.Timer(SettingsManager.Settings.NewsRefreshFrequency.Value)
             {
                 AutoReset = false
             };

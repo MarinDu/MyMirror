@@ -153,10 +153,14 @@ namespace SpotifyWidget.Model
             {
                 try
                 {
+                    string clientId = SettingsManager.Settings.ClientId.Value;
+                    
+                    LogManager.LogLine("LeapMotion initialization with ID" + clientId);
+
                     WebAPIFactory webAPIFactory = new WebAPIFactory(
                         Resources.Url,
                         8000,
-                        Resources.ClientID,
+                        clientId,
                         Scope.UserModifyPlaybackState,
                         TimeSpan.FromSeconds(20));
                     try
@@ -193,6 +197,8 @@ namespace SpotifyWidget.Model
             {
                 try
                 {
+                    LogManager.LogLine("Play");
+
                     if (_accessMutex.WaitOne(1000))
                     {
                         PlaybackContext context = _spotifyWebAPI.GetPlayback();
@@ -228,6 +234,8 @@ namespace SpotifyWidget.Model
             {
                 try
                 {
+                    LogManager.LogLine("Previous");
+
                     if (_accessMutex.WaitOne(1000))
                     {
                         ErrorResponse err = _spotifyWebAPI.SkipPlaybackToPrevious();
@@ -251,6 +259,8 @@ namespace SpotifyWidget.Model
             {
                 try
                 {
+                    LogManager.LogLine("Next");
+
                     if (_accessMutex.WaitOne(1000))
                     {
                         ErrorResponse err = _spotifyWebAPI.SkipPlaybackToNext();

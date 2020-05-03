@@ -61,7 +61,7 @@ namespace WeatherWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à 403d885964620067011557534cd7cebc.
+        ///   Recherche une chaîne localisée semblable à Identifiant API.
         /// </summary>
         internal static string ApiId {
             get {
@@ -70,11 +70,38 @@ namespace WeatherWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à 3014728.
+        ///   Recherche une chaîne localisée semblable à Identifiant de la ville.
         /// </summary>
         internal static string CityId {
             get {
                 return ResourceManager.GetString("CityId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 3014728.
+        /// </summary>
+        internal static string DefaultCityId {
+            get {
+                return ResourceManager.GetString("DefaultCityId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à http://api.openweathermap.org/data/2.5/forecast?id={0}&amp;appid={1}.
+        /// </summary>
+        internal static string DefaultLinkAddress {
+            get {
+                return ResourceManager.GetString("DefaultLinkAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 3600.
+        /// </summary>
+        internal static string DefaultPullPeriode {
+            get {
+                return ResourceManager.GetString("DefaultPullPeriode", resourceCulture);
             }
         }
         
@@ -88,11 +115,20 @@ namespace WeatherWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à http://api.openweathermap.org/data/2.5/forecast?id={0}&amp;appid={1}.
+        ///   Recherche une chaîne localisée semblable à API adresse.
         /// </summary>
         internal static string LinkAddress {
             get {
                 return ResourceManager.GetString("LinkAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Période de rafraîchissement (s).
+        /// </summary>
+        internal static string PullPeriode {
+            get {
+                return ResourceManager.GetString("PullPeriode", resourceCulture);
             }
         }
         

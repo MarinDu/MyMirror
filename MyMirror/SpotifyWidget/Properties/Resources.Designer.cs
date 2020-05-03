@@ -61,11 +61,11 @@ namespace SpotifyWidget.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à e1c17113e08c43d799c2fec5317fa120.
+        ///   Recherche une chaîne localisée semblable à Identifiant client Spotify.
         /// </summary>
-        internal static string ClientID {
+        internal static string CliendId {
             get {
-                return ResourceManager.GetString("ClientID", resourceCulture);
+                return ResourceManager.GetString("CliendId", resourceCulture);
             }
         }
         

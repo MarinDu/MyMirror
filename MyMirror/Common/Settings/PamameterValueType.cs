@@ -13,29 +13,14 @@ namespace Common.Settings
     public enum PamameterValueType
     {
         /// <summary>
-        /// Parameter of type "List of string"
+        /// Parameter of type "List"
         /// </summary>
-        ListOfString,
+        List,
 
         /// <summary>
-        /// Parameter of type "List of integer"
+        /// Parameter of type "Field"
         /// </summary>
-        ListOfInteger,
-
-        /// <summary>
-        /// Parameter of type "Field Integer"
-        /// </summary>
-        FieldInteger,
-
-        /// <summary>
-        /// Parameter of type "Field String"
-        /// </summary>
-        FieldString,
-
-        /// <summary>
-        /// Parameter of type "Field URL"
-        /// </summary>
-        FieldUrl,
+        Field,
 
         /// <summary>
         /// Parameter of type "Boolean"

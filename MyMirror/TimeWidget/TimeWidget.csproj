@@ -73,7 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\TimeModel.cs" />
-    <Compile Include="ViewModel\TimeSettings.cs" />
+    <Compile Include="Model\TimeSettings.cs" />
     <Compile Include="WidgetTime.cs" />
     <Compile Include="ViewModel\TimeVM.cs" />
     <Compile Include="View\TimeWidgetFull.xaml.cs">

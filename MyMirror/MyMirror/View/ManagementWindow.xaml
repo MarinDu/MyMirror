@@ -63,35 +63,45 @@
 																	 Path=DataContext.SizeDict[1]}">
 							<ItemsControl.ItemTemplate>
 								<DataTemplate>
-									<StackPanel Orientation="Horizontal" 
-												Margin="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+									<Grid Margin="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
 																	 AncestorType={x:Type Window}},
 																	 Path=DataContext.SizeDict[1]}">
-										<Label Content="{Binding Translation}" 
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0"
+                                               HorizontalAlignment="Left"
+                                               Content="{Binding Translation}" 
 											   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
 																	 AncestorType={x:Type Window}},
 																	 Path=DataContext.SizeDict[30]}" 
 											   FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
 																	 AncestorType={x:Type Window}},
 																	 Path=DataContext.SizeDict[2]}"/>
-										<ComboBox ItemsSource="{Binding PossibleValues}" 
+                                        <ComboBox Grid.Column="2"
+                                                  HorizontalAlignment="Left"
+                                                  ItemsSource="{Binding PossibleValues}" 
 												  SelectedIndex="{Binding ValueIndex, Mode=TwoWay}"
-                                                  Visibility="{Binding Type, Converter={StaticResource ParamTypeToComboBoxVisibilityConverter}}"
+                                                  Visibility="{Binding DisplayType, Converter={StaticResource ParamTypeToComboBoxVisibilityConverter}}"
 												  Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
 																		AncestorType={x:Type Window}},
 																		Path=DataContext.SizeDict[20]}" 
 												  FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
 																		AncestorType={x:Type Window}},
 																		Path=DataContext.SizeDict[2]}"/>
-                                        <TextBox Text="{Binding Value}" 
-                                                 Visibility="{Binding Type, Converter={StaticResource ParamTypeToFieldVisibilityConverter}}"
+                                        <TextBox Grid.Column="2"
+                                                 HorizontalAlignment="Left"
+                                                 Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Visibility="{Binding DisplayType, Converter={StaticResource ParamTypeToFieldVisibilityConverter}}"
 												 Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
 																		AncestorType={x:Type Window}},
-																		Path=DataContext.SizeDict[20]}" 
+																		Path=DataContext.SizeDict[50]}" 
 												 FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
 																		AncestorType={x:Type Window}},
 																		Path=DataContext.SizeDict[2]}"/>
-                                    </StackPanel>
+                                    </Grid>
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
 						</ItemsControl>

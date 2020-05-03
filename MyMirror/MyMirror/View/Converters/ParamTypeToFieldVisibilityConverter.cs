@@ -22,7 +22,7 @@ namespace MyMirror.View.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             PamameterValueType val = (PamameterValueType)value;
-            return val == PamameterValueType.FieldString || val == PamameterValueType.FieldUrl ? Visibility.Visible : Visibility.Collapsed;
+            return val == PamameterValueType.Field ? Visibility.Visible : Visibility.Collapsed;
         }
 
         /// <inheritdoc />

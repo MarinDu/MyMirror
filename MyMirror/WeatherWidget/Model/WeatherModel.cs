@@ -83,9 +83,15 @@ namespace WeatherWidget.Model
             SettingsManager = new SettingsManager<WeatherSettings>();
             SettingsManager.Initialize(Resources.SettingsFileName);
 
-            _link = string.Format(Resources.LinkAddress, Resources.CityId, Resources.ApiId);
+            string linkAddress = SettingsManager.Settings.LinkAddress.Value;
+            string cityId = SettingsManager.Settings.CityId.Value;
+            string apiId = SettingsManager.Settings.ApiId.Value;
 
-            _timer = new Timer(1800*1000) // Every 30 min
+            _link = string.Format(linkAddress, cityId, apiId);
+
+            int pullPeriode = SettingsManager.Settings.PullPeriode.Value;
+
+            _timer = new Timer(pullPeriode * 1000)
             {
                 AutoReset = false
             };

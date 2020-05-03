@@ -40,7 +40,7 @@
 		</Grid>
 
 		<!-- Time string -->
-		<Label Content="{Binding CurrentTimeString}" 
+        <Label Content="{Binding TimeModel.CurrentTimeString}" 
 			   HorizontalAlignment="Center"
 			   VerticalAlignment="Center"
 			   Foreground="White"

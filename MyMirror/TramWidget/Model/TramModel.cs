@@ -134,17 +134,23 @@ namespace TramWidget.Model
             SettingsManager = new SettingsManager<TramSettings>();
             SettingsManager.Initialize(Resources.SettingsFileName);
 
-            _linkC1 = string.Format(Resources.LinkAddress, Resources.Tram1);
-            _linkC2 = string.Format(Resources.LinkAddress, Resources.Tram2);
+            string address = SettingsManager.Settings.LinkAddress.Value;
+            string tram1 = SettingsManager.Settings.Tram1.Value;
+            string tram2 = SettingsManager.Settings.Tram2.Value;
+            string tram3 = SettingsManager.Settings.Tram3.Value;
+            string tram4 = SettingsManager.Settings.Tram4.Value;
 
-            _linkE1 = string.Format(Resources.LinkAddress, Resources.Tram3);
-            _linkE2 = string.Format(Resources.LinkAddress, Resources.Tram4);
+            _linkC1 = string.Format(address, tram1);
+            _linkC2 = string.Format(address, tram2);
+            _linkE1 = string.Format(address, tram3);
+            _linkE2 = string.Format(address, tram4);
 
             DirectionC = DirectionE = new List<string>() { string.Empty, string.Empty };
 
             NextTramC1 = NextTramC2 = NextTramE1 = NextTramE2 = new List <string> { Resources.DefaultTramText, Resources.DefaultTramText };
 
-            _timer = new Timer(59000)
+            int pullPeriode = SettingsManager.Settings.TramPullFrequency.Value;
+            _timer = new Timer(pullPeriode)
             {
                 AutoReset = false
             };
@@ -227,7 +233,6 @@ namespace TramWidget.Model
 
             if (dataNode != null)
             {
-                StringBuilder rssContent = new StringBuilder();
                 Encoding iso = Encoding.GetEncoding("ISO-8859-1");
                 Encoding utf8 = Encoding.UTF8;
 
