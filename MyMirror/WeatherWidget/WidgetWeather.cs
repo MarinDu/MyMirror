@@ -15,6 +15,8 @@ namespace WeatherWidget
     using WingetContract.Enum;
     using System.Collections.Generic;
     using Common.Settings;
+    using System.Windows;
+    using Common.Enums;
 
     /// <summary>
     /// Contains Tram widget interface implementation
@@ -108,10 +110,10 @@ namespace WeatherWidget
         }
 
         /// <inheritdoc />
-        public void InputClick(int xPos, int yPos)
+        public void InputEvent(int xPos, int yPos, InputGestureEnum gesture)
         {
+            _dataContext.InputClick(xPos, yPos, ((WeatherWidgetFull)FullWidget));
         }
-
         #endregion
     }
 }

@@ -9,5 +9,7 @@
 	<BitmapImage x:Key="Sunny" UriSource="Images/Sunny.png" />
 	<BitmapImage x:Key="Clouds" UriSource="Images/Clouds.png" />
 	<BitmapImage x:Key="Unknown" UriSource="Images/Unknown.png" />
+    <BitmapImage x:Key="RightArrow" UriSource="Images/RightArrow.png" />
+    <BitmapImage x:Key="LeftArrow" UriSource="Images/LeftArrow.png" />
 	
 </ResourceDictionary>

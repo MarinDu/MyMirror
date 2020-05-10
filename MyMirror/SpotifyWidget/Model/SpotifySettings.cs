@@ -21,7 +21,17 @@ namespace SpotifyWidget.Model
         /// <summary>
         /// Gets or Sets the cient Id
         /// </summary>
-        public StringSettingItem ClientId { get; set; }
+        public StringSettingItem ClientId { get; set; }       
+        
+        /// <summary>
+        /// Gets or Sets the user Id
+        /// </summary>
+        public StringSettingItem UserId { get; set; }   
+        
+        /// <summary>
+        /// Gets or Sets the user Id
+        /// </summary>
+        public StringSettingItem OtherPlayLists { get; set; }
 
         /// <inheritdoc />
         protected override Type GetResources()

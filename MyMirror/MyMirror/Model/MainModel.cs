@@ -17,6 +17,7 @@ namespace MyMirror.Model
     using Common.Settings;
     using MyMirror.Properties;
     using WingetContract.Enum;
+    using Common.Annimations;
 
     /// <summary>
     /// Contains application main model
@@ -59,6 +60,24 @@ namespace MyMirror.Model
         }
 
         /// <summary>
+        /// Gets current main message
+        /// </summary>
+        public string MainMessage
+        {
+            get => _mainMessage;
+            private set => Set(ref _mainMessage, value);
+        }
+
+        /// <summary>
+        /// Gets current main message opacity
+        /// </summary>
+        public double MainMessageOpacity
+        {
+            get => _mainMessageOpacity;
+            private set => Set(ref _mainMessageOpacity, value);
+        }
+
+        /// <summary>
         /// Main settings
         /// </summary>
         public SettingsManager<MainSettings> MainSettings { get; private set; }
@@ -71,6 +90,21 @@ namespace MyMirror.Model
         /// Current audio level
         /// </summary>
         private int _soundLevel;
+
+        /// <summary>
+        /// Current main messgae
+        /// </summary>
+        private string _mainMessage;
+
+        /// <summary>
+        /// Current main message opacity
+        /// </summary>
+        private double _mainMessageOpacity;
+
+        /// <summary>
+        /// Main message opacity annimation
+        /// </summary>
+        private FadeAnnimation _mainMessageAnnimation;
 
         #endregion
 
@@ -86,6 +120,8 @@ namespace MyMirror.Model
 
             MainSettings = new SettingsManager<MainSettings>();
             MainSettings.Initialize(Resources.SettingsFileName);
+
+            _mainMessageAnnimation = new FadeAnnimation(value => MainMessageOpacity = value);
         }
 
         #endregion
@@ -121,6 +157,18 @@ namespace MyMirror.Model
             MainSettings.Settings.RightWidget.PossibleValues = PossibleWidgets(WidgetPositionEnum.Right);
             MainSettings.Settings.BotWidget.PossibleValues = PossibleWidgets(WidgetPositionEnum.Bot);
             MainSettings.Settings.SleepWidget.PossibleValues = PossibleSleepWidgets();
+        }
+
+        /// <summary>
+        /// Set main message
+        /// </summary>
+        /// <param name="message">Message</param>
+        /// <param name="duration">Display duration</param>
+        internal void SetMainMessage(string message, int duration)
+        {
+            MainMessageOpacity = 0f;
+            MainMessage = message;
+            _mainMessageAnnimation.FadeInAndOut(2000, duration);
         }
 
         /// <summary>
@@ -208,6 +256,5 @@ namespace MyMirror.Model
         }
 
         #endregion
-
     }
 }

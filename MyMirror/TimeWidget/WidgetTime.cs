@@ -15,6 +15,7 @@ namespace TimeWidget
     using WingetContract.Enum;
     using System.Collections.Generic;
     using Common.Settings;
+    using Common.Enums;
 
     /// <summary>
     /// Implements widget interface for Time widget
@@ -108,7 +109,7 @@ namespace TimeWidget
         }
 
         /// <inheritdoc />
-        public void InputClick(int xPos, int yPos)
+        public void InputEvent(int xPos, int yPos, InputGestureEnum gesture)
         {
         }
 

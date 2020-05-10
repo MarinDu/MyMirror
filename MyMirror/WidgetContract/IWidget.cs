@@ -7,6 +7,7 @@
 
 namespace WingetContract
 {
+    using Common.Enums;
     using Common.Settings;
     using System.Collections.Generic;
     using System.Windows.Controls;
@@ -67,6 +68,7 @@ namespace WingetContract
         /// </summary>
         /// <param name="xPos">Click X pos</param>
         /// <param name="yPos">Click Y pos</param>
-        void InputClick(int xPos, int yPos);
+        /// <param name="gesture">Gesture</param>
+        void InputEvent(int xPos, int yPos, InputGestureEnum gesture);
     }
 }

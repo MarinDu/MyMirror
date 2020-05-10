@@ -149,8 +149,7 @@ namespace TramWidget.Model
 
             NextTramC1 = NextTramC2 = NextTramE1 = NextTramE2 = new List <string> { Resources.DefaultTramText, Resources.DefaultTramText };
 
-            int pullPeriode = SettingsManager.Settings.TramPullFrequency.Value;
-            _timer = new Timer(pullPeriode)
+            _timer = new Timer(SettingsManager.Settings.TramPullFrequency.Value)
             {
                 AutoReset = false
             };

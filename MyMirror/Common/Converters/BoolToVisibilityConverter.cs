@@ -5,7 +5,7 @@
 // <summary>Converts bool to visibility</summary>
 // -----------------------------------------------------------------------
 
-namespace MyMirror.View.Converters
+namespace Common.Converters
 {
     using System;
     using System.Globalization;
@@ -15,7 +15,7 @@ namespace MyMirror.View.Converters
     /// <summary>
     /// Converts bool to visibility
     /// </summary>
-    internal class BoolToVisibilityConverter : IValueConverter
+    public class BoolToVisibilityConverter : IValueConverter
     {
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

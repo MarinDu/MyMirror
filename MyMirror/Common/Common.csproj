@@ -40,13 +40,20 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annimations\ElementAnimator.cs" />
+    <Compile Include="Annimations\FadeAnnimation.cs" />
+    <Compile Include="Annimations\ScrollBarAnimator.cs" />
+    <Compile Include="Annimations\ThicknessAnimationFactory.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Enums\InputGestureEnum.cs" />
     <Compile Include="Log\LogManager.cs" />
     <Compile Include="Settings\ISettingItemBase.cs" />
-    <Compile Include="Settings\StringSettingItem.cs" />
-    <Compile Include="Settings\IntegerSettingItem.cs" />
-    <Compile Include="Settings\ListSettingItem.cs" />
+    <Compile Include="Settings\Items\StringSettingItem.cs" />
+    <Compile Include="Settings\Items\IntegerSettingItem.cs" />
+    <Compile Include="Settings\Items\ListSettingItem.cs" />
     <Compile Include="Settings\ISettingsBase.cs" />
     <Compile Include="Settings\PamameterValueType.cs" />
     <Compile Include="Settings\SettingBase.cs" />

@@ -8,6 +8,7 @@
 
 namespace NewsWidget
 {
+    using Common.Enums;
     using Common.Settings;
     using NewsWidget.View;
     using NewsWidget.ViewModel;
@@ -106,11 +107,13 @@ namespace NewsWidget
         }
 
         /// <inheritdoc />
-        public void InputClick(int xPos, int yPos)
+        public void InputEvent(int xPos, int yPos, InputGestureEnum gesture)
         {
-            _dataContext.InputClick(xPos, yPos);
+            if(gesture == InputGestureEnum.Click)
+            {
+                _dataContext.InputClick(xPos, yPos);
+            }
         }
-
         #endregion
     }
 }

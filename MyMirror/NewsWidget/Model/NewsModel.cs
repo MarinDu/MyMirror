@@ -16,6 +16,9 @@ namespace NewsWidget.Model
     using System.Collections.Generic;
     using Common.Settings;
     using NewsWidget.Properties;
+    using System.Xml;
+    using System.Net;
+    using System.Text;
 
     /// <summary>
     /// Contains news widget model
@@ -38,6 +41,7 @@ namespace NewsWidget.Model
         /// Gets windget settings
         /// </summary>
         public SettingsManager<NewsSettings> SettingsManager { get; internal set; }
+        public object JsonConvert { get; private set; }
 
         #endregion
 
@@ -114,22 +118,16 @@ namespace NewsWidget.Model
         /// </summary>
         public void Initialize()
         {
-            new Task(async () =>
+            try
             {
-                try
-                {        
-                    LogManager.LogLine("News initialization OK");            
-                    GetInfo(null, null);
-                    Refresh(null, null);
-                }
-                catch (Exception ex)
-                {
-                    LogManager.LogLine("News initialization Error");
-                    LogManager.LogLine(ex.Message);
-                }
-                
+                LogManager.LogLine("News initialization OK");
+                GetInfo(null, null);
             }
-            ).Start();
+            catch (Exception ex)
+            {
+                LogManager.LogLine("News initialization Error");
+                LogManager.LogLine(ex.Message);
+            }
         }
 
         #endregion
@@ -149,18 +147,16 @@ namespace NewsWidget.Model
                 {
                     if (_accessMutex.WaitOne(1000))
                     {
-                        _newsList = new List<string>()
-                        {
-                            DateTime.Now.ToString() + " News test 1",
-                            DateTime.Now.ToString() + " News test 2",
-                            DateTime.Now.ToString() + " News test 3"
-                        };
-
+                        XmlNode dataNode;
+                        dataNode = GetData(SettingsManager.Settings.NewsFeedUrl.Value);
+                        _newsList = ParseData(dataNode);
                         _currentNewsIndex = 0;
                         _accessMutex.ReleaseMutex();
                     }
 
                     _timer.Start();
+
+                    Refresh(null, null);
                 }
                 catch (Exception ex)
                 {
@@ -189,12 +185,70 @@ namespace NewsWidget.Model
                         _currentNewsIndex = (_currentNewsIndex + 1) % _newsList.Count;
                         _accessMutex.ReleaseMutex();
                     }
-
                 }
 
                 _switchTimer.Start();
             }
             ).Start();
+        }
+
+        /// <summary>
+        /// Gets XML data on web
+        /// </summary>
+        /// <param name="link">Data adress</param>
+        /// <returns>XML data</returns>
+        private XmlNode GetData(string link)
+        {
+            XmlNode xmlDoc = new XmlDocument();
+            try
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                WebClient wc = new WebClient();
+                string xmlContent = wc.DownloadString(link);
+                wc.Dispose();
+
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(xmlContent);
+                xmlDoc = doc.DocumentElement;
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogLine(ex.Message);
+                xmlDoc = null;
+            }
+
+            return xmlDoc;
+        }
+
+        /// <summary>
+        /// Extract data from XML
+        /// </summary>
+        /// <param name="dataNode">XML node</param>
+        /// <returns>Infos titles</returns>
+        private List<string> ParseData(XmlNode dataNode)
+        {
+            List<string> ret = new List<string>(); ;
+
+            if (dataNode != null)
+            {
+                string title = String.Empty;
+
+                // Next 
+                XmlNodeList nodes = dataNode.SelectNodes("channel/item");
+                Encoding iso = Encoding.GetEncoding("ISO-8859-1");
+                Encoding utf8 = Encoding.UTF8;
+
+                foreach (XmlNode node in nodes)
+                {
+
+                    byte[] utfBytes = utf8.GetBytes(node.SelectNodes("title")[0].InnerXml);
+                    byte[] isoBytes = Encoding.Convert(utf8, iso, utfBytes);
+                    title = utf8.GetString(isoBytes);
+
+                    ret.Add(title);
+                }
+            }
+            return ret;
         }
 
         #endregion

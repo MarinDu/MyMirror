@@ -22,7 +22,7 @@ namespace SpotifyWidget.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace SpotifyWidget.Properties {
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SpotifyWidget.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace SpotifyWidget.Properties {
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,25 +63,61 @@ namespace SpotifyWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Identifiant client Spotify.
         /// </summary>
-        internal static string CliendId {
+        public static string ClientId {
             get {
-                return ResourceManager.GetString("CliendId", resourceCulture);
+                return ResourceManager.GetString("ClientId", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Erreur.
         /// </summary>
-        internal static string Error {
+        public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Retour.
+        /// </summary>
+        public static string GoToMusicManagement {
+            get {
+                return ResourceManager.GetString("GoToMusicManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ouvrir une playlist.
+        /// </summary>
+        public static string GoToPlaylist {
+            get {
+                return ResourceManager.GetString("GoToPlaylist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Id des playlists à suivre (séparées par &apos;;&apos;).
+        /// </summary>
+        public static string OtherPlayLists {
+            get {
+                return ResourceManager.GetString("OtherPlayLists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à spotify:playlist:.
+        /// </summary>
+        public static string PlaylistsId {
+            get {
+                return ResourceManager.GetString("PlaylistsId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à SoptifyWidget.conf.
         /// </summary>
-        internal static string SettingsFileName {
+        public static string SettingsFileName {
             get {
                 return ResourceManager.GetString("SettingsFileName", resourceCulture);
             }
@@ -90,9 +126,18 @@ namespace SpotifyWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à http://localhost.
         /// </summary>
-        internal static string Url {
+        public static string Url {
             get {
                 return ResourceManager.GetString("Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Identifiant de l&apos;utilisateur.
+        /// </summary>
+        public static string UserId {
+            get {
+                return ResourceManager.GetString("UserId", resourceCulture);
             }
         }
     }

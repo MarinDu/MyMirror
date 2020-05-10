@@ -138,7 +138,6 @@
     <Compile Include="Model\PluginLoader.cs" />
     <Compile Include="ViewModel\ClickCircle.cs" />
     <Compile Include="View\Converters\IntToFigureSoundConverter.cs" />
-    <Compile Include="View\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\ShowElementEventArgs.cs" />
     <Compile Include="View\MainWindow.xaml.cs">

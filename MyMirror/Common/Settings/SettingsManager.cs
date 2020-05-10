@@ -14,9 +14,9 @@ namespace Common.Settings
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Abstract class for any setting item
+    /// Setting maanger
     /// </summary>
-    public abstract class SettingsManager<T> where T : class, ISettingsBase,  new()
+    public class SettingsManager<T> where T : class, ISettingsBase,  new()
     {
         /// <summary>
         /// Gets settings

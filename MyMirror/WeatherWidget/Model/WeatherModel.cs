@@ -89,9 +89,7 @@ namespace WeatherWidget.Model
 
             _link = string.Format(linkAddress, cityId, apiId);
 
-            int pullPeriode = SettingsManager.Settings.PullPeriode.Value;
-
-            _timer = new Timer(pullPeriode * 1000)
+            _timer = new Timer(SettingsManager.Settings.PullPeriode.Value * 1000)
             {
                 AutoReset = false
             };
@@ -107,6 +105,7 @@ namespace WeatherWidget.Model
         /// </summary>
         public void Initialize()
         {
+            WeatherForcast = new List<WeatherElement>() { new WeatherElement() { Weather = WeathersEnum.Unknown } };
             Refresh(null, null);
         }
 
@@ -133,31 +132,27 @@ namespace WeatherWidget.Model
 
                         XmlNodeList nodes = dataNode.SelectNodes("list/list");
                         List<WeatherElement> forcast = new List<WeatherElement>();
-                        double CurrentDate = (DateTime.Today.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
 
-                        bool odd = false;
+                        double delta = 0;
+                        int num = 0;
+                        DateTime dateTime = DateTime.Now;
 
                         foreach (XmlNode node in nodes)
                         {
-                            // Only take every 6h
-                            odd = !odd;
-                            if (!odd)
-                            {
-                                continue;
-                            }
-
                             WeatherElement weather = new WeatherElement();
-
+                            
                             if (nodes[0].SelectSingleNode("main/temp") != null)
                             {
                                 // Get day
-                                string[] time = node.SelectSingleNode("dt_txt").InnerXml.Split(' ');
-                                string[] date = time[0].Split('-');
-                                weather.Day = new DateTime(int.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2])).DayOfWeek.ToString().Substring(0,3) + ".";
+                                string[] fullTime = node.SelectSingleNode("dt_txt").InnerXml.Split(' ');
+                                string[] date = fullTime[0].Split('-');
+                                string[] time = fullTime[1].Split(':');
 
+                                dateTime = new DateTime(int.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
+                                weather.Day = typeof(Resources).GetProperty(dateTime.DayOfWeek.ToString())?.GetValue(null) as string ?? dateTime.DayOfWeek.ToString();
+  
                                 // Get time
-                                weather.Hour = time[1].Split(':')[0] + "h";
-                                weather.Hour = weather.Hour.StartsWith("0") ? weather.Hour.Substring(1) : weather.Hour;
+                                weather.Hour = time[0].ToString() + ":" + time[1].ToString();
 
                                 // Get temperature
                                 double kelvin = XmlConvert.ToDouble(node.SelectSingleNode("main/temp").InnerXml);
@@ -166,7 +161,6 @@ namespace WeatherWidget.Model
                                 // Get weather
                                 string currentWeather = node.SelectSingleNode("weather/main").InnerText;
                                 weather.Weather = _weatherConverter[currentWeather];
-
                             }
                             else
                             {
@@ -175,8 +169,14 @@ namespace WeatherWidget.Model
                                 weather.Hour = Resources.DefautValue;
                                 weather.Day = Resources.DefautValue;
                             }
-
-                            forcast.Add(weather);
+                            
+                            delta = (dateTime - DateTime.Now).TotalHours;
+                            if (delta >= num * SettingsManager.Settings.WheatherFrequency.Value)
+                            {
+                                num++;
+                                delta = 0;
+                                forcast.Add(weather);
+                            }
                         }
 
                         WeatherForcast = forcast;

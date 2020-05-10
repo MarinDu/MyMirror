@@ -7,6 +7,7 @@
 
 namespace SpotifyWidget
 {
+    using Common.Enums;
     using Common.Settings;
     using SpotifyWidget.View;
     using SpotifyWidget.ViewModel;
@@ -108,9 +109,15 @@ namespace SpotifyWidget
         }
 
         /// <inheritdoc />
-        public void InputClick(int xPos, int yPos)
+        public void InputEvent(int xPos, int yPos, InputGestureEnum gesture)
         {
-            _dataContext.InputClick(xPos, yPos);
+            if (gesture == InputGestureEnum.Click)
+            {
+                _dataContext.InputClick(xPos, yPos, (SpotifyWidgetFull)_fullWidget);
+            }
+            if(gesture != InputGestureEnum.Position){
+                int a = 12;
+            }
         }
 
         #endregion

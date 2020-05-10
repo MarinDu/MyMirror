@@ -10,6 +10,7 @@ namespace TramWidget.Model
 {
     using System;
     using Common.Settings;
+    using Common.Settings.Items;
     using TramWidget.Properties;
 
     /// <summary>

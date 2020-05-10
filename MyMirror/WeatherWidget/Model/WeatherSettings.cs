@@ -37,6 +37,11 @@ namespace WeatherWidget.Model
         /// </summary>
         public StringSettingItem CityId { get; set; }
 
+        /// <summary>
+        /// Gets or Sets weather prediction frequency
+        /// </summary>
+        public IntegerSettingItem WheatherFrequency { get; set; }
+
         /// <inheritdoc />
         protected override Type GetResources()
         {

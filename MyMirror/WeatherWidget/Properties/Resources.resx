@@ -132,16 +132,43 @@
   <data name="DefaultPullPeriode" xml:space="preserve">
     <value>3600</value>
   </data>
+  <data name="DefaultWheatherFrequency" xml:space="preserve">
+    <value>24</value>
+  </data>
   <data name="DefautValue" xml:space="preserve">
     <value>"-"</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Vendredi</value>
   </data>
   <data name="LinkAddress" xml:space="preserve">
     <value>API adresse</value>
   </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Lundi</value>
+  </data>
   <data name="PullPeriode" xml:space="preserve">
     <value>Période de rafraîchissement (s)</value>
   </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Samedi</value>
+  </data>
   <data name="SettingsFileName" xml:space="preserve">
     <value>WeatherWidget.conf</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Dimanche</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Jeudi</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Mardi</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Mercredi</value>
+  </data>
+  <data name="WheatherFrequency" xml:space="preserve">
+    <value>Fréquences des prédictions météo (h)</value>
   </data>
 </root>

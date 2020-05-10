@@ -6,57 +6,72 @@
              xmlns:local="clr-namespace:WeatherWidget.View"
 			 xmlns:winget="clr-namespace:WeatherWidget.ViewModel"
 			 xmlns:converters="clr-namespace:WeatherWidget.View.Converters"
-			 mc:Ignorable="d" 
+             xmlns:commonConverters="clr-namespace:Common.Converters;assembly=Common"
+             mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
 	
 	<!-- Resources -->
-	<UserControl.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="pack://application:,,,/WeatherWidget;component/Theme.xaml" />
-			</ResourceDictionary.MergedDictionaries>
-			<converters:WeatherToImageConverter x:Key="WeatherToImageConverter"/>
-		</ResourceDictionary>
-	</UserControl.Resources>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WeatherWidget;component/Theme.xaml" />
+                <ResourceDictionary>
+                    <commonConverters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:WeatherToImageConverter x:Key="WeatherToImageConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
 
-	<!-- Data context -->
+    <!-- Data context -->
 	<UserControl.DataContext>
 		<winget:WeatherVM x:Name="BaseDataContext"/>
 	</UserControl.DataContext>
 
 	<!-- Main grid -->
-	<Grid>
-		<!-- Background -->
-		<Rectangle Fill="Black"/>
-
-		<ScrollViewer VerticalScrollBarVisibility="Hidden">
-			<ItemsControl ItemsSource="{Binding WeatherModel.WeatherForcast}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Background -->
+        <Rectangle Fill="Black" Grid.ColumnSpan="3"/>
+        <Image Source="{StaticResource LeftArrow}"
+               Visibility="{Binding ShowPreviousArrow, Converter={StaticResource BoolToVisibilityConverter}}"
+			   HorizontalAlignment="Left"/>
+        <ScrollViewer x:Name="ScrollContainer"
+                      Grid.Column="1"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Hidden">
+			<ItemsControl ItemsSource="{Binding WeatherModel.WeatherForcast}"
+                          VerticalAlignment="Center">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
 						<WrapPanel />
 					</ItemsPanelTemplate>
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<Border BorderBrush="White"
-								BorderThickness="1" Width="{Binding ElementName=BaseDataContext, Path=SizeDict[35]}">
-							<StackPanel Orientation="Vertical">
-								<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-									<Label  Grid.Row="1"
+                    <DataTemplate>
+                        <Border BorderBrush="White"
+                                BorderThickness="{Binding ElementName=BaseDataContext, Path=SizeDict[1]}"
+								Width="{Binding ElementName=BaseDataContext, Path=SizeDict[60]}"
+                                Margin="{Binding ElementName=BaseDataContext, Path=SizeDict[1]}">
+                            <StackPanel Orientation="Vertical">
+                                <Label  Grid.Row="1"
 											Content="{Binding Day}" 
 											Foreground="White"
 											FontWeight="Bold"	
 											FontSize="{Binding ElementName=BaseDataContext, Path=SizeDict[7]}"
 											HorizontalAlignment="Center"/>
-									<Label  Grid.Row="1"
-										Content="{Binding Hour}" 
-										Foreground="White"
-										FontWeight="Black"	
-									    FontSize="{Binding ElementName=BaseDataContext, Path=SizeDict[7]}"
-										HorizontalAlignment="Center"/>
-								</StackPanel>
-								<Image Source="{Binding Weather, Converter={StaticResource WeatherToImageConverter}}"
-									   Height="{Binding ElementName=BaseDataContext, Path=SizeDict[28]}"/>
+                                <Label  Grid.Row="1"
+									Content="{Binding Hour}" 
+									Foreground="White"
+									FontWeight="Black"	
+									FontSize="{Binding ElementName=BaseDataContext, Path=SizeDict[7]}"
+									HorizontalAlignment="Center"/>
+                                <Image Source="{Binding Weather, Converter={StaticResource WeatherToImageConverter}}"
+									Height="{Binding ElementName=BaseDataContext, Path=SizeDict[35]}"/>
 								<Label  Grid.Row="1"
 										Content="{Binding Temperature}" 
 										Foreground="White"
@@ -65,9 +80,14 @@
 										HorizontalAlignment="Center"/>
 							</StackPanel>
 						</Border>
+                        
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
 		</ScrollViewer>
-	</Grid>
+        <Image Grid.Column="2"
+               Visibility="{Binding ShowNextArrow, Converter={StaticResource BoolToVisibilityConverter}}"
+               Source="{StaticResource RightArrow}"
+			   HorizontalAlignment="Right"/>
+    </Grid>
 </UserControl>

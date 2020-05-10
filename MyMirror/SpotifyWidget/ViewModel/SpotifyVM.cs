@@ -11,6 +11,8 @@ namespace SpotifyWidget.ViewModel
     using WingetContract;
     using System.Windows;
     using Common.ViewModel;
+    using SpotifyWidget.View;
+    using System;
 
     /// <summary>
     /// Contains Soptify widget view model
@@ -58,22 +60,55 @@ namespace SpotifyWidget.ViewModel
         /// Handles inout click
         /// </summary>
         /// <param name="xPos">Click X pos</param>
-        /// <param name="yPos">Click Y pos</param>
-        public void InputClick(int xPos, int yPos)
+        /// <param name="xPos">Click X pos</param>
+        /// <param name="fullWidget">Widget ref</param>
+        public void InputClick(int xPos, int yPos, SpotifyWidgetFull fullWidget)
         {
-            if(yPos < (int)Application.Current.MainWindow.ActualWidth * 3 / 4)
+            if(yPos < (int)Application.Current.MainWindow.ActualWidth * 1 / 5)
             {
-                if (xPos < (int)Application.Current.MainWindow.ActualWidth / 3)
+                SpotifyModel.SwitchView();
+            }
+            else
+            {
+                if(SpotifyModel.ShowMusicManagementPanel && yPos < (int)Application.Current.MainWindow.ActualWidth * 3 / 4)
                 {
-                    SpotifyModel.Previous();
+                    if (xPos < (int)Application.Current.MainWindow.ActualWidth / 3)
+                    {
+                        SpotifyModel.Previous();
+                    }
+                    else if (xPos < (int)Application.Current.MainWindow.ActualWidth * 2 / 3)
+                    {
+                        SpotifyModel.Play();
+                    }
+                    else if (xPos < (int)Application.Current.MainWindow.ActualWidth)
+                    {
+                        SpotifyModel.Next();
+                    }
                 }
-                else if (xPos < (int)Application.Current.MainWindow.ActualWidth * 2 / 3)
+                else if (SpotifyModel.ShowPlaylistManagementPanel)
                 {
-                    SpotifyModel.Play();
-                }
-                else if (xPos < (int)Application.Current.MainWindow.ActualWidth)
-                {
-                    SpotifyModel.Next();
+                    double margin = 0.2;
+                    int targetPos = 0;
+                    int itemSize = (int)SizeDict[85];
+
+                    if (xPos > Application.Current.MainWindow.ActualWidth * (1 - margin))
+                    {
+                        targetPos = 1;
+                    }
+                    else if (xPos < Application.Current.MainWindow.ActualWidth * margin)
+                    {
+                        targetPos = -1;
+                    }
+                    else
+                    {
+                        SpotifyModel.StartCentralPlayList();
+                    }
+
+                    SpotifyModel.PlayListCentreItem += targetPos;
+                    if (targetPos != 0)
+                    {
+                        fullWidget.OnScrollClick(SpotifyModel.PlayListCentreItem * itemSize);
+                    }
                 }
             }
         }

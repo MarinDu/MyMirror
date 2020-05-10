@@ -8,6 +8,7 @@
 namespace MyMirror.Model
 {
     using Common.Settings;
+    using Common.Settings.Items;
     using MyMirror.Properties;
     using System;
 
@@ -55,6 +56,11 @@ namespace MyMirror.Model
         /// Gets or Sets sleep widgets
         /// </summary>
         public ListSettingItem SleepWidget { get; set; }
+
+        /// <summary>
+        /// Gets or Sets sleep timer
+        /// </summary>
+        public IntegerSettingItem SleepTimer { get; set; }
 
         /// <inheritdoc />
         protected override Type GetResources()

@@ -22,13 +22,15 @@
         <widget:NewsVM/>
     </UserControl.DataContext>
 
-   
+
     <!-- Main grid -->
     <StackPanel VerticalAlignment="Top">
-        <Label  Grid.Row="1"
-				Content="{Binding NewsModel.NewsTitle}" 
-				Foreground="White"
-			    FontWeight="Bold"
-				FontSize="{Binding SizeDict[5]}"/>
+        <TextBlock  Grid.Row="1"
+				    Text="{Binding NewsModel.NewsText}" 
+                    TextWrapping="Wrap"
+                    HorizontalAlignment="Left"
+				    Foreground="White"
+			        FontWeight="Bold"
+				    FontSize="{Binding SizeDict[4]}"/>
     </StackPanel>
 </UserControl>

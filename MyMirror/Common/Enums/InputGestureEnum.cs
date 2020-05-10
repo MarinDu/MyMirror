@@ -5,7 +5,7 @@
 // <summary>Screen input gestures enumerator</summary>
 // -----------------------------------------------------------------------
 
-namespace InputContract
+namespace Common.Enums
 {
     /// <summary>
     /// Screen input gestures enumerator

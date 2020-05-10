@@ -11,12 +11,18 @@ namespace Common.Log
     using System.Globalization;
     using System.IO;
     using System.Runtime.CompilerServices;
+    using System.Threading;
 
     /// <summary>
     /// Manages debug log
     /// </summary>
     public static class LogManager
     {
+        /// <summary>
+        /// File access mutex
+        /// </summary>
+        private static Mutex _accessMutex;
+
         /// <summary>
         /// Event risen on log file updating
         /// </summary>
@@ -49,6 +55,7 @@ namespace Common.Log
         /// </summary>
         public static void InitializeSessionLog()
         {
+            _accessMutex = new Mutex(); 
             string filename = "Log_" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) + ".log";
             string friendlyName = AppDomain.CurrentDomain.FriendlyName;
             string assemblyName = friendlyName.Substring(0, friendlyName.Length - ".exe".Length);
@@ -77,14 +84,16 @@ namespace Common.Log
         /// <param name="text">Text to show</param>
         public static void LogLine(string text, [CallerFilePath] string propertyName = null)
         {
-            // Open session log file in writing mode
-            StreamWriter sessionLogWriter = File.AppendText(_sessionLogFilePath);
-            CultureInfo culture = CultureInfo.CurrentUICulture;
+            if(_accessMutex.WaitOne(1000)){
+                // Open session log file in writing mode
+                StreamWriter sessionLogWriter = File.AppendText(_sessionLogFilePath);
+                CultureInfo culture = CultureInfo.CurrentUICulture;
 
-            sessionLogWriter.WriteLine(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss", culture) + " => "+ text + "(" + propertyName + ")");
-            sessionLogWriter.Close();
+                sessionLogWriter.WriteLine(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss", culture) + " => " + text + "(" + propertyName + ")");
+                sessionLogWriter.Close();
 
-            LogFileUpdated?.Invoke(null, null);
+                LogFileUpdated?.Invoke(null, null);
+            }
         }
     }
 }

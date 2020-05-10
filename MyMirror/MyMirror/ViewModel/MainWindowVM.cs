@@ -7,9 +7,11 @@
 
 namespace MyMirror.ViewModel
 {
+    using Common.Enums;
     using Common.ViewModel;
     using InputContract;
     using MyMirror.Model;
+    using MyMirror.Properties;
     using MyMirror.View;
     using System;
     using System.Collections.Generic;
@@ -84,7 +86,7 @@ namespace MyMirror.ViewModel
         /// <summary>
         /// Gets main model
         /// </summary>
-        public MainModel MainModelInstance
+        public MainModel MainModel
         {
             get => _mainModel;
             private set => Set(ref _mainModel, value);
@@ -143,6 +145,7 @@ namespace MyMirror.ViewModel
         /// Management window
         /// </summary>
         private ManagementWindow _managementWindow;
+
         #endregion
 
         #region Contructor
@@ -158,8 +161,6 @@ namespace MyMirror.ViewModel
             _soundTimer = new Timer(1000);
             _soundTimer.Elapsed += OnSoundTimer;
 
-            _sleepModeTimer = new Timer(60000);
-            _sleepModeTimer.Elapsed += OnSleepModeTimer;
 
             ClickCircle = new ClickCircle();
         }
@@ -176,7 +177,10 @@ namespace MyMirror.ViewModel
         {
             CreateSizeDictionnary();
 
-            MainModelInstance = MainModel.Instance;
+            MainModel = MainModel.Instance;
+
+            _sleepModeTimer = new Timer(_mainModel.MainSettings.Settings.SleepTimer.Value);
+            _sleepModeTimer.Elapsed += OnSleepModeTimer;
 
             _mainModel.LoadWinget();
             _mainModel.LoadInput();
@@ -190,6 +194,8 @@ namespace MyMirror.ViewModel
             _wingetVisibilityTimers = new Dictionary<int, Timer>();
 
             LoadWidget();
+
+            _mainModel.SetMainMessage(String.Format(Resources.StartMainMessage, _mainModel.MainSettings.Settings.UserName.Value), 5000);
         }
 
         /// <summary>
@@ -265,7 +271,7 @@ namespace MyMirror.ViewModel
         /// <param name="e">Arguments</param>
         private void OnScreenInputEvent(object sender, ScreenInputEventArg e)
         {
-            Application.Current.Dispatcher.Invoke(new Action(() =>
+            Application.Current?.Dispatcher.Invoke(new Action(() =>
             {
                 ClickCircle.Opacity = 0f;
 
@@ -323,10 +329,7 @@ namespace MyMirror.ViewModel
                     }
                     else
                     {
-                        if (e.Gesture == InputGestureEnum.Click)
-                        {
-                            CenterWidget.InputClick((int)e.XPos, (int)e.YPos);
-                        }
+                        CenterWidget.InputEvent((int)e.XPos, (int)e.YPos, e.Gesture);
                     }
                 }
                 else if (e.Gesture == InputGestureEnum.RollIn || e.Gesture == InputGestureEnum.Rollout)

@@ -22,7 +22,7 @@ namespace TramWidget.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TramWidget.Properties {
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TramWidget.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace TramWidget.Properties {
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à https://data.metromobilite.fr/api/routers/default/index/stops/{0}/stoptimes.
         /// </summary>
-        internal static string DefaultLinkAddress {
+        public static string DefaultLinkAddress {
             get {
                 return ResourceManager.GetString("DefaultLinkAddress", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à SEM:2236.
         /// </summary>
-        internal static string DefaultTram1 {
+        public static string DefaultTram1 {
             get {
                 return ResourceManager.GetString("DefaultTram1", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à SEM:2235.
         /// </summary>
-        internal static string DefaultTram2 {
+        public static string DefaultTram2 {
             get {
                 return ResourceManager.GetString("DefaultTram2", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à SEM:3205.
         /// </summary>
-        internal static string DefaultTram3 {
+        public static string DefaultTram3 {
             get {
                 return ResourceManager.GetString("DefaultTram3", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à SEM:3206.
         /// </summary>
-        internal static string DefaultTram4 {
+        public static string DefaultTram4 {
             get {
                 return ResourceManager.GetString("DefaultTram4", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à 59000.
         /// </summary>
-        internal static string DefaultTramPullFrequency {
+        public static string DefaultTramPullFrequency {
             get {
                 return ResourceManager.GetString("DefaultTramPullFrequency", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à -.
         /// </summary>
-        internal static string DefaultTramText {
+        public static string DefaultTramText {
             get {
                 return ResourceManager.GetString("DefaultTramText", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Adresse métromobilité.
         /// </summary>
-        internal static string LinkAddress {
+        public static string LinkAddress {
             get {
                 return ResourceManager.GetString("LinkAddress", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à TramWidget.conf.
         /// </summary>
-        internal static string SettingsFileName {
+        public static string SettingsFileName {
             get {
                 return ResourceManager.GetString("SettingsFileName", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Tram 1.
         /// </summary>
-        internal static string Tram1 {
+        public static string Tram1 {
             get {
                 return ResourceManager.GetString("Tram1", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Tram 2.
         /// </summary>
-        internal static string Tram2 {
+        public static string Tram2 {
             get {
                 return ResourceManager.GetString("Tram2", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Tram 3.
         /// </summary>
-        internal static string Tram3 {
+        public static string Tram3 {
             get {
                 return ResourceManager.GetString("Tram3", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Tram 4.
         /// </summary>
-        internal static string Tram4 {
+        public static string Tram4 {
             get {
                 return ResourceManager.GetString("Tram4", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace TramWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Période de rafraîchissement (ms).
         /// </summary>
-        internal static string TramPullFrequency {
+        public static string TramPullFrequency {
             get {
                 return ResourceManager.GetString("TramPullFrequency", resourceCulture);
             }

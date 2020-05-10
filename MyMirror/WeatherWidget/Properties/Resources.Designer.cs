@@ -22,7 +22,7 @@ namespace WeatherWidget.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace WeatherWidget.Properties {
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WeatherWidget.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace WeatherWidget.Properties {
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace WeatherWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Identifiant API.
         /// </summary>
-        internal static string ApiId {
+        public static string ApiId {
             get {
                 return ResourceManager.GetString("ApiId", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace WeatherWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Identifiant de la ville.
         /// </summary>
-        internal static string CityId {
+        public static string CityId {
             get {
                 return ResourceManager.GetString("CityId", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace WeatherWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à 3014728.
         /// </summary>
-        internal static string DefaultCityId {
+        public static string DefaultCityId {
             get {
                 return ResourceManager.GetString("DefaultCityId", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace WeatherWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à http://api.openweathermap.org/data/2.5/forecast?id={0}&amp;appid={1}.
         /// </summary>
-        internal static string DefaultLinkAddress {
+        public static string DefaultLinkAddress {
             get {
                 return ResourceManager.GetString("DefaultLinkAddress", resourceCulture);
             }
@@ -99,45 +99,126 @@ namespace WeatherWidget.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à 3600.
         /// </summary>
-        internal static string DefaultPullPeriode {
+        public static string DefaultPullPeriode {
             get {
                 return ResourceManager.GetString("DefaultPullPeriode", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à 24.
+        /// </summary>
+        public static string DefaultWheatherFrequency {
+            get {
+                return ResourceManager.GetString("DefaultWheatherFrequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à &quot;-&quot;.
         /// </summary>
-        internal static string DefautValue {
+        public static string DefautValue {
             get {
                 return ResourceManager.GetString("DefautValue", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vendredi.
+        /// </summary>
+        public static string Friday {
+            get {
+                return ResourceManager.GetString("Friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à API adresse.
         /// </summary>
-        internal static string LinkAddress {
+        public static string LinkAddress {
             get {
                 return ResourceManager.GetString("LinkAddress", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Lundi.
+        /// </summary>
+        public static string Monday {
+            get {
+                return ResourceManager.GetString("Monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Période de rafraîchissement (s).
         /// </summary>
-        internal static string PullPeriode {
+        public static string PullPeriode {
             get {
                 return ResourceManager.GetString("PullPeriode", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Samedi.
+        /// </summary>
+        public static string Saturday {
+            get {
+                return ResourceManager.GetString("Saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à WeatherWidget.conf.
         /// </summary>
-        internal static string SettingsFileName {
+        public static string SettingsFileName {
             get {
                 return ResourceManager.GetString("SettingsFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Dimanche.
+        /// </summary>
+        public static string Sunday {
+            get {
+                return ResourceManager.GetString("Sunday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Jeudi.
+        /// </summary>
+        public static string Thursday {
+            get {
+                return ResourceManager.GetString("Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mardi.
+        /// </summary>
+        public static string Tuesday {
+            get {
+                return ResourceManager.GetString("Tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mercredi.
+        /// </summary>
+        public static string Wednesday {
+            get {
+                return ResourceManager.GetString("Wednesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Fréquences des prédictions météo (h).
+        /// </summary>
+        public static string WheatherFrequency {
+            get {
+                return ResourceManager.GetString("WheatherFrequency", resourceCulture);
             }
         }
     }

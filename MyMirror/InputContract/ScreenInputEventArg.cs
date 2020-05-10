@@ -7,6 +7,7 @@
 
 namespace InputContract
 {
+    using Common.Enums;
     using System;
 
     /// <summary>

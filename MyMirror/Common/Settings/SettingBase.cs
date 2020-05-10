@@ -29,11 +29,11 @@ namespace Common.Settings
         public void GenerateDefaultSettings()
         {
             foreach (PropertyInfo item in this.GetType().GetProperties())
-            {
-                item.SetValue(item, item.PropertyType.GetConstructor(Type.EmptyTypes).Invoke(new object[] { }));
+            {           
+                item.SetValue(this, item.PropertyType.GetConstructor(Type.EmptyTypes).Invoke(new object[] { }));
 
                 ((ISettingItemBase)(item.GetValue(this, null))).Name = item.Name;
-                ((ISettingItemBase)(item.GetValue(this, null))).StringValue = GetProperty(item.Name);
+                ((ISettingItemBase)(item.GetValue(this, null))).StringValue = GetProperty("Default" + item.Name);
                 ((ISettingItemBase)(item.GetValue(this, null))).InitializeFields(GetResources());
             }
         }

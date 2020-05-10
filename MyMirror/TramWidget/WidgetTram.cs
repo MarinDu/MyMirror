@@ -15,6 +15,7 @@ namespace TramWidget
     using WingetContract.Enum;
     using System.Collections.Generic;
     using Common.Settings;
+    using Common.Enums;
 
     /// <summary>
     /// Contains Tram widget interface implementation
@@ -108,7 +109,7 @@ namespace TramWidget
         }
 
         /// <inheritdoc />
-        public void InputClick(int xPos, int yPos)
+        public void InputEvent(int xPos, int yPos, InputGestureEnum gesture)
         {
         }
 

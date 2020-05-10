@@ -52,8 +52,22 @@ namespace Common.Settings.Items
         /// <inheritdoc />
         public override void InitializeFields(Type Resources)
         {
-            MinValue = Int32.TryParse(Resources.GetProperty(nameof(MinValue)).GetValue(null) as string, out int minValue) ? minValue : 0;
-            MaxValue = Int32.TryParse(Resources.GetProperty(nameof(MinValue)).GetValue(null) as string, out int maxValue) ? minValue : Int32.MaxValue;
+            try
+            {
+                MinValue = Int32.TryParse(Resources.GetProperty(nameof(MinValue)).GetValue(null) as string, out int minValue) ? minValue : 0;
+            }
+            catch
+            {
+                MinValue = 0;
+            }
+            try
+            {
+                MaxValue = Int32.TryParse(Resources.GetProperty(nameof(MinValue)).GetValue(null) as string, out int maxValue) ? maxValue : Int32.MaxValue;
+            }
+            catch
+            {
+                MaxValue = Int32.MaxValue;
+            }
         }
     }
 }

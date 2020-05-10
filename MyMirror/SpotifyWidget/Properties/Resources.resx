@@ -117,16 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CliendId" xml:space="preserve">
+  <data name="ClientId" xml:space="preserve">
     <value>Identifiant client Spotify</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
+  </data>
+  <data name="GoToMusicManagement" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="GoToPlaylist" xml:space="preserve">
+    <value>Ouvrir une playlist</value>
+  </data>
+  <data name="OtherPlayLists" xml:space="preserve">
+    <value>Id des playlists à suivre (séparées par ';')</value>
+  </data>
+  <data name="PlaylistsId" xml:space="preserve">
+    <value>spotify:playlist:</value>
   </data>
   <data name="SettingsFileName" xml:space="preserve">
     <value>SoptifyWidget.conf</value>
   </data>
   <data name="Url" xml:space="preserve">
     <value>http://localhost</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>Identifiant de l'utilisateur</value>
   </data>
 </root>

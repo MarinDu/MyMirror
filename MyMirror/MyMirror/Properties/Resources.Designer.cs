@@ -70,6 +70,15 @@ namespace MyMirror.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à 60.
+        /// </summary>
+        public static string DefaultSleepTimer {
+            get {
+                return ResourceManager.GetString("DefaultSleepTimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Quitter MyMirror.
         /// </summary>
         public static string ExitApp {
@@ -178,11 +187,29 @@ namespace MyMirror.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Temps avant mise en veille (s).
+        /// </summary>
+        public static string SleepTimer {
+            get {
+                return ResourceManager.GetString("SleepTimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Widget de veille.
         /// </summary>
         public static string SleepWidget {
             get {
                 return ResourceManager.GetString("SleepWidget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Bonjour {0} :).
+        /// </summary>
+        public static string StartMainMessage {
+            get {
+                return ResourceManager.GetString("StartMainMessage", resourceCulture);
             }
         }
         

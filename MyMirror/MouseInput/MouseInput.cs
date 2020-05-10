@@ -7,6 +7,7 @@
 
 namespace MouseInput
 {
+    using Common.Enums;
     using Common.Settings;
     using global::MouseInput.Properties;
     using InputContract;

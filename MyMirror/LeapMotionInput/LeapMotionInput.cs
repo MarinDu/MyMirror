@@ -15,6 +15,7 @@ namespace LeapMotionInput
     using Common.Log;
     using Common.Settings;
     using global::LeapMotionInput.Properties;
+    using Common.Enums;
 
     /// <summary>
     /// ScreenInput implemtation for LeapMotion

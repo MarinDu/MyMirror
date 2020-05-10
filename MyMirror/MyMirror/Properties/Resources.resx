@@ -120,6 +120,9 @@
   <data name="BotWidget" xml:space="preserve">
     <value>Widget du bas</value>
   </data>
+  <data name="DefaultSleepTimer" xml:space="preserve">
+    <value>60</value>
+  </data>
   <data name="ExitApp" xml:space="preserve">
     <value>Quitter MyMirror</value>
   </data>
@@ -156,8 +159,14 @@
   <data name="SettingsFileName" xml:space="preserve">
     <value>MyMirror.conf</value>
   </data>
+  <data name="SleepTimer" xml:space="preserve">
+    <value>Temps avant mise en veille (s)</value>
+  </data>
   <data name="SleepWidget" xml:space="preserve">
     <value>Widget de veille</value>
+  </data>
+  <data name="StartMainMessage" xml:space="preserve">
+    <value>Bonjour {0} :)</value>
   </data>
   <data name="TopLeftWidget" xml:space="preserve">
     <value>Widget du haut à gauche</value>

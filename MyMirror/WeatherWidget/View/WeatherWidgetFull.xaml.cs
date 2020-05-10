@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="WeatherWidgetFull.cs">
 //
 // </copyright>
@@ -10,7 +7,8 @@ using System.Linq;
 
 namespace WeatherWidget.View
 {
-
+    using Common.Annimations;
+    using System.Windows;
     using System.Windows.Controls;
 
     /// <summary>
@@ -19,11 +17,26 @@ namespace WeatherWidget.View
     public partial class WeatherWidgetFull : UserControl
     {
         /// <summary>
+        /// Scroll bar annimator
+        /// </summary>
+        ScrollBarAnimator _scrollBarAnimator;
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         public WeatherWidgetFull()
         {
             InitializeComponent();
+            _scrollBarAnimator = new ScrollBarAnimator(ScrollContainer, Dispatcher);
+        }
+
+        /// <summary>
+        /// Handles scrollbutton click
+        /// </summary>
+        /// <param name="xPos">X position of the click</param>
+        public void OnScrollClick(int xPos)
+        {
+            _scrollBarAnimator.ScrollToHorizontalPosition(xPos);
         }
     }
 }

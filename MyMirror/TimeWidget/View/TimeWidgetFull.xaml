@@ -20,7 +20,7 @@
 		<!-- Time animated clock -->
 		<Grid>
 			<Grid.RenderTransform>
-				<RotateTransform CenterX="{Binding XCenter}" CenterY="{Binding YCenter}" Angle="{Binding SecAngle}"/>
+                <RotateTransform CenterX="{Binding XCenter}" CenterY="{Binding YCenter}" Angle="{Binding TimeModel.SecAngle}"/>
 			</Grid.RenderTransform>
 			<Ellipse Width="{Binding SizeDict[93]}" 
 				 Height="{Binding SizeDict[93]}" 
