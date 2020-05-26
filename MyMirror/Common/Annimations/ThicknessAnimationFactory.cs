@@ -1,10 +1,9 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="ThicknessAnimationFactory.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class ThicknessAnimationFactory</summary>
 // -----------------------------------------------------------------------
-
 
 namespace Common.Annimations
 {
@@ -17,6 +16,8 @@ namespace Common.Annimations
     /// </summary>
     static public class ThicknessAnimationFactory
     {
+        #region Public methode
+
         /// <summary>
         /// Get animation from right original pos to in
         /// </summary>
@@ -144,5 +145,7 @@ namespace Common.Annimations
                 Duration = new Duration(TimeSpan.FromMilliseconds(duration)),
             };
         }
+
+        #endregion
     }
 }

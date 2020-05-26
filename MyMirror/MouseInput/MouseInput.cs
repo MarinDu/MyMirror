@@ -1,23 +1,23 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="MouseInput.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>IScreenInput implemtation for mouse and keyboard</summary>
+// <summary>Contains class MouseInput</summary>
 // -----------------------------------------------------------------------
 
 namespace MouseInput
 {
     using Common.Enums;
     using Common.Settings;
-    using global::MouseInput.Properties;
     using InputContract;
     using System;
     using System.Timers;
     using System.Windows;
     using System.Windows.Input;
+    using global::MouseInput.Properties;
 
     /// <summary>
-    /// IScreenInput implemtation for mouse and keyboard
+    /// IScreenInput implementation for mouse and keyboard
     /// </summary>
     internal class MouseInput : IScreenInput
     {
@@ -46,7 +46,7 @@ namespace MouseInput
         private Timer _timer;
 
         /// <summary>
-        /// Current cancel state
+        /// Current gesture
         /// </summary>
         private InputGestureEnum _gesture;
 
@@ -121,7 +121,6 @@ namespace MouseInput
         /// <param name="e">Args</param>
         private void OnTimer(object sender, ElapsedEventArgs e)
         {
-
             _gesture = _gesture == InputGestureEnum.None && !System.Windows.Forms.Cursor.Position.Equals(_previousPosition) ?
                 InputGestureEnum.Position : _gesture;
 

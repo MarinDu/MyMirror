@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="TramWidgetReduce.xaml.cs">
-//
+// <copyright file="TramWidgetReduce.cs">
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Interaction logic for TramWidgetReduce.xaml</summary>
+// <summary>Contains class TramWidgetReduce</summary>
 // -----------------------------------------------------------------------
 
 namespace TramWidget.View
@@ -10,10 +10,12 @@ namespace TramWidget.View
     using System.Windows.Controls;
 
     /// <summary>
-    /// Interaction logic for TimeWidgetFull.xaml
+    /// Tram window view reduce
     /// </summary>
     public partial class TramWidgetReduce : UserControl
     {
+        #region Constructor
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -21,5 +23,7 @@ namespace TramWidget.View
         {
             InitializeComponent();
         }
+
+        #endregion
     }
 }

@@ -1,10 +1,9 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WeatherElement.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Weather element model</summary>
+// <summary>Contains class WeatherElement</summary>
 // -----------------------------------------------------------------------
-
 
 namespace WeatherWidget.Model
 {

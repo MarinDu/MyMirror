@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="IntegerSettingItem.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class IntegerSettingItem</summary>
 // -----------------------------------------------------------------------
@@ -14,24 +14,7 @@ namespace Common.Settings.Items
     /// </summary>
     public class IntegerSettingItem : SettingItemBase<int>
     {
-        /// </summary>
-        /// Gets or set settings min value
-        /// </summary>
-        public int MinValue { get; set; }
-
-        /// </summary>
-        /// Gets or set settings min value
-        /// </summary>
-        public int MaxValue { get; set; }
-
-        /// <summary>
-        /// Default contructor
-        /// </summary>
-        public IntegerSettingItem ()
-        {
-            MinValue = 0;
-            MaxValue = Int32.MaxValue;
-        }
+        #region Properties
 
         /// <inheritdoc />
         public override PamameterValueType DisplayType => PamameterValueType.Field;
@@ -48,6 +31,29 @@ namespace Common.Settings.Items
                 NotifyPropertyChanged(nameof(Value));
             }
         }
+
+        /// </summary>
+        /// Gets or set settings min value
+        /// </summary>
+        public int MinValue { get; set; }
+
+        /// </summary>
+        /// Gets or set settings min value
+        /// </summary>
+        public int MaxValue { get; set; }
+
+        /// <summary>
+        /// Default contructor
+        /// </summary>
+        public IntegerSettingItem()
+        {
+            MinValue = 0;
+            MaxValue = Int32.MaxValue;
+        }
+
+        #endregion
+
+        #region Public methode
 
         /// <inheritdoc />
         public override void InitializeFields(Type Resources)
@@ -69,5 +75,7 @@ namespace Common.Settings.Items
                 MaxValue = Int32.MaxValue;
             }
         }
+
+        #endregion
     }
 }

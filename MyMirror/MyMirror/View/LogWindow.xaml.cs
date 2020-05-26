@@ -1,27 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿// -----------------------------------------------------------------------
+// <copyright file="LogWindow.cs">
+// Made by Marin DUSSERRE, 2020
+// </copyright>
+// <summary>Contains class LogWindow</summary>
+// -----------------------------------------------------------------------
 
 namespace MyMirror.View
 {
+    using System.Windows;
+
     /// <summary>
-    /// Logique d'interaction pour LogWindows.xaml
+    /// Log window view
     /// </summary>
     public partial class LogWindow : Window
     {
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public LogWindow()
         {
             InitializeComponent();
         }
+
+        #endregion
     }
 }

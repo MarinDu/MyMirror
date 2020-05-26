@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="SpotifyModel.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Spotify widget model</summary>
+// <summary>Contains class SpotifyModel</summary>
 // -----------------------------------------------------------------------
 
 namespace SpotifyWidget.Model
@@ -240,7 +240,7 @@ namespace SpotifyWidget.Model
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <summary>
         /// Performs a first update
@@ -447,7 +447,7 @@ namespace SpotifyWidget.Model
 
         #endregion
 
-        #region Private functions
+        #region Private methodes
 
         /// <summary>
         /// Generate a playlist item from playlist id

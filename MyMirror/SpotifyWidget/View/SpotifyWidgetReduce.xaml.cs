@@ -1,28 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿// -----------------------------------------------------------------------
+// <copyright file="SpotifyWidgetReduce.cs">
+// Made by Marin DUSSERRE, 2020
+// </copyright>
+// <summary>Contains class SpotifyWidgetReduce</summary>
+// -----------------------------------------------------------------------
 
 namespace SpotifyWidget.View
 {
+    using System.Windows.Controls;
+
     /// <summary>
-    /// Logique d'interaction pour SpotifyWidgetReduce.xaml
+    /// Spotify window view reduce
     /// </summary>
     public partial class SpotifyWidgetReduce : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public SpotifyWidgetReduce()
         {
             InitializeComponent();
         }
+
+        #endregion
     }
 }

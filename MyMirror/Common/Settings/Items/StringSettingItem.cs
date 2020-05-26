@@ -1,10 +1,9 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="StringSettingItem.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class StringSettingItem</summary>
 // -----------------------------------------------------------------------
-
 using System;
 
 namespace Common.Settings.Items
@@ -14,6 +13,8 @@ namespace Common.Settings.Items
     /// </summary>
     public class StringSettingItem : SettingItemBase<string>
     {
+        #region Properties
+
         /// <inheritdoc />
         public override string StringValue
         {
@@ -28,9 +29,15 @@ namespace Common.Settings.Items
         /// <inheritdoc />
         public override PamameterValueType DisplayType => PamameterValueType.Field;
 
+        #endregion
+
+        #region Public methode
+
         /// <inheritdoc />
         public override void InitializeFields(Type Resources)
         {
         }
+
+        #endregion
     }
 }

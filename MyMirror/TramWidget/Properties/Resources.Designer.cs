@@ -19,7 +19,7 @@ namespace TramWidget.Properties {
     // à l'aide d'un outil, tel que ResGen ou Visual Studio.
     // Pour ajouter ou supprimer un membre, modifiez votre fichier .ResX, puis réexécutez ResGen
     // avec l'option /str ou régénérez votre projet VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -57,6 +57,24 @@ namespace TramWidget.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à C.
+        /// </summary>
+        public static string DefaultLine1 {
+            get {
+                return ResourceManager.GetString("DefaultLine1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à E.
+        /// </summary>
+        public static string DefaultLine2 {
+            get {
+                return ResourceManager.GetString("DefaultLine2", resourceCulture);
             }
         }
         
@@ -120,6 +138,24 @@ namespace TramWidget.Properties {
         public static string DefaultTramText {
             get {
                 return ResourceManager.GetString("DefaultTramText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ligne 1.
+        /// </summary>
+        public static string Line1 {
+            get {
+                return ResourceManager.GetString("Line1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ligne 2.
+        /// </summary>
+        public static string Line2 {
+            get {
+                return ResourceManager.GetString("Line2", resourceCulture);
             }
         }
         

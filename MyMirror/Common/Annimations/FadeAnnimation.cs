@@ -1,7 +1,8 @@
-﻿// <copyright file="WidgetLoader.cs">
-//
+﻿// -----------------------------------------------------------------------
+// <copyright file="FadeAnnimation.cs">
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains class MainModel</summary>
+// <summary>Contains class FadeAnnimation</summary>
 // -----------------------------------------------------------------------
 
 namespace Common.Annimations
@@ -13,6 +14,8 @@ namespace Common.Annimations
 
     public class FadeAnnimation
     {
+        #region Private members
+
         /// <summary>
         /// Refresh periode
         /// </summary>
@@ -27,17 +30,21 @@ namespace Common.Annimations
         /// Opacity property to manupulate
         /// </summary>
         Action<double> _property;
-        
+
         /// <summary>
         /// Current opacity
         /// </summary>
-        double _opacity;  
-        
+        double _opacity;
+
         /// <summary>
         /// Opacity step each timer trigger
         /// </summary>
         double _opacityStep;
-        
+
+        #endregion
+
+        #region Public methode
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -84,9 +91,13 @@ namespace Common.Annimations
         public void FadeOut(int fadeDuration)
         {
             _opacity = 1;
-            _opacityStep = - (double)REFRESH_TIME / (double)fadeDuration;
+            _opacityStep = -(double)REFRESH_TIME / (double)fadeDuration;
             _timer.Start();
         }
+
+        #endregion
+
+        #region Private methode
 
         /// <summary>
         /// Handles timer events
@@ -97,17 +108,19 @@ namespace Common.Annimations
         {
             _opacity += _opacityStep;
 
-            if(_opacity <= 0)
+            if (_opacity <= 0)
             {
                 _timer.Stop();
                 _opacity = 0;
-            } 
-            else if(_opacity >= 1)
+            }
+            else if (_opacity >= 1)
             {
                 _timer.Stop();
                 _opacity = 1;
             }
             _property(_opacity);
         }
+
+        #endregion
     }
 }

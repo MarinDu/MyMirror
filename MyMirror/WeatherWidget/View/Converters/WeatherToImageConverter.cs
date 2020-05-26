@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WeatherToImageConverter.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Converts weather enum value to image</summary>
+// <summary>Contains class WeatherToImageConverter</summary>
 // -----------------------------------------------------------------------
 
 namespace WeatherWidget.View.Converters
@@ -17,6 +17,8 @@ namespace WeatherWidget.View.Converters
     /// </summary>
     internal class WeatherToImageConverter : IValueConverter
     {
+        #region Public methodes
+
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -41,5 +43,7 @@ namespace WeatherWidget.View.Converters
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

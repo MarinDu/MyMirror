@@ -1,28 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿// -----------------------------------------------------------------------
+// <copyright file="NewsWidgetFull.cs">
+// Made by Marin DUSSERRE, 2020
+// </copyright>
+// <summary>Contains class NewsWidgetFull</summary>
+// -----------------------------------------------------------------------
 
 namespace NewsWidget.View
 {
+    using Common.Annimations;
+    using System.Windows.Controls;
+
     /// <summary>
-    /// Logique d'interaction pour NewsWidgetFull.xaml
+    /// News window view full
     /// </summary>
     public partial class NewsWidgetFull : UserControl
     {
+        #region Private members
+
+        /// <summary>
+        /// Scroll bar annimator
+        /// </summary>
+        ScrollBarAnimator _scrollBarAnimator;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public NewsWidgetFull()
         {
             InitializeComponent();
+            _scrollBarAnimator = new ScrollBarAnimator(ScrollContainer, Dispatcher);
         }
+
+        #endregion
+
+        #region Public methodes
+
+        /// <summary>
+        /// Handles scrollbutton click
+        /// </summary>
+        /// <param name="xPos">X position of the click</param>
+        public void OnScrollClick(int xPos)
+        {
+            _scrollBarAnimator.ScrollToHorizontalPosition(xPos);
+        }
+
+        #endregion
     }
 }

@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WeatherSettings.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class WeatherSettings</summary>
 // -----------------------------------------------------------------------
@@ -17,6 +17,8 @@ namespace WeatherWidget.Model
     /// </summary>
     public class WeatherSettings : SettingBase
     {
+        #region Properties
+
         /// <summary>
         /// Gets or Sets the pull periode
         /// </summary>
@@ -42,10 +44,16 @@ namespace WeatherWidget.Model
         /// </summary>
         public IntegerSettingItem WheatherFrequency { get; set; }
 
+        #endregion
+
+        #region Public methodes
+
         /// <inheritdoc />
         protected override Type GetResources()
         {
             return typeof(Resources);
         }
+
+        #endregion
     }
 }

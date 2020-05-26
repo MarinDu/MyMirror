@@ -132,8 +132,6 @@
     <Resource Include="Images\Spotify.png" />
     <Resource Include="Images\Unknown.png" />
     <Resource Include="Images\PlayLists.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\LeftArrow.png" />
     <Resource Include="Images\RightArrow.png" />
   </ItemGroup>

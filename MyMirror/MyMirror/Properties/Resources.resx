@@ -132,6 +132,9 @@
   <data name="InputFolder" xml:space="preserve">
     <value>Inputs</value>
   </data>
+  <data name="LedsPort" xml:space="preserve">
+    <value>Port des LEDs</value>
+  </data>
   <data name="LeftWidget" xml:space="preserve">
     <value>Widget de gauche</value>
   </data>

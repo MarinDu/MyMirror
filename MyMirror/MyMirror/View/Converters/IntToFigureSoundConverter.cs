@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="IntToFigureSoundConverter.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Converts int sound level to figure</summary>
+// <summary>Contains enum IntToFigureSoundConverter</summary>
 // -----------------------------------------------------------------------
 
 namespace MyMirror.View.Converters
@@ -18,6 +18,8 @@ namespace MyMirror.View.Converters
     /// </summary>
     internal class IntToFigureSoundConverter : IValueConverter
     {
+        #region Public functions
+
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -73,5 +75,7 @@ namespace MyMirror.View.Converters
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

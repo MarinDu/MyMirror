@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="ParametersTabItem.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class ParametersTabItem</summary>
 // -----------------------------------------------------------------------
@@ -11,6 +11,9 @@ namespace MyMirror.ViewModel
     using Common.ViewModel;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Parameters view model item in
+    /// </summary>
     public class ParametersTabItem : ViewModelBase
     {
         #region Properties

@@ -75,7 +75,7 @@ namespace TimeWidget
 
         #endregion
 
-        #region Constructor
+        #region Constructors
 
         /// <summary>
         /// Default constructor
@@ -94,7 +94,7 @@ namespace TimeWidget
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <inheritdoc />
         public void Initialize()

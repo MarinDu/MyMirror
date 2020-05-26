@@ -1,4 +1,10 @@
-﻿
+﻿// -----------------------------------------------------------------------
+// <copyright file="PlaylistItem.cs">
+// Made by Marin DUSSERRE, 2020
+// </copyright>
+// <summary>Contains class PlaylistItem</summary>
+// -----------------------------------------------------------------------
+
 namespace SpotifyWidget.Model
 {
     using Common.ViewModel;

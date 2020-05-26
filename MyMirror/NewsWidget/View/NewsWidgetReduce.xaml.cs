@@ -1,28 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿// -----------------------------------------------------------------------
+// <copyright file="NewsWidgetReduce.cs">
+// Made by Marin DUSSERRE, 2020
+// </copyright>
+// <summary>Contains class NewsWidgetReduce</summary>
+// -----------------------------------------------------------------------
 
 namespace NewsWidget.View
 {
+    using System.Windows.Controls;
+
     /// <summary>
-    /// Logique d'interaction pour NewsWidgetReduce.xaml
+    /// News window view reduce
     /// </summary>
     public partial class NewsWidgetReduce : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public NewsWidgetReduce()
         {
             InitializeComponent();
         }
+
+        #endregion
     }
 }

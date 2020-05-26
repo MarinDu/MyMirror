@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WeatherVM.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Weather widget view model</summary>
+// <summary>Contains class WeatherVM</summary>
 // -----------------------------------------------------------------------
 
 namespace WeatherWidget.ViewModel
@@ -58,7 +58,7 @@ namespace WeatherWidget.ViewModel
 
         #endregion
 
-        #region Contructor
+        #region Contructors
 
         /// <summary>
         /// Default constructor
@@ -72,7 +72,7 @@ namespace WeatherWidget.ViewModel
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <summary>
         /// Initialize model
@@ -92,23 +92,25 @@ namespace WeatherWidget.ViewModel
         {
             double margin = 0.12;
             double targetPos = 0;
-   
-            if(xPos > Application.Current.MainWindow.ActualWidth * (1 - margin))
+            int size = 62;
+
+            if (xPos > Application.Current.MainWindow.ActualWidth * (1 - margin))
             {
-                targetPos = 0.3 * Application.Current.MainWindow.ActualWidth;
+                targetPos = SizeDict[size];
             }
             else if (xPos < Application.Current.MainWindow.ActualWidth * margin)
             {
-                targetPos = -0.3 * Application.Current.MainWindow.ActualWidth;
+                targetPos = -SizeDict[size];
             }
 
             if (targetPos != 0)
             {
                 targetPos += fullWidget.ScrollContainer.HorizontalOffset;
+                targetPos -= (int)targetPos % (int)SizeDict[size];
                 fullWidget.OnScrollClick((int)targetPos);
                 ShowPreviousArrow = targetPos > 0;
                 ShowNextArrow = targetPos < fullWidget.ScrollContainer.ScrollableWidth;
-            }      
+            }
         }
 
         #endregion

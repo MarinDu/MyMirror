@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="PluginLoader.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class PluginLoader</summary>
 // -----------------------------------------------------------------------
@@ -20,6 +20,8 @@ namespace MyMirror.Model
     /// <typeparam name="T">Plugin type</typeparam>
     internal class PluginLoader <T>
     {
+        #region Properties
+
         /// <summary>
         /// Load all plugins present in the specified path
         /// </summary>
@@ -77,5 +79,7 @@ namespace MyMirror.Model
 
             return widgets;
         }
+
+        #endregion
     }
 }

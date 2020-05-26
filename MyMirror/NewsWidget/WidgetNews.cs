@@ -1,10 +1,9 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WidgetNews.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains news widget interface implementation</summary>
+// <summary>Contains class WidgetNews</summary>
 // -----------------------------------------------------------------------
-
 
 namespace NewsWidget
 {
@@ -73,7 +72,7 @@ namespace NewsWidget
 
         #endregion
 
-        #region Constructor
+        #region Constructors
 
         /// <summary>
         /// Default constructor
@@ -92,7 +91,7 @@ namespace NewsWidget
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <inheritdoc />
         public void Initialize()
@@ -111,7 +110,7 @@ namespace NewsWidget
         {
             if(gesture == InputGestureEnum.Click)
             {
-                _dataContext.InputClick(xPos, yPos);
+                _dataContext.InputClick(xPos, yPos, ((NewsWidgetFull)FullWidget));
             }
         }
         #endregion

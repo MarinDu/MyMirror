@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="WidgetLoader.cs">
-//
+// <copyright file="MainModel.cs">
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class MainModel</summary>
 // -----------------------------------------------------------------------
@@ -18,6 +18,7 @@ namespace MyMirror.Model
     using MyMirror.Properties;
     using WingetContract.Enum;
     using Common.Annimations;
+    using MyMirror.Model.Led;
 
     /// <summary>
     /// Contains application main model
@@ -78,9 +79,14 @@ namespace MyMirror.Model
         }
 
         /// <summary>
-        /// Main settings
+        /// Gets main settings
         /// </summary>
         public SettingsManager<MainSettings> MainSettings { get; private set; }
+
+        /// <summary>
+        /// Getsl ed manager
+        /// </summary>
+        public ILedManager LedManager { get; private set; }
 
         #endregion
 
@@ -106,6 +112,7 @@ namespace MyMirror.Model
         /// </summary>
         private FadeAnnimation _mainMessageAnnimation;
 
+
         #endregion
 
         #region Constructor
@@ -122,6 +129,7 @@ namespace MyMirror.Model
             MainSettings.Initialize(Resources.SettingsFileName);
 
             _mainMessageAnnimation = new FadeAnnimation(value => MainMessageOpacity = value);
+            LedManager = new COMLedManager(MainSettings);
         }
 
         #endregion

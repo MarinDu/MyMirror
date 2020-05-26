@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WeathersEnum.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Enumerates possible weathers</summary>
+// <summary>enum class WeathersEnum</summary>
 // -----------------------------------------------------------------------
 
 /// <summary>

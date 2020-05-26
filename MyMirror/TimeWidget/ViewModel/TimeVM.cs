@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="TimeVM.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Time widget view model</summary>
+// <summary>Contains class TimeVM</summary>
 // -----------------------------------------------------------------------
 
 namespace TimeWidget.ViewModel
@@ -24,7 +24,7 @@ namespace TimeWidget.ViewModel
 
         #endregion
 
-        #region Default constructor
+        #region Constructors
 
         /// <summary>
         /// Default constructeur

@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="SpotifyVM.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Spotify widget view model</summary>
+// <summary>Contains class SpotifyVM</summary>
 // -----------------------------------------------------------------------
 
 namespace SpotifyWidget.ViewModel
@@ -12,7 +12,6 @@ namespace SpotifyWidget.ViewModel
     using System.Windows;
     using Common.ViewModel;
     using SpotifyWidget.View;
-    using System;
 
     /// <summary>
     /// Contains Soptify widget view model
@@ -40,7 +39,7 @@ namespace SpotifyWidget.ViewModel
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <summary>
         /// Initialize model

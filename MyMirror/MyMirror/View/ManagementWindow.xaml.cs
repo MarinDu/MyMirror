@@ -1,27 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿// -----------------------------------------------------------------------
+// <copyright file="MainWindow.cs">
+// Made by Marin DUSSERRE, 2020
+// </copyright>
+// <summary>Contains class ManagementWindow</summary>
+// -----------------------------------------------------------------------
 
 namespace MyMirror.View
 {
+    using System.Windows;
+
     /// <summary>
-    /// Logique d'interaction pour ParametersWindow.xaml
+    /// Management window view
     /// </summary>
     public partial class ManagementWindow : Window
     {
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public ManagementWindow()
         {
             InitializeComponent();
         }
+
+        #endregion
     }
 }

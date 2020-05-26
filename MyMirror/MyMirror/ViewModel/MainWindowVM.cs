@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="MainWindowVM.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class MainWindowVM</summary>
 // -----------------------------------------------------------------------
@@ -196,6 +196,8 @@ namespace MyMirror.ViewModel
             LoadWidget();
 
             _mainModel.SetMainMessage(String.Format(Resources.StartMainMessage, _mainModel.MainSettings.Settings.UserName.Value), 5000);
+            _mainModel.LedManager.InitConnexion();
+            _mainModel.LedManager.InitAnnimation();
         }
 
         /// <summary>
@@ -286,6 +288,8 @@ namespace MyMirror.ViewModel
                 {
                     if (CenterWidget == null)
                     {
+                        _mainModel.LedManager.LightUpAllWhite(0, 2900, 500);
+
                         // If no central winget : show everything 3s
                         foreach (WidgetPositionEnum pos in (WidgetPositionEnum[])Enum.GetValues(typeof(WidgetPositionEnum)))
                         {
@@ -296,10 +300,21 @@ namespace MyMirror.ViewModel
                     {
                         // Else exit it
                         CenterWidget = null;
+                        _mainModel.LedManager.SetPartyMode(false);
                     }
                 }
                 else if (e.Gesture == InputGestureEnum.Click || e.Gesture == InputGestureEnum.Position)
                 {
+                    // Flash on click
+                    if (e.Gesture == InputGestureEnum.Click)
+                    {
+                        _mainModel.LedManager.LightUpAllWhite(0, 50, 0);
+                    }
+                    else
+                    {
+                        _mainModel.LedManager.LightUpPosWhite((byte)(100 * e.XPos / App.Current.MainWindow.ActualWidth), (byte)(100 * e.YPos / App.Current.MainWindow.ActualHeight), 200);
+                    }
+
                     System.Windows.Forms.Cursor.Position = new System.Drawing.Point((int)e.XPos, (int)e.YPos);
 
                     ClickCircle.XPos = e.XPos;
@@ -311,7 +326,8 @@ namespace MyMirror.ViewModel
                     {
                         // Get cursor position
                         WidgetPositionEnum cursorPosition = GetClickPos(e.XPos, e.YPos);
-
+                        _mainModel.LedManager.LightUpSideWhite(cursorPosition, 300, 500, 300);
+                        
                         // Get associated widget
                         if (Widgets.ContainsKey((int)cursorPosition))
                         {
@@ -319,18 +335,20 @@ namespace MyMirror.ViewModel
                             {
                                 // Show widget full version
                                 CenterWidget = Widgets[(int)cursorPosition];
+                                _mainModel.LedManager.SetPartyMode(true);
                             }
                             else
                             {
                                 // Show widget reduce version
                                 ShowWinget(cursorPosition, true);
                             }
-                        }
+                        }                        
                     }
                     else
                     {
                         CenterWidget.InputEvent((int)e.XPos, (int)e.YPos, e.Gesture);
                     }
+
                 }
                 else if (e.Gesture == InputGestureEnum.RollIn || e.Gesture == InputGestureEnum.Rollout)
                 {

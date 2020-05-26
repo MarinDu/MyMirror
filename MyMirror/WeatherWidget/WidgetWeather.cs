@@ -76,7 +76,7 @@ namespace WeatherWidget
 
         #endregion
 
-        #region Constructor
+        #region Constructors
 
         /// <summary>
         /// Default constructor
@@ -95,7 +95,7 @@ namespace WeatherWidget
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <inheritdoc />
         public void Initialize()
@@ -112,7 +112,10 @@ namespace WeatherWidget
         /// <inheritdoc />
         public void InputEvent(int xPos, int yPos, InputGestureEnum gesture)
         {
-            _dataContext.InputClick(xPos, yPos, ((WeatherWidgetFull)FullWidget));
+            if (gesture == InputGestureEnum.Click)
+            {
+                _dataContext.InputClick(xPos, yPos, ((WeatherWidgetFull)FullWidget));
+            }
         }
         #endregion
     }

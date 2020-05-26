@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="ScrollBarAnimator.cs">
-//
+// <copyright file="MouseInput.cs">
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains class ScrollBarAnimator</summary>
+// <summary>Contains class MouseInput</summary>
 // -----------------------------------------------------------------------
 
 namespace Common.Annimations
@@ -17,7 +17,6 @@ namespace Common.Annimations
     /// </summary>
     public class ScrollBarAnimator : ElementAnimator
     {
-
         #region Private members
 
         /// <summary>

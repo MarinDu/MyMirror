@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="TramVM.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Tram widget view model</summary>
+// <summary>Contains class TramVM</summary>
 // -----------------------------------------------------------------------
 
 namespace TramWidget.ViewModel
@@ -24,7 +24,7 @@ namespace TramWidget.ViewModel
 
         #endregion
 
-        #region Contructor
+        #region Contructors
 
         /// <summary>
         /// Default constructor
@@ -36,7 +36,7 @@ namespace TramWidget.ViewModel
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <summary>
         /// Initialize model

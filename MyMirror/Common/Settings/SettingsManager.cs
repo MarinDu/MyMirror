@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="SettingsManager.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class SettingsManager</summary>
 // -----------------------------------------------------------------------
@@ -18,15 +18,26 @@ namespace Common.Settings
     /// </summary>
     public class SettingsManager<T> where T : class, ISettingsBase,  new()
     {
+
+        #region Properties
+
         /// <summary>
         /// Gets settings
         /// </summary>
         public T Settings { get; private set; }
 
+        #endregion
+
+        #region Private membres
+
         /// <summary>
         /// Settings path
         /// </summary>
         private string _settingsPath;
+
+        #endregion
+
+        #region Public methodes
 
         /// <summary>
         /// Initialize settings with path
@@ -69,14 +80,6 @@ namespace Common.Settings
         }
 
         /// <summary>
-        /// Handles settings updated events
-        /// </summary>
-        private void OnSettingsUpdated(object sender, EventArgs e)
-        {
-            Save();
-        }
-
-        /// <summary>
         /// Save settings in configuration file
         /// </summary>
         public void Save()
@@ -94,5 +97,21 @@ namespace Common.Settings
                 LogManager.LogLine(ex.Message);
             }
         }
+
+        #endregion
+
+        #region Private methodes
+
+        /// <summary>
+        /// Handles settings updated events
+        /// </summary>
+        /// <param name="sender">Not used</param>
+        /// <param name="e">Not used</param>
+        private void OnSettingsUpdated(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        #endregion
     }
 }

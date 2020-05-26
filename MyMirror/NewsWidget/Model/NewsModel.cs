@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="NewsModel.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Spotify widget model</summary>
+// <summary>Contains class NewsModel</summary>
 // -----------------------------------------------------------------------
 
 namespace NewsWidget.Model
@@ -19,6 +19,7 @@ namespace NewsWidget.Model
     using System.Xml;
     using System.Net;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Contains news widget model
@@ -28,20 +29,14 @@ namespace NewsWidget.Model
         #region Properties
 
         /// <summary>
-        /// Title of the news
-        /// </summary>
-        public string NewsTitle { get => _newsTitle; private set => Set(ref _newsTitle, value); }
-
-        /// <summary>
-        /// Text of the news
-        /// </summary>
-        public string NewsText { get => _newsText; private set => Set(ref _newsText, value); }
-
-        /// <summary>
         /// Gets windget settings
         /// </summary>
         public SettingsManager<NewsSettings> SettingsManager { get; internal set; }
-        public object JsonConvert { get; private set; }
+
+        /// <summary>
+        /// News elements
+        /// </summary>
+        public List<NewsElement> NewsList { get => _newsList; private set => Set(ref _newsList, value); }
 
         #endregion
 
@@ -65,22 +60,12 @@ namespace NewsWidget.Model
         /// <summary>
         /// List of the news
         /// </summary>
-        private List<String> _newsList;
+        private List<NewsElement> _newsList;
 
         /// <summary>
-        /// Title of the information
+        /// Can rotate news
         /// </summary>
-        private string _newsTitle;
-
-        /// <summary>
-        /// Text of the information
-        /// </summary>
-        private string _newsText;
-
-        /// <summary>
-        /// INdex of the current displayed news
-        /// </summary>
-        private int _currentNewsIndex;
+        private bool _rotateNews;
 
         #endregion
 
@@ -93,6 +78,7 @@ namespace NewsWidget.Model
         {
             SettingsManager = new SettingsManager<NewsSettings>();
             SettingsManager.Initialize(Resources.SettingsFileName);
+            _rotateNews = true;
 
             _timer = new System.Timers.Timer(SettingsManager.Settings.NewsPullFrequency.Value)
             {
@@ -149,8 +135,7 @@ namespace NewsWidget.Model
                     {
                         XmlNode dataNode;
                         dataNode = GetData(SettingsManager.Settings.NewsFeedUrl.Value);
-                        _newsList = ParseData(dataNode);
-                        _currentNewsIndex = 0;
+                        NewsList = ParseData(dataNode);
                         _accessMutex.ReleaseMutex();
                     }
 
@@ -179,10 +164,9 @@ namespace NewsWidget.Model
                 {
                     if (_accessMutex.WaitOne(1000))
                     {
-                        NewsTitle = "TITLE " + _currentNewsIndex.ToString();
-                        NewsText = _newsList[_currentNewsIndex];
-
-                        _currentNewsIndex = (_currentNewsIndex + 1) % _newsList.Count;
+                        NewsElement first = NewsList[0];
+                        NewsList.RemoveAt(0);
+                        NewsList.Add(first);
                         _accessMutex.ReleaseMutex();
                     }
                 }
@@ -225,14 +209,12 @@ namespace NewsWidget.Model
         /// </summary>
         /// <param name="dataNode">XML node</param>
         /// <returns>Infos titles</returns>
-        private List<string> ParseData(XmlNode dataNode)
+        private List<NewsElement> ParseData(XmlNode dataNode)
         {
-            List<string> ret = new List<string>(); ;
+            List<NewsElement> ret = new List<NewsElement>(); ;
 
             if (dataNode != null)
-            {
-                string title = String.Empty;
-
+            {          
                 // Next 
                 XmlNodeList nodes = dataNode.SelectNodes("channel/item");
                 Encoding iso = Encoding.GetEncoding("ISO-8859-1");
@@ -243,9 +225,15 @@ namespace NewsWidget.Model
 
                     byte[] utfBytes = utf8.GetBytes(node.SelectNodes("title")[0].InnerXml);
                     byte[] isoBytes = Encoding.Convert(utf8, iso, utfBytes);
-                    title = utf8.GetString(isoBytes);
+                    string title = utf8.GetString(isoBytes);
 
-                    ret.Add(title);
+                    utfBytes = utf8.GetBytes(node.SelectNodes("description")[0].InnerXml);
+                    isoBytes = Encoding.Convert(utf8, iso, utfBytes);
+                    string description = utf8.GetString(isoBytes);
+                    description = description.Replace("<![CDATA[", "");
+                    description = description.Replace("]]>", "");
+                    description = description.Replace("&nbsp;", " ");
+                    ret.Add(new NewsElement(title, description));
                 }
             }
             return ret;

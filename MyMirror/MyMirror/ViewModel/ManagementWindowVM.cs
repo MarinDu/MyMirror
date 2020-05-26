@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="ManagementWindowVM.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class ManagementWindowVM</summary>
 // -----------------------------------------------------------------------
@@ -16,7 +16,6 @@ namespace MyMirror.ViewModel
     using MyMirror.Properties;
     using WingetContract;
     using InputContract;
-    using Common.Settings;
 
     /// <summary>
     /// View model for the management window

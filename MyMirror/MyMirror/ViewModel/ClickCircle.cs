@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="ClickCircle.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Click animation</summary>
+// <summary>Contains class ClickCircle</summary>
 // -----------------------------------------------------------------------
 
 namespace MyMirror.ViewModel
@@ -14,6 +14,8 @@ namespace MyMirror.ViewModel
     /// </summary>
     internal class ClickCircle : ObservableObject
     {
+        #region Properties
+
         /// <summary>
         /// Gets circle size
         /// </summary>
@@ -55,6 +57,10 @@ namespace MyMirror.ViewModel
             set => Set(ref _opacity, value);
         }
 
+        #endregion
+
+        #region Private members
+
         /// <summary>
         /// Circle size
         /// </summary>
@@ -74,5 +80,7 @@ namespace MyMirror.ViewModel
         /// Circle opacity
         /// </summary>
         double _opacity;
+
+        #endregion
     }
 }

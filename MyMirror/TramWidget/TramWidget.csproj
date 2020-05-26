@@ -104,7 +104,9 @@
       <Name>WidgetContract</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -120,8 +122,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\TramC.png" />
-    <Resource Include="Images\TramE.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

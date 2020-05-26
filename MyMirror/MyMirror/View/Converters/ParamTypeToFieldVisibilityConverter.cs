@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="ParamTypeToFieldVisibilityConverter.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Converts paramtype to visibility</summary>
+// <summary>Contains enum ParamTypeToFieldVisibilityConverter</summary>
 // -----------------------------------------------------------------------
 
 namespace MyMirror.View.Converters
@@ -18,6 +18,8 @@ namespace MyMirror.View.Converters
     /// </summary>
     internal class ParamTypeToFieldVisibilityConverter : IValueConverter
     {
+        #region Public functions
+
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -30,5 +32,7 @@ namespace MyMirror.View.Converters
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

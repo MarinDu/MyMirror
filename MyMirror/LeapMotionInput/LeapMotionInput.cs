@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="LeapMotionInput.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>IScreenInput implemtation for LeapMotion</summary>
+// <summary>Contains class LeapMotionInput</summary>
 // -----------------------------------------------------------------------
 
 namespace LeapMotionInput
@@ -14,11 +14,11 @@ namespace LeapMotionInput
     using InputContract;
     using Common.Log;
     using Common.Settings;
-    using global::LeapMotionInput.Properties;
     using Common.Enums;
+    using global::LeapMotionInput.Properties;
 
     /// <summary>
-    /// ScreenInput implemtation for LeapMotion
+    /// IScreenInput implementation for LeapMotion
     /// </summary>
     public class LeapMotionInput : IScreenInput
     {
@@ -47,7 +47,7 @@ namespace LeapMotionInput
         private Timer _timer;
 
         /// <summary>
-        /// Current cancel state
+        /// Current gesture
         /// </summary>
         private InputGestureEnum _gesture;
 
@@ -57,12 +57,12 @@ namespace LeapMotionInput
         private Controller _controller;
 
         /// <summary>
-        /// Last sent click for hysteresis
+        /// Last sent click date
         /// </summary>
         private DateTime _lastClick;
 
         /// <summary>
-        /// Reference frame for rotation
+        /// Reference frame
         /// </summary>
         private Frame _referenceFrame;
 
@@ -76,7 +76,7 @@ namespace LeapMotionInput
         #region Contructor
 
         /// <summary>
-        /// DefaultConstructor
+        /// Default constructor
         /// </summary>
         public LeapMotionInput()
         {
@@ -134,6 +134,7 @@ namespace LeapMotionInput
                     _referenceFrame = null;
                 }
 
+                // Compute gesture
                 float rotation = 0;
                 if(_referenceFrame != null && currentHand != null)
                 {
@@ -170,6 +171,7 @@ namespace LeapMotionInput
                     _lastClick = DateTime.Now;
                 }
 
+                // Notify gesture
                 ScreenInputEvent?.Invoke(this, new ScreenInputEventArg(xPos, yPos, _gesture));
             }
             catch(Exception ex)
@@ -180,10 +182,10 @@ namespace LeapMotionInput
         }
 
         /// <summary>
-        /// Fonction de réupération de la main droite
+        /// Parses a frame to get user right hand
         /// </summary>
-        /// <param name="f"></param>
-        /// <returns></returns>
+        /// <param name="f">Frame to parse</param>
+        /// <returns>Found right hand, or null</returns>
         private Hand GetRightHand(Frame f)
         {
             Hand ret = null;
@@ -199,14 +201,13 @@ namespace LeapMotionInput
         }
 
         /// <summary>
-        /// Fonction de réupération de la point e de la main
+        /// Parses a hand to get user hand tip
         /// </summary>
-        /// <param name="f"></param>
-        /// <returns></returns>
+        /// <param name="hand">Hand to parse</param>
+        /// <returns>Hand tips position</returns>
         private Vector GetHandTip(Hand hand)
         {
             Vector ret = null;
-
             if(hand != null)
             {
                 foreach (Finger f in hand.Fingers)
@@ -221,9 +222,9 @@ namespace LeapMotionInput
                     }
                 }
             }
-
             return ret;
         }
+
         #endregion
     }
 }

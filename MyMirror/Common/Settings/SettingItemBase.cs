@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SettingsManager.cs">
-//
+// <copyright file="SettingItemBase.cs">
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains class SettingsManager</summary>
+// <summary>Contains class SettingItemBase</summary>
 // -----------------------------------------------------------------------
 
 namespace Common.Settings
@@ -15,6 +15,8 @@ namespace Common.Settings
     /// </summary>
     public abstract class SettingItemBase<T> : ObservableObject, ISettingItemBase
     {
+        #region Properties
+
         /// <inheritdoc />
         public string Name { get; set; }
 
@@ -32,7 +34,13 @@ namespace Common.Settings
         /// <inheritdoc />
         public abstract PamameterValueType DisplayType { get;}
 
+        #endregion
+
+        #region Public methodes
+
         /// <inheritdoc />
         public abstract void InitializeFields(Type Resources);
+
+        #endregion
     }
 }

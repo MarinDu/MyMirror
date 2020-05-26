@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="TimeWidgetReduce.xaml.cs">
-//
+// <copyright file="TimeWidgetReduce.cs">
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Interaction logic for TimeWidgetReduce.xaml</summary>
+// <summary>Contains class TimeWidgetReduce</summary>
 // -----------------------------------------------------------------------
 
 namespace TimeWidget.View
@@ -10,10 +10,12 @@ namespace TimeWidget.View
     using System.Windows.Controls;
 
     /// <summary>
-    /// Interaction logic for TimeWidgetReduce.xaml
+    /// Time window view reduce
     /// </summary>
     public partial class TimeWidgetReduce : UserControl
     {
+        #region Constructor
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -21,5 +23,7 @@ namespace TimeWidget.View
         {
             InitializeComponent();
         }
+
+        #endregion
     }
 }

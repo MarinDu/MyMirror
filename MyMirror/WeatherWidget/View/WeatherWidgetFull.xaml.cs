@@ -1,25 +1,30 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WeatherWidgetFull.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains WeatherWidgetFull class</summary>
+// <summary>Contains class WeatherWidgetFull</summary>
 // -----------------------------------------------------------------------
 
 namespace WeatherWidget.View
 {
-    using Common.Annimations;
-    using System.Windows;
     using System.Windows.Controls;
+    using Common.Annimations;
 
     /// <summary>
-    /// Logique d'interaction pour WeatherWidgetFull.xaml
+    /// Tram window view full
     /// </summary>
     public partial class WeatherWidgetFull : UserControl
     {
+        #region Private members
+
         /// <summary>
         /// Scroll bar annimator
         /// </summary>
         ScrollBarAnimator _scrollBarAnimator;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Default constructor
@@ -30,6 +35,10 @@ namespace WeatherWidget.View
             _scrollBarAnimator = new ScrollBarAnimator(ScrollContainer, Dispatcher);
         }
 
+        #endregion
+
+        #region Public methodes
+
         /// <summary>
         /// Handles scrollbutton click
         /// </summary>
@@ -38,5 +47,7 @@ namespace WeatherWidget.View
         {
             _scrollBarAnimator.ScrollToHorizontalPosition(xPos);
         }
+
+        #endregion
     }
 }

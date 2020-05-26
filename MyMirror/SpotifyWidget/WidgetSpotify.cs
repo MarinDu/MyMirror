@@ -75,7 +75,7 @@ namespace SpotifyWidget
 
         #endregion
 
-        #region Constructor
+        #region Constructors
 
         /// <summary>
         /// Default constructor
@@ -94,7 +94,7 @@ namespace SpotifyWidget
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <inheritdoc />
         public void Initialize()

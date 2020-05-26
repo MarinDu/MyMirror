@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="IWidget.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Tinterface for widgets</summary>
+// <summary>Contains interface IWidget</summary>
 // -----------------------------------------------------------------------
 
 namespace WingetContract
@@ -14,10 +14,12 @@ namespace WingetContract
     using WingetContract.Enum;
 
     /// <summary>
-    /// Contains Tinterface for widgets
+    /// Contains Interface for widget
     /// </summary>
     public interface IWidget
     {
+        #region Properties
+
         /// <summary>
         /// Gets widget name
         /// </summary>
@@ -29,17 +31,17 @@ namespace WingetContract
         List<WidgetPositionEnum> WingetPossiblePosition { get; }
 
         /// <summary>
-        /// Gets widget right or left version
+        /// Gets widget view, right or left version
         /// </summary>
         UserControl RightOrLeftWidget { get; }
 
         /// <summary>
-        /// Gets widget top or bot version
+        /// Gets widget view, top or bot version
         /// </summary>
         UserControl TopOrBotWidget { get; }
 
         /// <summary>
-        /// Gets widget full version
+        /// Gets widget view, full version
         /// </summary>
         UserControl FullWidget { get; }
 
@@ -49,9 +51,13 @@ namespace WingetContract
         bool CanShowOnSleep { get; }
 
         /// <summary>
-        /// Gets windget setting manager
+        /// Gets widget setting manager
         /// </summary>
         ISettingsBase Settings { get; }
+
+        #endregion
+
+        #region Public functions
 
         /// <summary>
         /// Initializes widget
@@ -64,11 +70,13 @@ namespace WingetContract
         void Dispose();
 
         /// <summary>
-        /// Send click input to windgets
+        /// Send click input to widget
         /// </summary>
         /// <param name="xPos">Click X pos</param>
         /// <param name="yPos">Click Y pos</param>
         /// <param name="gesture">Gesture</param>
         void InputEvent(int xPos, int yPos, InputGestureEnum gesture);
+
+        #endregion
     }
 }

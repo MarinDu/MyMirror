@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="ViewModelBase.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains view models base class</summary>
+// <summary>Contains class ViewModelBase</summary>
 // -----------------------------------------------------------------------
 
 namespace Common.ViewModel
@@ -39,7 +39,7 @@ namespace Common.ViewModel
         /// <summary>
         /// Available font sizes
         /// </summary>
-        private const int _availableSize = 100;
+        private const int _availableSize = 180;
 
         /// <summary>
         /// Size coeficient
@@ -48,7 +48,7 @@ namespace Common.ViewModel
 
         #endregion
 
-        #region Protected functions
+        #region Protected methodes
 
         /// <summary>
         /// Create size dictionary

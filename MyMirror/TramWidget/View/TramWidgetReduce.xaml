@@ -32,7 +32,7 @@
 			<RowDefinition Height="10*"/>
 		</Grid.RowDefinitions>
 		
-		<!-- Tram C -->
+		<!-- Tram 1 -->
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="2*"/>
@@ -43,14 +43,28 @@
 				<ColumnDefinition Width="2*"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<Image Source="{StaticResource TramC}"
-					Grid.ColumnSpan="2"
-					HorizontalAlignment="Center"
-					Height="{Binding SizeDict[10]}"/>
-			
-			<!-- Direction 1 -->
+            <Border 
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                BorderBrush="White"    
+                BorderThickness="{Binding SizeDict[1]}"
+                Height="{Binding SizeDict[12]}"
+                Width="{Binding SizeDict[12]}"
+                CornerRadius="{Binding SizeDict[1]}">
+                <TextBlock
+                Text="{Binding TramModel.Line1}" 
+				   Foreground="White"
+				   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+				   FontSize="{Binding SizeDict[10]}"/>
+            </Border>
+
+            <!-- Direction 1 -->
 			<Label Grid.Row="1"
-				Content="{Binding TramModel.DirectionC[0], Converter={StaticResource StringConverter}}" 
+				Content="{Binding TramModel.DirectionLine1[0], Converter={StaticResource StringConverter}}" 
 				Foreground="White"
 				FontWeight="Bold"
 				HorizontalContentAlignment="Left"
@@ -58,7 +72,7 @@
 			<!-- Timer -->
 			<Label Grid.Row="1"
 				Grid.Column="1"
-				Content="{Binding TramModel.NextTramC1[0]}" 
+				Content="{Binding TramModel.NextTram1[0]}" 
 					HorizontalContentAlignment="Center"
 					FontWeight="Bold"
 				   Foreground="White"
@@ -67,7 +81,7 @@
 
 			<!-- Direction 2 -->
 			<Label  Grid.Row="2"
-					Content="{Binding TramModel.DirectionC[1], Converter={StaticResource StringConverter}}" 
+					Content="{Binding TramModel.DirectionLine1[1], Converter={StaticResource StringConverter}}" 
 					Foreground="White"
 					FontWeight="Bold"
 					HorizontalContentAlignment="Left"
@@ -76,7 +90,7 @@
 			<Label  Grid.Row="2"
 				Grid.Column="1"
 					Foreground="White"
-				Content="{Binding TramModel.NextTramC2[0]}" 
+				Content="{Binding TramModel.NextTram2[0]}" 
 					HorizontalContentAlignment="Center"
 					FontWeight="Bold"
 				FontSize="{Binding SizeDict[3]}"/>
@@ -85,7 +99,7 @@
 		<!-- Separation -->
 		<Rectangle Grid.Row="1" Height="{Binding SizeDict[1]}" Fill="White"/>
 
-		<!-- Tram E -->
+		<!-- Tram 2 -->
 		<Grid Grid.Row="2">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="2*"/>
@@ -96,14 +110,31 @@
 				<ColumnDefinition Width="2*"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<Image Source="{StaticResource TramE}"
-					Grid.ColumnSpan="2"
-					HorizontalAlignment="Center"
-					Height="{Binding SizeDict[10]}"/>
+            
+            <Border 
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                BorderBrush="White"    
+                BorderThickness="{Binding SizeDict[1]}"
+                Height="{Binding SizeDict[12]}"
+                Width="{Binding SizeDict[12]}"
+                CornerRadius="{Binding SizeDict[1]}">
+                <TextBlock
+                Text="{Binding TramModel.Line2}" 
+				   Foreground="White"
+				   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+				   FontSize="{Binding SizeDict[10]}"/>
+            </Border>
+
+
 			
 			<!-- Direction 1 -->
 			<Label Grid.Row="1"
-				Content="{Binding TramModel.DirectionE[0], Converter={StaticResource StringConverter}}" 
+				Content="{Binding TramModel.DirectionLine2[0], Converter={StaticResource StringConverter}}" 
 				Foreground="White"
 				FontWeight="Bold"
 				HorizontalContentAlignment="Left"
@@ -112,7 +143,7 @@
 			<Label Grid.Row="1"
 				Grid.Column="1"
 				   Foreground="White"
-				Content="{Binding TramModel.NextTramE1[0]}" 
+				Content="{Binding TramModel.NextTram3[0]}" 
 					HorizontalContentAlignment="Center"
 					FontWeight="Bold"
 					FontSize="{Binding SizeDict[3]}"
@@ -120,7 +151,7 @@
 
 			<!-- Direction 2 -->
 			<Label  Grid.Row="2"
-					Content="{Binding TramModel.DirectionE[1], Converter={StaticResource StringConverter}}" 
+					Content="{Binding TramModel.DirectionLine2[1], Converter={StaticResource StringConverter}}" 
 					Foreground="White"
 					FontWeight="Bold"
 					HorizontalContentAlignment="Left"
@@ -129,7 +160,7 @@
 			<Label  Grid.Row="2"
 				Grid.Column="1"
 					Foreground="White"
-				Content="{Binding TramModel.NextTramE2[0]}" 
+				Content="{Binding TramModel.NextTram4[0]}" 
 					HorizontalContentAlignment="Center"
 					FontWeight="Bold"
 				FontSize="{Binding SizeDict[3]}"/>

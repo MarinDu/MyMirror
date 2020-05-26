@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WeatherModel.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Weather widget model</summary>
+// <summary>Contains class WeatherModel</summary>
 // -----------------------------------------------------------------------
 
 namespace WeatherWidget.Model
@@ -73,7 +73,7 @@ namespace WeatherWidget.Model
 
         #endregion
 
-        #region Contructor
+        #region Contructors
 
         /// <summary>
         /// Default constructeur
@@ -98,7 +98,7 @@ namespace WeatherWidget.Model
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <summary>
         /// Performs a first update
@@ -111,7 +111,7 @@ namespace WeatherWidget.Model
 
         #endregion
 
-        #region Private functions
+        #region Private methodes
 
         /// <summary>
         /// Updates tram timers

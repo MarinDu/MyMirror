@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="ObservableObject.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains ObservableObject class</summary>
+// <summary>Contains class ObservableObject</summary>
 // -----------------------------------------------------------------------
 
 namespace Common.ViewModel
@@ -16,10 +16,16 @@ namespace Common.ViewModel
     /// </summary>
     public abstract class ObservableObject : INotifyPropertyChanged
     {
+        #region Events
+
         /// <summary>
         /// PropertyChanged event handler
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// PropertyChanged notify
@@ -29,6 +35,10 @@ namespace Common.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+
+        #endregion
+
+        #region Protected methodes
 
         /// <summary>
         /// Modify variable value if necessary and notify a property changed event
@@ -45,5 +55,7 @@ namespace Common.ViewModel
                 NotifyPropertyChanged(propertyName);
             }
         }
+
+        #endregion
     }
 }

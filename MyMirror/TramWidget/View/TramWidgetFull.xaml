@@ -36,29 +36,45 @@
 		</Grid.RowDefinitions>
 		
 		<!-- Back ground -->
-		<Rectangle Grid.ColumnSpan="3" Grid.RowSpan="2" Fill="Black"/>
+		<Rectangle Grid.ColumnSpan="3" Grid.RowSpan="2" Fill="Black" Margin="0,10,0,-10"/>
 		
-		<!-- Tram C -->
-		<Image Source="{StaticResource TramC}"/>
-		<StackPanel Orientation="Vertical"
+		<!-- Tram 1 -->
+        <Border HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                BorderBrush="White"    
+                BorderThickness="{Binding SizeDict[3]}"
+                Height="{Binding SizeDict[33]}"
+                Width="{Binding SizeDict[33]}"
+                CornerRadius="{Binding SizeDict[4]}">
+        </Border>
+
+        <TextBlock Text="{Binding TramModel.Line1}" 
+				   Foreground="White"
+				   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+				   FontSize="{Binding SizeDict[26]}"/>
+        
+        <StackPanel Orientation="Vertical"
 					Grid.Row="1">
 			
 			<!-- Direction 1 -->
-			<Label Content="{Binding TramModel.DirectionC[0], Converter={StaticResource StringConverter}}" 
+            <Label Content="{Binding TramModel.DirectionLine1[0], Converter={StaticResource StringConverter}}" 
 				   Foreground="White"
 				   FontWeight="Bold"
 				   HorizontalContentAlignment="Center"
 				   FontSize="{Binding SizeDict[8]}"/>
 			<!-- Timers -->
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<Label Content="{Binding TramModel.NextTramC1[0]}" 
+                <Label Content="{Binding TramModel.NextTram1[0]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
 					   Foreground="White"
 						FontSize="{Binding SizeDict[10]}"
 						Width="{Binding SizeDict[35]}"/>
 				<Rectangle Width="{Binding SizeDict[2]}" Fill="White"/>
-				<Label Content="{Binding TramModel.NextTramC1[1]}" 
+                <Label Content="{Binding TramModel.NextTram1[1]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
 					   Foreground="White"
@@ -68,21 +84,21 @@
 			<Rectangle Height="{Binding SizeDict[12]}"/>
 			
 			<!-- Direction 2 -->
-			<Label Content="{Binding TramModel.DirectionC[1], Converter={StaticResource StringConverter}}" 
+            <Label Content="{Binding TramModel.DirectionLine1[1], Converter={StaticResource StringConverter}}" 
 				   Foreground="White"
 				   FontWeight="Bold"
 				   HorizontalContentAlignment="Center"
 				   FontSize="{Binding SizeDict[8]}"/>
 			<!-- Timers -->
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<Label Content="{Binding TramModel.NextTramC2[0]}" 
+                <Label Content="{Binding TramModel.NextTram2[0]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
 					   Foreground="White"
 						FontSize="{Binding SizeDict[10]}"
 						Width="{Binding SizeDict[35]}"/>
 				<Rectangle Width="{Binding SizeDict[2]}" Fill="White"/>
-				<Label Content="{Binding TramModel.NextTramC2[1]}" 
+                <Label Content="{Binding TramModel.NextTram2[1]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
 					   Foreground="White"
@@ -93,29 +109,47 @@
 		
 		<!-- Separation -->
 		<Rectangle Width="{Binding SizeDict[2]}" Grid.Column="1" Grid.RowSpan="2" Fill="White"/>
-		<!-- Tram E-->
-		<Image Source="{StaticResource TramE}" Grid.Column="2"/>
+        
+		<!-- Tram 2-->
+        <Border Grid.Column="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                BorderBrush="White"    
+                BorderThickness="{Binding SizeDict[3]}"
+                Height="{Binding SizeDict[33]}"
+                Width="{Binding SizeDict[33]}"
+                CornerRadius="{Binding SizeDict[4]}">
+        </Border>
+
+        <TextBlock Grid.Column="2"
+                   Text="{Binding TramModel.Line2}" 
+				   Foreground="White"
+				   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+				   FontSize="{Binding SizeDict[26]}"/>
 		
 		<StackPanel Orientation="Vertical"
 					Grid.Row="10"
 					Grid.Column="2">
 			
 			<!-- Direction 1 -->
-			<Label Content="{Binding TramModel.DirectionE[0], Converter={StaticResource StringConverter}}" 
+            <Label Content="{Binding TramModel.DirectionLine2[0], Converter={StaticResource StringConverter}}" 
 				   Foreground="White"
 				   FontWeight="Bold"
 				   HorizontalContentAlignment="Center"
 				   FontSize="{Binding SizeDict[8]}"/>
 			<!-- Timers -->
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<Label Content="{Binding TramModel.NextTramE1[0]}" 
+                <Label Content="{Binding TramModel.NextTram3[0]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
 					   Foreground="White"
 						FontSize="{Binding SizeDict[10]}"
 						Width="{Binding SizeDict[35]}"/>
 				<Rectangle Width="{Binding SizeDict[2]}" Fill="White"/>
-				<Label Content="{Binding TramModel.NextTramE1[1]}" 
+                <Label Content="{Binding TramModel.NextTram3[1]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
 					   Foreground="White"
@@ -126,7 +160,7 @@
 			<Rectangle Height="{Binding SizeDict[12]}"/>
 
 			<!-- Direction 2 -->
-			<Label Content="{Binding TramModel.DirectionE[1], Converter={StaticResource StringConverter}}" 
+            <Label Content="{Binding TramModel.DirectionLine2[1], Converter={StaticResource StringConverter}}" 
 				   Foreground="White"
 				   FontWeight="Bold"
 				   HorizontalContentAlignment="Center"
@@ -134,14 +168,14 @@
 
 			<!-- Timers -->
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<Label Content="{Binding TramModel.NextTramE2[0]}" 
+                <Label Content="{Binding TramModel.NextTram4[0]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
 					   Foreground="White"
 						FontSize="{Binding SizeDict[10]}"
 						Width="{Binding SizeDict[35]}"/>
 				<Rectangle Width="{Binding SizeDict[2]}" Fill="White"/>
-				<Label Content="{Binding TramModel.NextTramE2[1]}" 
+                <Label Content="{Binding TramModel.NextTram4[1]}" 
 					   HorizontalContentAlignment="Center"
 					   FontWeight="Bold"
 					   Foreground="White"

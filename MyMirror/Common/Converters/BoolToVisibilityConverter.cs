@@ -1,10 +1,9 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="BoolToVisibilityConverter.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Converts bool to visibility</summary>
+// <summary>Contains class BoolToVisibilityConverter</summary>
 // -----------------------------------------------------------------------
-
 namespace Common.Converters
 {
     using System;
@@ -17,6 +16,8 @@ namespace Common.Converters
     /// </summary>
     public class BoolToVisibilityConverter : IValueConverter
     {
+        #region Public methode
+
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -28,5 +29,7 @@ namespace Common.Converters
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

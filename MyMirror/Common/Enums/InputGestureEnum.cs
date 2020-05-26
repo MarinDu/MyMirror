@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="InputGestureEnum.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Screen input gestures enumerator</summary>
+// <summary>Contains enum InputGestureEnum</summary>
 // -----------------------------------------------------------------------
 
 namespace Common.Enums

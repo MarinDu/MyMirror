@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="ISettingItemBase.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains interface ISettingItemBase</summary>
 // -----------------------------------------------------------------------
@@ -14,6 +14,8 @@ namespace Common.Settings
     /// </summary>
     public interface ISettingItemBase
     {
+        #region Properties
+
         /// <summary>
         /// Gets or set settings name
         /// </summary>
@@ -34,10 +36,16 @@ namespace Common.Settings
         /// </summary>
         PamameterValueType DisplayType { get; }
 
+        #endregion
+
+        #region Methodes
+
         /// <summary>
         /// Initialize fields with resources
         /// </summary>
         /// <param name="Resources">Resources</param>
         void InitializeFields(Type Resources);
+
+        #endregion
     }
 }

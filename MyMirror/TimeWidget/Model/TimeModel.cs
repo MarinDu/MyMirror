@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="TimeModel.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Time widget model</summary>
+// <summary>Contains class TimeModel</summary>
 // -----------------------------------------------------------------------
 
 namespace TimeWidget.Model
@@ -67,7 +67,6 @@ namespace TimeWidget.Model
 
         #endregion
 
-
         #region Private members
 
         /// <summary>
@@ -92,7 +91,7 @@ namespace TimeWidget.Model
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <summary>
         /// Initialize timer
@@ -109,7 +108,7 @@ namespace TimeWidget.Model
 
         #endregion
 
-        #region Private functions
+        #region Private methodes
 
         /// <summary>
         /// Update time on timer

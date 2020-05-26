@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="StringToChargingConverter.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Detects null or empty string and covert them to "Charging"</summary>
+// <summary>Contains class StringToChargingConverter</summary>
 // -----------------------------------------------------------------------
 
 namespace WingetContract.Converters
@@ -17,6 +17,8 @@ namespace WingetContract.Converters
     /// </summary>
     public class StringToChargingConverter : IValueConverter
     {
+        #region Public functions
+
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -31,5 +33,7 @@ namespace WingetContract.Converters
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

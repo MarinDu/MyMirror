@@ -1,6 +1,6 @@
-﻿ // -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="ISettingsBase.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains interface ISettingsBase</summary>
 // -----------------------------------------------------------------------
@@ -15,10 +15,17 @@ namespace Common.Settings
     /// </summary>
     public interface ISettingsBase
     {
+        #region Events
+
         /// <summary>
         /// Event raised when settings are updated
         /// </summary>
         event EventHandler<EventArgs> SettingsUpdated;
+
+
+        #endregion
+
+        #region Methodes
 
         /// <summary>
         /// Gets all settings
@@ -36,5 +43,7 @@ namespace Common.Settings
         /// Set settings to defaut values
         /// </summary>
         void GenerateDefaultSettings();
+
+        #endregion
     }
 }

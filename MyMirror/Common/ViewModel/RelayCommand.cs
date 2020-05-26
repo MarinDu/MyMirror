@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="RelayCommand.cs">
-//
+// Taken from <see cref="http://msdn.microsoft.com/en-us/magazine/dd419663.aspx#id0090030"/>
 // </copyright>
-// <summary>Contains RelayCommand class</summary>
+// <summary>Contains class RelayCommand</summary>
 // -----------------------------------------------------------------------
 
 namespace Common.ViewModel
@@ -12,7 +12,6 @@ namespace Common.ViewModel
 
     /// <summary>
     /// Command implementation class
-    /// Taken from <see cref="http://msdn.microsoft.com/en-us/magazine/dd419663.aspx#id0090030"/>
     /// </summary>
     public class RelayCommand : ICommand
     {

@@ -1,19 +1,30 @@
-﻿
+﻿// -----------------------------------------------------------------------
+// <copyright file="SpotifyWidgetFull.cs">
+// Made by Marin DUSSERRE, 2020
+// </copyright>
+// <summary>Contains class SpotifyWidgetFull</summary>
+// -----------------------------------------------------------------------
+
 namespace SpotifyWidget.View
 {
-    using Common.Annimations;
     using System.Windows.Controls;
-
+    using Common.Annimations;
 
     /// <summary>
-    /// Logique d'interaction pour SpotifyWidgetFull.xaml
+    /// Spotify window view full
     /// </summary>
     public partial class SpotifyWidgetFull : UserControl
     {
+        #region Private members
+
         /// <summary>
         /// Scroll bar annimator
         /// </summary>
         ScrollBarAnimator _scrollBarAnimator;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Default constructor
@@ -24,6 +35,10 @@ namespace SpotifyWidget.View
             _scrollBarAnimator = new ScrollBarAnimator(ScrollContainer, Dispatcher);
         }
 
+        #endregion
+
+        #region Public methodes
+
         /// <summary>
         /// Handles scrollbutton click
         /// </summary>
@@ -32,5 +47,7 @@ namespace SpotifyWidget.View
         {
             _scrollBarAnimator.ScrollToHorizontalPosition(xPos);
         }
+
+        #endregion
     }
 }

@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="ISettingsBase.cs">
-//
+// <copyright file="SettingBase.cs">
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains interface Setting</summary>
+// <summary>Contains class SettingBase</summary>
 // -----------------------------------------------------------------------
 
 namespace Common.Settings
@@ -16,14 +16,14 @@ namespace Common.Settings
     /// </summary>
     public abstract class SettingBase : ISettingsBase
     {
+        #region Events
+
         /// <inheritdoc />
         public event EventHandler<EventArgs> SettingsUpdated;
 
-        /// <summary>
-        /// Gets resources class for translation
-        /// </summary>
-        /// <returns>Resources class for translation</returns>
-        protected abstract Type GetResources();
+        #endregion
+
+        #region Public methodes
         
         /// <inheritdoc />
         public void GenerateDefaultSettings()
@@ -68,6 +68,16 @@ namespace Common.Settings
             SettingsUpdated?.Invoke(this, null);
         }
 
+        #endregion
+
+        #region Private methodes
+
+        /// <summary>
+        /// Gets resources class for translation
+        /// </summary>
+        /// <returns>Resources class for translation</returns>
+        protected abstract Type GetResources();
+
         /// <summary>
         /// Translate a setting name
         /// </summary>
@@ -94,5 +104,7 @@ namespace Common.Settings
 
             return ret;
         }
+
+        #endregion
     }
 }

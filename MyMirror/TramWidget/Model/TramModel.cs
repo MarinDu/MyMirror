@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="TramModel.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Contains Tram widget model</summary>
+// <summary>Contains class TramModel</summary>
 // -----------------------------------------------------------------------
 
 namespace TramWidget.Model
@@ -26,7 +26,6 @@ namespace TramWidget.Model
     internal class TramModel : ObservableObject
     {
         #region Properties
-        /// <summary>
 
         /// <summary>
         /// Gets windget settings
@@ -34,34 +33,44 @@ namespace TramWidget.Model
         public SettingsManager<TramSettings> SettingsManager { get; internal set; }
 
         /// <summary>
-        /// Gets Tram C direction
+        /// Gets line 1 name
         /// </summary>
-        public List<string> DirectionC { get => _directionC; private set => Set(ref _directionC, value); }
+        public string Line1 { get => _line1; private set => Set(ref _line1, value); } 
+        
+        /// <summary>
+        /// Gets line 2 name
+        /// </summary>
+        public string Line2 { get => _line2; private set => Set(ref _line2, value); }
 
         /// <summary>
-        /// Gets Tram E direction
+        /// Gets line 1 direction
         /// </summary>
-        public List<string> DirectionE { get => _directionE; private set => Set(ref _directionE, value); }
+        public List<string> DirectionLine1 { get => _directionLine1; private set => Set(ref _directionLine1, value); }
 
         /// <summary>
-        /// Gets Tram timers C - 1
+        /// Gets line 2 direction
         /// </summary>
-        public List<string> NextTramC1 { get => _nextTramC1; private set => Set(ref _nextTramC1, value); }
+        public List<string> DirectionLine2 { get => _directionLine2; private set => Set(ref _directionLine2, value); }
 
         /// <summary>
-        /// Gets Tram timers C - 2
+        /// Gets line 1 - 1
         /// </summary>
-        public List<string> NextTramC2 { get => _nextTramC2; private set => Set(ref _nextTramC2, value); }
+        public List<string> NextTram1 { get => _nextTram1; private set => Set(ref _nextTram1, value); }
 
         /// <summary>
-        /// Gets Tram timers E - 1
+        /// Gets line 1 - 2
         /// </summary>
-        public List<string> NextTramE1 { get => _nextTramE1; private set => Set(ref _nextTramE1, value); }
+        public List<string> NextTram2 { get => _nextTram2; private set => Set(ref _nextTram2, value); }
 
         /// <summary>
-        /// Gets Tram timers E - 2
+        /// Gets line 2 - 1
         /// </summary>
-        public List<string> NextTramE2 { get => _nextTramE2; private set => Set(ref _nextTramE2, value); }
+        public List<string> NextTram3 { get => _nextTram3; private set => Set(ref _nextTram3, value); }
+
+        /// <summary>
+        /// Gets line 2 - 2
+        /// </summary>
+        public List<string> NextTram4 { get => _nextTram4; private set => Set(ref _nextTram4, value); }
 
         #endregion
 
@@ -73,58 +82,68 @@ namespace TramWidget.Model
         private Timer _timer;
 
         /// <summary>
-        /// Api link C - 1
+        /// Line 1 name
         /// </summary>
-        private string _linkC1;
+        private string _line1; 
+        
+        /// <summary>
+        /// Line 1 name
+        /// </summary>
+        private string _line2;
 
         /// <summary>
-        /// Api link C - 2
+        /// Api link Line1 - 1
         /// </summary>
-        private string _linkC2;
+        private string _link1Line1;
 
         /// <summary>
-        /// Api link E - 1
+        /// Api link Line1 - 2
         /// </summary>
-        private string _linkE1;
+        private string _link2Line1;
 
         /// <summary>
-        /// Api link E - 2
+        /// Api link Line2 - 1
         /// </summary>
-        private string _linkE2;
+        private string _link1Line2;
 
         /// <summary>
-        /// Tram C direction
+        /// Api link Line2 - 2
         /// </summary>
-        private List<string> _directionC;
+        private string _link2Line2;
 
         /// <summary>
-        /// Tram E direction
+        /// Tram Line1 direction
         /// </summary>
-        private List<string> _directionE;
+        private List<string> _directionLine1;
 
         /// <summary>
-        /// Tram timers C - 1
+        /// Tram Line2 direction
         /// </summary>
-        private List<string> _nextTramC1;
+        private List<string> _directionLine2;
 
         /// <summary>
-        /// Tram timers C - 2
+        /// Tram timers Line1 - 1
         /// </summary>
-        private List<string> _nextTramC2;
+        private List<string> _nextTram1;
 
         /// <summary>
-        /// Tram timers E - 1
+        /// Tram timers Line1 - 2
         /// </summary>
-        private List<string> _nextTramE1;
+        private List<string> _nextTram2;
 
         /// <summary>
-        /// Tram timers E - 2
+        /// Tram timers Line2 - 1
         /// </summary>
-        private List<string> _nextTramE2;
+        private List<string> _nextTram3;
+
+        /// <summary>
+        /// Tram timers Line2 - 2
+        /// </summary>
+        private List<string> _nextTram4;
 
         #endregion
 
-        #region Contructor
+        #region Contructors
 
         /// <summary>
         /// Default constructeur
@@ -140,14 +159,17 @@ namespace TramWidget.Model
             string tram3 = SettingsManager.Settings.Tram3.Value;
             string tram4 = SettingsManager.Settings.Tram4.Value;
 
-            _linkC1 = string.Format(address, tram1);
-            _linkC2 = string.Format(address, tram2);
-            _linkE1 = string.Format(address, tram3);
-            _linkE2 = string.Format(address, tram4);
+            Line1 = SettingsManager.Settings.Line1.Value;
+            Line2 = SettingsManager.Settings.Line2.Value;
 
-            DirectionC = DirectionE = new List<string>() { string.Empty, string.Empty };
+            _link1Line1 = string.Format(address, tram1);
+            _link2Line1 = string.Format(address, tram2);
+            _link1Line2 = string.Format(address, tram3);
+            _link2Line2 = string.Format(address, tram4);
 
-            NextTramC1 = NextTramC2 = NextTramE1 = NextTramE2 = new List <string> { Resources.DefaultTramText, Resources.DefaultTramText };
+            DirectionLine1 = DirectionLine2 = new List<string>() { string.Empty, string.Empty };
+
+            NextTram1 = NextTram2 = NextTram3 = NextTram4 = new List <string> { Resources.DefaultTramText, Resources.DefaultTramText };
 
             _timer = new Timer(SettingsManager.Settings.TramPullFrequency.Value)
             {
@@ -158,7 +180,7 @@ namespace TramWidget.Model
 
         #endregion
 
-        #region Public functions
+        #region Public methodes
 
         /// <summary>
         /// Performs a first update
@@ -170,7 +192,7 @@ namespace TramWidget.Model
 
         #endregion
 
-        #region Private functions
+        #region Private methodes
 
         /// <summary>
         /// Updates tram timers
@@ -185,30 +207,30 @@ namespace TramWidget.Model
                 {
                     XmlNode dataNode;
 
-                    // Get tram C 1
+                    // Get tram line 1 direction 1
                     string direction1 = null;
                     List<string> nextTram = null;
-                    dataNode = GetData(_linkC1);
+                    dataNode = GetData(_link1Line1);
                     ParseData(dataNode, ref direction1, ref nextTram);
-                    NextTramC1 = nextTram;
+                    NextTram1 = nextTram;
 
-                    // Get tram C 2
+                    // Get tram line 1 direction 2
                     string direction2 = null;
-                    dataNode = GetData(_linkC2);
+                    dataNode = GetData(_link2Line1);
                     ParseData(dataNode, ref direction2, ref nextTram);
-                    NextTramC2 = nextTram;
-                    DirectionC = new List<string> { direction1, direction2 };
+                    NextTram2 = nextTram;
+                    DirectionLine1 = new List<string> { direction1, direction2 };
 
-                    // Get tram E 1
-                    dataNode = GetData(_linkE1);
+                    // Get tram line 2 direction 1
+                    dataNode = GetData(_link1Line2);
                     ParseData(dataNode, ref direction1, ref nextTram);
-                    NextTramE1 = nextTram;
+                    NextTram3 = nextTram;
 
-                    // Get tram E 2
-                    dataNode = GetData(_linkE2);
+                    // Get tram line 2 direction 2
+                    dataNode = GetData(_link2Line2);
                     ParseData(dataNode, ref direction2, ref nextTram);
-                    NextTramE2 = nextTram;
-                    DirectionE = new List<string> { direction1, direction2 };
+                    NextTram4 = nextTram;
+                    DirectionLine2 = new List<string> { direction1, direction2 };
                 }
                 catch (Exception ex)
                 {

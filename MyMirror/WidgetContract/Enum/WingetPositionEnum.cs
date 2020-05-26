@@ -1,8 +1,8 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WidgetPositionEnum.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
-// <summary>Enumerate widgets possible positions</summary>
+// <summary>Contains enum WidgetPositionEnum</summary>
 // -----------------------------------------------------------------------
 
 namespace WingetContract.Enum

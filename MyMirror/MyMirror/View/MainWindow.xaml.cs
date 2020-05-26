@@ -1,4 +1,11 @@
-﻿namespace MyMirror.View
+﻿// -----------------------------------------------------------------------
+// <copyright file="MainWindow.cs">
+// Made by Marin DUSSERRE, 2020
+// </copyright>
+// <summary>Contains class MainWindow</summary>
+// -----------------------------------------------------------------------
+
+namespace MyMirror.View
 {
     using MyMirror.ViewModel;
     using System;
@@ -8,18 +15,34 @@
     using Common.Annimations;
 
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Log window view
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Private members
+
+        /// <summary>
+        /// Widget visibiliy
+        /// </summary>
         private Dictionary<WidgetPositionEnum, bool> _widgetsVisibility;
+
+        /// <summary>
+        /// Widget animation duration
+        /// </summary>
         private readonly int _annimationDuration;
 
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public MainWindow()
         {
             _annimationDuration = 300;
 
-             _widgetsVisibility = new Dictionary<WidgetPositionEnum, bool>()
+            _widgetsVisibility = new Dictionary<WidgetPositionEnum, bool>()
             {
                 {WidgetPositionEnum.TopLeft, true },
                 {WidgetPositionEnum.Top, true },
@@ -39,9 +62,18 @@
             ((MainWindowVM)DataContext).ShowElementEvent += OnShowElementEvent;
         }
 
+        #endregion
+
+        #region Private functions
+
+        /// <summary>
+        /// Handles show element events
+        /// </summary>
+        /// <param name="sender">Not used</param>
+        /// <param name="args">Show element event argument</param>
         private void OnShowElementEvent(object sender, ShowElementEventArgs args)
         {
-            if(_widgetsVisibility[args.Position] != args.Show)
+            if (_widgetsVisibility[args.Position] != args.Show)
             {
                 _widgetsVisibility[args.Position] = args.Show;
 
@@ -66,7 +98,7 @@
                                 BotWidget.BeginAnimation(MarginProperty, args.Show ? ThicknessAnimationFactory.GetBotInAnimation(BotWidget.ActualHeight, _annimationDuration) :
                                     ThicknessAnimationFactory.GetBotOutAnimation(BotWidget.ActualHeight, _annimationDuration));
                                 break;
-                            } 
+                            }
                         case WidgetPositionEnum.Top:
                             {
                                 TopWidget.BeginAnimation(MarginProperty, args.Show ? ThicknessAnimationFactory.GetTopInAnimation(TopWidget.ActualHeight, _annimationDuration) :
@@ -78,5 +110,6 @@
             }
         }
 
+        #endregion
     }
 }

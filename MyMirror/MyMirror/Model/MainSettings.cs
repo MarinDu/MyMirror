@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="MainSettings.cs">
-//
+// Made by Marin DUSSERRE, 2020
 // </copyright>
 // <summary>Contains class MainSettings</summary>
 // -----------------------------------------------------------------------
@@ -17,6 +17,8 @@ namespace MyMirror.Model
     /// </summary>
     public class MainSettings : SettingBase
     {
+        #region Properties
+
         /// <summary>
         /// Gets or Sets the user name
         /// </summary>
@@ -62,10 +64,21 @@ namespace MyMirror.Model
         /// </summary>
         public IntegerSettingItem SleepTimer { get; set; }
 
+        /// <summary>
+        /// Gets or Sets leds port
+        /// </summary>
+        public StringSettingItem LedsPort { get; set; }
+
+        #endregion
+
+        #region Public methodes
+
         /// <inheritdoc />
         protected override Type GetResources()
         {
             return typeof(Resources);
         }
+
+        #endregion
     }
 }
